@@ -1,0 +1,59 @@
+/* ═══ BOTONES ═══
+   Un botón es .cl-boton más su variante. El principal y el de apoyo llevan
+   los degradados de la casa con texto blanco (decisión de Luis, en sus
+   500); el secundario es blanco con filete y sombra corta, y es el que va
+   por omisión. Todo lo que no es una acción principal va en secundario. */
+
+.cl .cl-boton{
+  --cl-boton-alto:40px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:none;
+  height:var(--cl-boton-alto);padding:0 18px;border-radius:var(--cl-r-control);
+  font-family:inherit;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-semi);line-height:1;white-space:nowrap;
+  text-decoration:none;cursor:pointer;user-select:none;
+  color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-linea);box-shadow:var(--cl-sombra-1);
+  transition:transform var(--cl-mov-rapido) ease,box-shadow var(--cl-mov-medio) ease,border-color var(--cl-mov-medio) ease,background-color var(--cl-mov-medio) ease,opacity var(--cl-mov-medio) ease
+}
+.cl .cl-boton .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-boton:hover{transform:translateY(-1px);border-color:var(--cl-linea-2);box-shadow:0 4px 12px -4px rgba(20,20,22,.14)}
+.cl .cl-boton:active{transform:none}
+
+/* El principal: explorar, empezar, lo que la página quiere que se haga. */
+.cl .cl-boton-primario{
+  --cl-boton-alto:42px;padding:0 24px;color:#fff;background:var(--cl-grad-explorar);
+  border:0;box-shadow:var(--cl-sombra-marca)
+}
+.cl .cl-boton-apoyo{color:#fff;background:var(--cl-grad-apoyo);border:0;box-shadow:var(--cl-sombra-marca)}
+.cl .cl-boton-primario:hover,.cl .cl-boton-apoyo:hover{transform:translateY(-2px);box-shadow:var(--cl-sombra-marca-2);opacity:.94}
+.cl .cl-boton-primario .cl-ico,.cl .cl-boton-apoyo .cl-ico{color:#fff}
+
+/* Sin caja: acciones terciarias, «ver todo», cancelar. */
+.cl .cl-boton-fantasma{color:var(--cl-acento);background:transparent;border-color:transparent;box-shadow:none}
+.cl .cl-boton-fantasma .cl-ico{color:currentColor}
+.cl .cl-boton-fantasma:hover{background:var(--cl-acento-suave);border-color:transparent;box-shadow:none;transform:none}
+
+/* Retirar, borrar: parece secundario hasta que se apunta. */
+.cl .cl-boton-peligro:hover{color:var(--cl-error-texto);border-color:var(--cl-error-texto)}
+.cl .cl-boton-peligro:hover .cl-ico{color:currentColor}
+
+/* Solo icono: cuadrado. Necesita aria-label, que el dibujo no se lee. */
+.cl .cl-boton-icono{width:var(--cl-boton-alto);padding:0;color:var(--cl-texto-2)}
+.cl .cl-boton-icono .cl-ico{color:currentColor}
+
+.cl .cl-boton-chico{--cl-boton-alto:34px;padding:0 14px;font-size:var(--cl-t-nota)}
+.cl .cl-boton-chico.cl-boton-icono{padding:0}
+.cl .cl-boton-grande{--cl-boton-alto:48px;padding:0 26px;font-size:var(--cl-t-cuerpo)}
+.cl .cl-boton-grande.cl-boton-icono{padding:0}
+.cl .cl-boton-ancho{width:100%}
+
+/* Apagado: con disabled en un <button>, con aria-disabled en un enlace o
+   en un botón que tiene que seguir alcanzándose con el tabulador. */
+.cl .cl-boton:is([disabled],[aria-disabled="true"]){opacity:.4;cursor:default;transform:none;box-shadow:none;pointer-events:none}
+.cl .cl-boton[aria-disabled="true"]{pointer-events:auto}
+.cl .cl-boton[aria-disabled="true"]:hover{transform:none;border-color:var(--cl-linea)}
+
+/* Botón pulsado que se queda pulsado: me gusta, favorito. Rosa de la casa. */
+.cl .cl-boton[aria-pressed="true"]{color:var(--cl-f-secondary2-texto);background:var(--cl-f-secondary2-fondo);border-color:color-mix(in srgb,var(--cl-secondary2-500) 40%,transparent)}
+.cl .cl-boton[aria-pressed="true"] .cl-ico{color:currentColor;fill:currentColor}
+
+/* Una fila de botones que baja de renglón si no cabe. */
+.cl .cl-botones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}

@@ -1,0 +1,11 @@
+/* ═══ UTILIDADES ═══
+   Pocas y de disposición: para acomodar componentes sin escribir una hoja
+   nueva. Lo que se repita en un producto merece su propio componente. */
+
+.cl .cl-pila{display:flex;flex-direction:column;gap:var(--cl-pila-hueco,16px)}
+.cl .cl-hilera{display:flex;flex-wrap:wrap;align-items:center;gap:var(--cl-hilera-hueco,12px)}
+.cl .cl-entre{justify-content:space-between}
+.cl .cl-centrado{text-align:center;margin-inline:auto}
+.cl .cl-ancho-lectura{max-width:72ch}
+.cl .cl-separador{border:0;border-top:1px solid var(--cl-linea);margin:24px 0}
+.cl .cl-seccion-suelta{min-width:0}

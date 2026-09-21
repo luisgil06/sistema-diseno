@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es" data-cl-clave="cl-docs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema de diseño · CodeLibri</title>
+<meta name="description" content="El sistema de diseño de CodeLibri: tokens, componentes y armazón sacados del Aula para todo el ecosistema.">
+<script>(function(r){try{var q=new URLSearchParams(location.search),k=r.getAttribute("data-cl-clave")||"cl",t=q.get("tema")||localStorage.getItem(k+"-tema"),l=localStorage.getItem(k+"-lat"),a=q.get("acento")||localStorage.getItem(k+"-acento");if(t)r.setAttribute("data-theme",t);if(a)r.setAttribute("data-acento",a);if(l==="plegada")r.classList.add("cl-lat-plegada")}catch(e){}})(document.documentElement);</script>
+<link rel="stylesheet" href="../dist/codelibri.css">
+<link rel="stylesheet" href="docs.css">
+<link rel="icon" type="image/svg+xml" href="img/logo-codelibri.svg">
+</head>
+<body class="cl">
+<script src="iconos.js"></script>
+<a class="cl-saltar" href="#contenido">Saltar al contenido</a>
+<div class="cl-fondo" aria-hidden="true"><span></span><span></span></div>
+
+<div class="cl-armazon">
+<aside class="cl-lat" id="lateral" aria-label="Secciones del sistema">
+  <a class="cl-marca" href="#inicio"><img src="img/logo-codelibri.svg" alt="" width="32" height="32"><span><b>CodeLibri</b><em>Sistema</em></span></a>
+  <nav class="cl-grupo" aria-label="Empezar">
+    <a href="#inicio"><i data-ico="inicio"></i><span>Introducción</span></a>
+    <a href="#uso"><i data-ico="codigo"></i><span>Cómo se usa</span></a>
+  </nav>
+  <p class="cl-rotulo" id="g-fundamentos">Fundamentos</p>
+  <nav class="cl-grupo" aria-labelledby="g-fundamentos">
+    <a href="#color"><i data-ico="formas"></i><span>Color</span></a>
+    <a href="#temas"><i data-ico="sol"></i><span>Temas y acentos</span></a>
+    <a href="#tipografia"><i data-ico="columnas"></i><span>Tipografía</span></a>
+    <a href="#forma"><i data-ico="catalogo"></i><span>Espacio y forma</span></a>
+    <a href="#iconos"><i data-ico="cuadricula"></i><span>Iconos</span><b class="cl-contador" id="doc-n-iconos"></b></a>
+  </nav>
+  <p class="cl-rotulo" id="g-componentes">Componentes</p>
+  <nav class="cl-grupo" aria-labelledby="g-componentes">
+    <a href="#botones"><i data-ico="anadir"></i><span>Botones</span></a>
+    <a href="#campos"><i data-ico="documento"></i><span>Campos</span></a>
+    <a href="#interruptores"><i data-ico="ajustes"></i><span>Interruptores</span></a>
+    <a href="#etiquetas"><i data-ico="etiqueta"></i><span>Etiquetas</span></a>
+    <a href="#tarjetas"><i data-ico="bloques"></i><span>Tarjetas</span></a>
+    <a href="#avisos"><i data-ico="alerta"></i><span>Avisos</span></a>
+    <a href="#ventanas"><i data-ico="ventana"></i><span>Ventanas y menús</span></a>
+    <a href="#navegacion"><i data-ico="ruta"></i><span>Navegación</span></a>
+    <a href="#datos"><i data-ico="grafica"></i><span>Datos</span></a>
+  </nav>
+  <p class="cl-rotulo" id="g-armazon">Armazón</p>
+  <nav class="cl-grupo" aria-labelledby="g-armazon">
+    <a href="#armazon"><i data-ico="pantalla"></i><span>Armazón</span></a>
+    <a href="ejemplo.html"><i data-ico="externo"></i><span>Página de ejemplo</span></a>
+  </nav>
+  <div class="cl-lat-pie">
+    <div class="cl-lat-tarjeta"><b>Versión <span class="doc-version">0.1.0</span></b><p>Sale de <code class="cl-mono">tokens/tokens.json</code>. Lo que cambie ahí cambia en todo el ecosistema.</p></div>
+    <button class="cl-plegar" type="button" data-cl-plegar aria-controls="lateral"><i data-ico="plegar" data-t="18"></i><span>Plegar la barra</span></button>
+  </div>
+</aside>
+
+<div class="cl-principal">
+  <header class="cl-superior">
+    <button class="cl-boton cl-boton-icono cl-solo-estrecho" type="button" data-cl-abrir-lat aria-controls="lateral" aria-expanded="false" aria-label="Abrir la navegación"><i data-ico="menu"></i></button>
+    <form class="cl-buscador" role="search" id="doc-buscador"><i data-ico="buscar" data-t="18"></i><input id="doc-buscar" type="search" data-cl-buscar autocomplete="off" placeholder="Buscar una sección" aria-label="Buscar una sección del sistema" aria-keyshortcuts="/"><kbd class="doc-atajo">/</kbd></form>
+    <div class="cl-superior-acciones">
+      <div class="cl-segmentado doc-selector-acento" role="group" aria-label="Acento de muestra">
+        <button type="button" data-doc-acento="primary" aria-pressed="true">Violeta</button>
+        <button type="button" data-doc-acento="secondary" aria-pressed="false">Menta</button>
+        <button type="button" data-doc-acento="secondary2" aria-pressed="false">Rosa</button>
+      </div>
+      <button class="cl-interruptor-tema" type="button" data-cl-tema role="switch" aria-checked="false" aria-label="Modo oscuro"><span class="cl-riel"><i data-ico="sol" data-t="14"></i><i data-ico="luna" data-t="14"></i></span><span class="cl-perilla"></span></button>
+    </div>
+  </header>
+
+  <main id="contenido" class="cl-contenido" tabindex="-1">
+
+  <!-- ═══ INTRODUCCIÓN ═══ -->
+  <section class="doc-seccion" id="inicio" aria-labelledby="t-inicio">
+    <div class="cl-portada">
+      <div>
+        <nav class="cl-migas" aria-label="Dónde se está"><a href="https://codelibri.com.mx">CodeLibri</a><span aria-hidden="true">/</span><span aria-current="page">Sistema de diseño</span></nav>
+        <h1 class="cl-display" id="t-inicio">Un solo lenguaje para <span class="cl-degradado">CodeLibri</span></h1>
+        <p class="cl-entrada">El estilo del Aula, sacado a un sistema propio: la paleta del Figma, Inter, los componentes y el armazón con barra lateral, listos para el sitio principal, la Guía SAT, los Bloques HTML y el lector EPUB.</p>
+        <ul class="cl-pildoras" id="doc-cifras"></ul>
+        <div class="cl-botones"><a class="cl-boton cl-boton-primario" href="#uso">Empezar a usarlo <i data-ico="flecha" data-t="18"></i></a><a class="cl-boton" href="ejemplo.html"><i data-ico="pantalla" data-t="18"></i>Ver una página de ejemplo</a></div>
+      </div>
+      <a class="cl-tarjeta cl-destacada" href="#temas">
+        <span class="cl-tarjeta-imagen"><img src="img/portada-ident-color.jpg" alt=""></span>
+        <span class="cl-tarjeta-cuerpo">
+          <span class="cl-rotulo">Base común</span>
+          <span class="cl-tarjeta-titulo">Cada producto con su acento</span>
+          <span class="cl-tarjeta-resumen">Violeta, menta o rosa: la tipografía, los grises y las formas se comparten; el color que marca cambia con un atributo.</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="doc-sub">
+      <h3>Cinco principios</h3>
+      <ul class="doc-notas">
+        <li><b>El código manda.</b> Los tokens viven en <code class="cl-mono">tokens/tokens.json</code>; de ahí salen la hoja, esta documentación y la biblioteca de Figma.</li>
+        <li><b>Base común y acento propio.</b> Todo el ecosistema comparte tipografía, grises, formas y los degradados de la casa. Cada producto elige su color de acento.</li>
+        <li><b>Ningún texto se queda sin medir.</b> Cada pareja de texto y fondo se comprueba al compilar, en los dos temas y con los tres acentos; si baja de 4.5:1, la compilación falla. La excepción son los degradados en sus 500, por decisión de Luis.</li>
+        <li><b>Todo cuelga de <code class="cl-mono">.cl</code>.</b> La hoja convive con otras —un WordPress, un tema de Divi— sin tocar nada fuera de su zona.</li>
+        <li><b>Se usa con teclado y con lector de pantalla.</b> Foco visible, rótulos para lo que solo es dibujo y diálogos que atrapan el foco mientras están abiertos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ CÓMO SE USA ═══ -->
+  <section class="doc-seccion" id="uso" aria-labelledby="t-uso">
+    <header class="doc-cab"><p class="cl-rotulo">Empezar</p><h2 class="cl-titulo" id="t-uso">Cómo se usa</h2>
+      <p>Un producto necesita cinco archivos de <code class="cl-mono">dist/</code>: la hoja, el guion, la cabecera, el sprite de iconos y la carpeta de fuentes. Se copian a su servidor y se enlazan así.</p></header>
+
+    <div class="doc-sub">
+      <h3>1. La cabecera</h3>
+      <p>El contenido de <code class="cl-mono">codelibri-cabeza.js</code> va <b>en línea</b> dentro del <code class="cl-mono">&lt;head&gt;</code>, antes de la hoja: pone el tema y el pliegue de la barra antes de pintar, y así no hay destello claro al cargar en oscuro.</p>
+<pre class="cl-codigo" id="c-uso-1">&lt;html lang="es" data-acento="secondary2" data-cl-iconos="/sistema/iconos.svg"&gt;
+&lt;head&gt;
+  &lt;script&gt;/* el contenido de codelibri-cabeza.js */&lt;/script&gt;
+  &lt;link rel="stylesheet" href="/sistema/codelibri.css"&gt;
+&lt;/head&gt;</pre>
+    </div>
+    <div class="doc-sub">
+      <h3>2. El cuerpo</h3>
+      <p>El <code class="cl-mono">&lt;body&gt;</code> lleva la clase <code class="cl-mono">cl</code>; el guion va al final. El acento del producto se elige en <code class="cl-mono">&lt;html&gt;</code> con <code class="cl-mono">data-acento</code>: <code class="cl-mono">primary</code> (violeta, por omisión), <code class="cl-mono">secondary</code> (menta) o <code class="cl-mono">secondary2</code> (rosa).</p>
+<pre class="cl-codigo">&lt;body class="cl"&gt;
+  …
+  &lt;script src="/sistema/codelibri.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
+    </div>
+    <div class="doc-sub">
+      <h3>3. Los iconos</h3>
+      <p>Con <code class="cl-mono">data-cl-iconos</code> en <code class="cl-mono">&lt;html&gt;</code>, el guion trae el sprite una vez y lo mete en la página. Cada icono es un <code class="cl-mono">&lt;use&gt;</code> con el nombre precedido de <code class="cl-mono">cl-</code>. El dibujo no se lee: si el icono va solo, el botón necesita <code class="cl-mono">aria-label</code>.</p>
+<pre class="cl-codigo">&lt;svg class="cl-ico" width="20" height="20" aria-hidden="true"&gt;&lt;use href="#cl-buscar"/&gt;&lt;/svg&gt;</pre>
+    </div>
+    <div class="doc-sub">
+      <h3>4. Cambiar algo</h3>
+      <p>Los valores se cambian en <code class="cl-mono">tokens/tokens.json</code> y las formas en <code class="cl-mono">src/</code>; nunca en <code class="cl-mono">dist/</code>, que se genera. Después, una orden:</p>
+<pre class="cl-codigo">node herramientas/compilar.js</pre>
+      <p>Compila la hoja, el guion, el sprite y los tokens para Figma, y mide el contraste de 144 parejas de texto y fondo. Si alguna baja de 4.5:1, se detiene y dice cuál.</p>
+    </div>
+  </section>
+
+  <!-- ═══ COLOR ═══ -->
+  <section class="doc-seccion" id="color" aria-labelledby="t-color">
+    <header class="doc-cab"><p class="cl-rotulo">Fundamentos</p><h2 class="cl-titulo" id="t-color">Color</h2>
+      <p>La paleta es la del Figma de CodeLibri, paso por paso y sin retocar. Los componentes no la usan directamente: usan los tokens de uso de más abajo, que cambian con el tema y el acento.</p></header>
+    <div class="doc-sub">
+      <h3>Paleta</h3>
+      <p>Al lado de cada paso, su contraste con blanco (B) y con el texto más oscuro (N). La marca verde indica que llega a 4.5:1 y vale para texto de cualquier tamaño; el recuadro señala el paso que el sistema usa como texto de esa familia en el tema claro.</p>
+      <div class="doc-paleta" id="doc-paleta"></div>
+    </div>
+    <div class="doc-sub">
+      <h3>Degradados</h3>
+      <p>Los tres de la casa, con los colores en su paso 500. El texto blanco sobre ellos queda en 1.49:1 en el extremo menta y en 3.25:1 en el rosa: es una decisión tomada con las cifras delante, no un descuido.</p>
+      <div class="doc-degradados" id="doc-degradados"></div>
+    </div>
+    <div class="doc-sub">
+      <h3>Tokens de uso</h3>
+      <p>Lo que usan los componentes. Cada uno tiene un valor en claro y otro en oscuro; los del acento cambian además con <code class="cl-mono">data-acento</code>.</p>
+      <div style="overflow-x:auto"><table class="cl-tabla doc-tabla-tokens"><thead><tr><th>Token</th><th>Claro</th><th>Oscuro</th><th>Para qué</th></tr></thead><tbody id="doc-tokens"></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ═══ TEMAS Y ACENTOS ═══ -->
+  <section class="doc-seccion" id="temas" aria-labelledby="t-temas">
+    <header class="doc-cab"><p class="cl-rotulo">Fundamentos</p><h2 class="cl-titulo" id="t-temas">Temas y acentos</h2>
+      <p>El tema se pone con <code class="cl-mono">data-theme="dark"</code> en <code class="cl-mono">&lt;html&gt;</code>; el interruptor de la barra superior lo cambia y lo recuerda. El acento, con <code class="cl-mono">data-acento</code>: en <code class="cl-mono">&lt;html&gt;</code> vale para todo el producto, y en una zona de la página solo para esa zona. Así el sitio principal puede enseñar cada producto con su color.</p></header>
+    <div class="doc-acentos">
+      <div data-acento="primary"><h4>primary · violeta</h4><p class="cl-mini">El del Aula y el de omisión.</p>
+        <nav class="cl-grupo" aria-label="Muestra violeta"><a href="#temas" aria-current="true"><i data-ico="inicio"></i><span>Inicio</span></a><a href="#temas"><i data-ico="catalogo"></i><span>Catálogo</span></a></nav>
+        <div class="cl-hilera"><a class="cl-boton cl-boton-fantasma cl-boton-chico" href="#temas">Ver todo</a><span class="cl-insignia cl-insignia-acento">Nuevo</span><button class="cl-interruptor" type="button" role="switch" aria-checked="true" aria-label="Muestra encendida"></button></div></div>
+      <div data-acento="secondary"><h4>secondary · menta</h4><p class="cl-mini">El texto del acento es el 900: el menta claro no se lee.</p>
+        <nav class="cl-grupo" aria-label="Muestra menta"><a href="#temas" aria-current="true"><i data-ico="inicio"></i><span>Inicio</span></a><a href="#temas"><i data-ico="catalogo"></i><span>Catálogo</span></a></nav>
+        <div class="cl-hilera"><a class="cl-boton cl-boton-fantasma cl-boton-chico" href="#temas">Ver todo</a><span class="cl-insignia cl-insignia-acento">Nuevo</span><button class="cl-interruptor" type="button" role="switch" aria-checked="true" aria-label="Muestra encendida"></button></div></div>
+      <div data-acento="secondary2"><h4>secondary2 · rosa</h4><p class="cl-mini">Sobre el rosa sólido, texto oscuro: con blanco no llega.</p>
+        <nav class="cl-grupo" aria-label="Muestra rosa"><a href="#temas" aria-current="true"><i data-ico="inicio"></i><span>Inicio</span></a><a href="#temas"><i data-ico="catalogo"></i><span>Catálogo</span></a></nav>
+        <div class="cl-hilera"><a class="cl-boton cl-boton-fantasma cl-boton-chico" href="#temas">Ver todo</a><span class="cl-insignia cl-insignia-acento">Nuevo</span><button class="cl-interruptor" type="button" role="switch" aria-checked="true" aria-label="Muestra encendida"></button></div></div>
+    </div>
+    <div class="doc-sub">
+      <h3>Familias sueltas</h3>
+      <p>Aparte del acento, cualquier pieza puede tomar el color de una familia con <code class="cl-mono">cl-f-primary</code>, <code class="cl-mono">cl-f-secondary</code> o <code class="cl-mono">cl-f-secondary2</code>: una etiqueta, un recuadro de icono, un avatar. Es lo que en el Aula da un color a cada tópico.</p>
+      <div class="doc-ejemplo" data-doc-codigo>
+        <span class="cl-etiqueta cl-f-primary">Código y web</span>
+        <span class="cl-etiqueta cl-f-secondary">Animación</span>
+        <span class="cl-etiqueta cl-f-secondary2">Identidad y marca</span>
+        <span class="cl-cuadro cl-f-primary"><i data-ico="codigo"></i></span>
+        <span class="cl-cuadro cl-f-secondary"><i data-ico="reproducir"></i></span>
+        <span class="cl-cuadro cl-f-secondary2"><i data-ico="estrella"></i></span>
+        <span class="cl-avatar cl-f-secondary2" aria-hidden="true">EC</span>
+        <span class="cl-avatar cl-f-primary" aria-hidden="true">LG</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TIPOGRAFÍA ═══ -->
+  <section class="doc-seccion" id="tipografia" aria-labelledby="t-tipo">
+    <header class="doc-cab"><p class="cl-rotulo">Fundamentos</p><h2 class="cl-titulo" id="t-tipo">Tipografía</h2>
+      <p>Inter, variable del 400 al 800, servida desde el propio dominio: la página no pide nada a otro servidor. Los títulos van en 700 y 800 con el interletraje cerrado; el texto de interfaz, en 500 y 600. Los tamaños son los del Aula.</p></header>
+    <div class="doc-ejemplo doc-bloque">
+      <div class="doc-escala">
+        <div><code><b>display</b>clamp(38–54) · 800</code><span class="cl-display">Aula CodeLibri</span></div>
+        <div><code><b>titulo</b>clamp(24–32) · 800 · h1</code><span class="cl-titulo">Fundamentos del color</span></div>
+        <div><code><b>encabezado</b>26 · 800</code><span class="cl-encabezado">Editar ficha</span></div>
+        <div><code><b>seccion</b>20 · 700 · h2</code><span class="cl-titulo-seccion">Presentaciones interactivas</span></div>
+        <div><code><b>subseccion</b>17 · 700 · h3</code><span class="cl-titulo-sub">Lo más nuevo</span></div>
+        <div><code><b>entrada</b>17 · 400 · gris</code><span class="cl-entrada">Material de diseño gráfico y desarrollo web, abierto a quien quiera consultarlo.</span></div>
+        <div><code><b>cuerpo</b>15 · 400</code><span>Un texto de lectura: las presentaciones se abren en el navegador, sin instalar nada.</span></div>
+        <div><code><b>ui</b>14 · 500–600</code><span style="font-size:var(--cl-t-ui);font-weight:600">Guardar la ficha</span></div>
+        <div><code><b>nota</b>13 · gris</code><span class="cl-nota">28 láminas · actualizada el 15 de septiembre</span></div>
+        <div><code><b>rotulo</b>11 · 700 · mayúsculas</code><span class="cl-rotulo">Tópicos</span></div>
+      </div>
+    </div>
+    <ul class="doc-notas">
+      <li>Los encabezados sin clase ya salen con su tamaño: <code class="cl-mono">h1</code> título, <code class="cl-mono">h2</code> sección, <code class="cl-mono">h3</code> subsección. Las clases sirven para dar a un elemento el aspecto de otro nivel sin cambiar la jerarquía.</li>
+      <li>El nombre de la marca en un titular va con <code class="cl-mono">cl-degradado</code>, el de los tres colores.</li>
+      <li>Para texto largo, <code class="cl-mono">cl-prosa</code>: medida acotada, más interlineado y enlaces subrayados.</li>
+    </ul>
+  </section>
+
+  <!-- ═══ ESPACIO Y FORMA ═══ -->
+  <section class="doc-seccion" id="forma" aria-labelledby="t-forma">
+    <header class="doc-cab"><p class="cl-rotulo">Fundamentos</p><h2 class="cl-titulo" id="t-forma">Espacio y forma</h2>
+      <p>Múltiplos de 4 para el espacio; esquinas de 6, 8, 12 y 16 según el tamaño de la pieza; sombras cortas en reposo y una más abierta, con tinte de la marca, al pasar por encima.</p></header>
+    <div class="doc-sub"><h3>Espacio</h3><div class="doc-ejemplo doc-bloque"><div class="doc-espacios" id="doc-espacios"></div></div></div>
+    <div class="doc-sub"><h3>Esquinas</h3>
+      <div class="doc-ejemplo"><div class="doc-formas">
+        <div class="doc-forma" style="border-radius:var(--cl-r-chico)"><span><b>chico · 6</b>etiquetas, migas</span></div>
+        <div class="doc-forma" style="border-radius:var(--cl-r-control)"><span><b>control · 8</b>botones, campos</span></div>
+        <div class="doc-forma" style="border-radius:var(--cl-r-medio)"><span><b>medio · 12</b>menús, avisos</span></div>
+        <div class="doc-forma" style="border-radius:var(--cl-r-grande)"><span><b>grande · 16</b>tarjetas, ventanas</span></div>
+        <div class="doc-forma" style="border-radius:var(--cl-r-pildora)"><span><b>píldora</b>estados, interruptor</span></div>
+      </div></div></div>
+    <div class="doc-sub"><h3>Sombras</h3>
+      <div class="doc-ejemplo"><div class="doc-formas">
+        <div class="doc-forma" style="border-radius:16px;border-color:var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1)"><span><b>sombra-1</b>reposo</span></div>
+        <div class="doc-forma" style="border-radius:16px;border-color:var(--cl-superficie-linea);box-shadow:var(--cl-sombra-2)"><span><b>sombra-2</b>al pasar encima</span></div>
+        <div class="doc-forma" style="border-radius:16px;border-color:var(--cl-superficie-linea);box-shadow:var(--cl-sombra-3)"><span><b>sombra-3</b>menús y ventanas</span></div>
+        <div class="doc-forma" style="border-radius:16px;border:0;color:#fff;background:var(--cl-grad-explorar);box-shadow:var(--cl-sombra-marca)"><span><b style="color:#fff">sombra-marca</b>con degradado</span></div>
+      </div></div></div>
+    <div class="doc-sub"><h3>Movimiento</h3>
+      <ul class="doc-notas">
+        <li><b>0.15 s</b> para lo inmediato: el botón que se levanta, el fondo de un elemento de lista.</li>
+        <li><b>0.2 s</b> para bordes, colores y sombras.</li>
+        <li><b>0.25–0.3 s</b> para lo que se desplaza: el cajón, la perilla del interruptor, la barra que se pliega.</li>
+        <li>Con «reducir movimiento» en el sistema operativo, todo se apaga.</li>
+      </ul></div>
+  </section>
+
+  <!-- ═══ ICONOS ═══ -->
+  <section class="doc-seccion" id="iconos" aria-labelledby="t-iconos">
+    <header class="doc-cab"><p class="cl-rotulo">Fundamentos</p><h2 class="cl-titulo" id="t-iconos">Iconos</h2>
+      <p>Trazos de 1.8 sobre una rejilla de 24, con puntas y uniones redondeadas. Heredan el color del texto que los rodea. Los del Aula llevan ahora el nombre de lo que dibujan, no del tópico al que servían. Con un clic se copia el marcado.</p></header>
+    <div class="doc-iconos" id="doc-iconos"></div>
+  </section>
+
+  <!-- ═══ BOTONES ═══ -->
+  <section class="doc-seccion" id="botones" aria-labelledby="t-botones">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-botones">Botones</h2>
+      <p>Uno principal por pantalla, con el degradado de la casa; el resto, secundarios. El de apoyo lleva el degradado violeta-rosa y se reserva para invitar a apoyar. Un enlace que lleva a otra página también puede tener forma de botón.</p></header>
+    <div class="doc-sub"><h3>Variantes</h3>
+      <div class="doc-ejemplo" data-doc-codigo>
+        <button class="cl-boton cl-boton-primario" type="button">Explorar el catálogo</button>
+        <button class="cl-boton" type="button"><i data-ico="descargar" data-t="18"></i>Descargar</button>
+        <button class="cl-boton cl-boton-apoyo" type="button"><i data-ico="cafe" data-t="18"></i>Apoyar</button>
+        <button class="cl-boton cl-boton-fantasma" type="button">Cancelar</button>
+        <button class="cl-boton cl-boton-peligro" type="button">Retirar</button>
+        <button class="cl-boton cl-boton-icono" type="button" aria-label="Compartir"><i data-ico="compartir"></i></button>
+      </div></div>
+    <div class="doc-sub"><h3>Tamaños y estados</h3>
+      <div class="doc-ejemplo" data-doc-codigo>
+        <button class="cl-boton cl-boton-chico" type="button">Chico</button>
+        <button class="cl-boton" type="button">Normal</button>
+        <button class="cl-boton cl-boton-grande" type="button">Grande</button>
+        <button class="cl-boton" type="button" disabled>Apagado</button>
+        <button class="cl-boton" type="button" aria-pressed="true"><i data-ico="corazon" data-t="18"></i>Te gusta</button>
+      </div>
+      <ul class="doc-notas">
+        <li><b>Solo icono:</b> <code class="cl-mono">aria-label</code> siempre. El dibujo no se lee.</li>
+        <li><b>Apagado:</b> <code class="cl-mono">disabled</code> en un botón; <code class="cl-mono">aria-disabled="true"</code> si tiene que seguir alcanzándose con el tabulador, como las flechas de un carrusel en su extremo.</li>
+        <li><b>Pulsado que se queda pulsado</b> —me gusta, favorito—: <code class="cl-mono">aria-pressed</code>.</li>
+      </ul></div>
+  </section>
+
+  <!-- ═══ CAMPOS ═══ -->
+  <section class="doc-seccion" id="campos" aria-labelledby="t-campos">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-campos">Campos</h2>
+      <p>El rótulo envuelve al campo, así se anuncia sin necesidad de un <code class="cl-mono">id</code>. La ayuda va debajo, en letra pequeña; el error, con <code class="cl-mono">aria-invalid</code> en el campo y el mensaje enlazado con <code class="cl-mono">aria-describedby</code>. El foco lleva el anillo del acento.</p></header>
+    <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+      <div class="cl-campos">
+        <label class="cl-campo">Nombre<input value="Fundamentos del color"></label>
+        <label class="cl-campo">Sección<select><option>Diseño de Identidad</option><option>Código y web</option></select></label>
+        <label class="cl-campo cl-entera">Autoría<input placeholder="Elisa Espinoza Castillo; Luis E. Maldonado Gil"><small>Si son varias personas, los nombres van separados por punto y coma.</small></label>
+        <label class="cl-campo">Correo<input type="email" value="nombre@" aria-invalid="true" aria-describedby="err-correo"><span class="cl-campo-error" id="err-correo"><i data-ico="alerta" data-t="14"></i>Falta el dominio: nombre@ejemplo.com</span></label>
+        <label class="cl-campo">Color inicial<input type="color" value="#6c55f6"></label>
+        <label class="cl-campo cl-entera">Resumen<textarea>De la luz a la imprenta: cómo sale la paleta de una marca de su personalidad.</textarea></label>
+      </div>
+      <fieldset class="cl-grupo-campos"><legend>Tópicos</legend>
+        <div class="cl-casillas"><label class="cl-casilla"><input type="checkbox" checked>Identidad y marca</label><label class="cl-casilla"><input type="checkbox">Código y web</label><label class="cl-casilla"><input type="radio" name="vis" checked>Publicada</label><label class="cl-casilla"><input type="radio" name="vis">Oculta</label></div>
+      </fieldset>
+    </div>
+    <div class="doc-sub"><h3>Buscador</h3>
+      <div class="doc-ejemplo doc-columna" data-doc-codigo>
+        <form class="cl-buscador" role="search" style="max-width:448px" onsubmit="return false"><i data-ico="buscar" data-t="18"></i><input type="search" placeholder="Buscar entre 42 piezas y sus láminas" aria-label="Buscar"><kbd>/</kbd></form>
+      </div></div>
+    <div class="doc-sub"><h3>Selector con dibujo</h3>
+      <p>Para elegir por lo que se ve —un icono, un color— y no por el nombre. La casilla queda oculta a la vista pero no al teclado.</p>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <fieldset class="cl-grupo-campos"><legend>Icono</legend><div class="cl-selector">
+          <label><input type="radio" name="ico" checked><span><i data-ico="corazon"></i></span><small>Corazón</small></label>
+          <label><input type="radio" name="ico"><span><i data-ico="cafe"></i></span><small>Café</small></label>
+          <label><input type="radio" name="ico"><span><i data-ico="recibo"></i></span><small>Recibo</small></label>
+          <label><input type="radio" name="ico"><span><i data-ico="libro"></i></span><small>Libro</small></label>
+        </div></fieldset>
+      </div></div>
+  </section>
+
+  <!-- ═══ INTERRUPTORES ═══ -->
+  <section class="doc-seccion" id="interruptores" aria-labelledby="t-int">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-int">Interruptores</h2>
+      <p>Un <code class="cl-mono">&lt;button role="switch"&gt;</code> con <code class="cl-mono">aria-checked</code>: se anuncia como interruptor y dice si está puesto. El de tema es el del Aula, con el sol y la luna; lo mueve el guion por sí solo con <code class="cl-mono">data-cl-tema</code>.</p></header>
+    <div class="doc-ejemplo" data-doc-codigo>
+      <label class="cl-interruptor-rotulo"><button class="cl-interruptor" type="button" role="switch" aria-checked="true" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') !== 'true')"></button>Avisarme de lo nuevo</label>
+      <label class="cl-interruptor-rotulo"><button class="cl-interruptor" type="button" role="switch" aria-checked="false" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') !== 'true')"></button>Descargable</label>
+      <button class="cl-interruptor-tema" type="button" data-cl-tema role="switch" aria-checked="false" aria-label="Modo oscuro"><span class="cl-riel"><i data-ico="sol" data-t="14"></i><i data-ico="luna" data-t="14"></i></span><span class="cl-perilla"></span></button>
+    </div>
+  </section>
+
+  <!-- ═══ ETIQUETAS ═══ -->
+  <section class="doc-seccion" id="etiquetas" aria-labelledby="t-etiq">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-etiq">Etiquetas</h2>
+      <p>Cuatro piezas pequeñas que se confunden si no se separan. La <b>etiqueta</b> clasifica, la <b>insignia</b> llama la atención, el <b>estado</b> dice en qué situación está algo y la <b>píldora</b> cuenta.</p></header>
+    <div class="doc-ejemplo" data-doc-codigo>
+      <span class="cl-etiqueta cl-f-secondary2">Identidad y marca</span>
+      <a class="cl-etiqueta cl-f-primary" href="#etiquetas">Código y web</a>
+      <span class="cl-etiqueta cl-etiqueta-llena cl-f-secondary">Animación</span>
+      <span class="cl-insignia">Nuevo</span>
+      <span class="cl-insignia cl-insignia-acento">Destacado</span>
+      <span class="cl-estado cl-estado-activo">Publicada</span>
+      <span class="cl-estado">Oculta</span>
+      <span class="cl-estado cl-estado-pendiente">En revisión</span>
+      <span class="cl-estado cl-estado-error">Sin archivo</span>
+      <span class="cl-pildora"><b>42</b> piezas</span>
+      <span class="cl-pildora"><b>6</b> rutas</span>
+      <span class="cl-tecla">/</span>
+    </div>
+  </section>
+
+  <!-- ═══ TARJETAS ═══ -->
+  <section class="doc-seccion" id="tarjetas" aria-labelledby="t-tarj">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-tarj">Tarjetas</h2>
+      <p>Superficies planas con filete y sombra corta. La que entera es enlace abre la sombra en el tono de la marca al pasar por encima, y su título toma el color del acento.</p></header>
+    <div class="doc-sub"><h3>De contenido</h3>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-rejilla">
+          <a class="cl-tarjeta" href="#tarjetas">
+            <span class="cl-tarjeta-imagen"><img src="img/portada-ident-signos.jpg" alt=""><span class="cl-insignia cl-insignia-flotante">Nuevo</span></span>
+            <span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary2">Identidad y marca</span>
+              <span class="cl-tarjeta-titulo">Signos identificadores</span>
+              <span class="cl-tarjeta-resumen">Los tipos de signo con que una organización se hace reconocible, y qué exige cada uno.</span>
+              <span class="cl-tarjeta-pie"><span>Elisa Espinoza Castillo</span><span class="cl-dato cl-hilera" style="--cl-hilera-hueco:6px"><i data-ico="pantalla" data-t="16"></i>24</span></span></span>
+          </a>
+          <a class="cl-tarjeta" href="#tarjetas">
+            <span class="cl-tarjeta-imagen"><img src="img/portada-dpga-mg12.jpg" alt=""><span class="cl-tarjeta-avance"><i style="width:40%"></i></span></span>
+            <span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary">Animación y movimiento</span>
+              <span class="cl-tarjeta-titulo">Los doce principios del motion graphics</span>
+              <span class="cl-tarjeta-resumen">Doce laboratorios en vivo para ver cada principio resuelto.</span>
+              <span class="cl-tarjeta-pie"><span>Luis E. Maldonado Gil</span><span class="cl-dato cl-acento">10/25</span></span></span>
+          </a>
+          <a class="cl-tarjeta cl-f-primary" href="#tarjetas">
+            <span class="cl-tarjeta-imagen"><span class="doc-imagen"><i data-ico="codigo" data-t="40"></i></span></span>
+            <span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Código y web</span>
+              <span class="cl-tarjeta-titulo">Una tarjeta sin imagen todavía</span>
+              <span class="cl-tarjeta-resumen">Mientras llega la portada, el recuadro toma el color de su familia.</span>
+              <span class="cl-tarjeta-pie"><span>CodeLibri</span><span class="cl-dato">Documento</span></span></span>
+          </a>
+        </div>
+      </div></div>
+    <div class="doc-sub"><h3>Horizontal</h3>
+      <p>Icono en su recuadro, nombre y una línea de apoyo. Se distingue de un vistazo de las de contenido: es para lo que se recorre, como una ruta, y no para lo que se abre.</p>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-rejilla-3">
+          <a class="cl-tarjeta cl-tarjeta-fila cl-f-secondary2" href="#tarjetas"><span class="cl-cuadro cl-cuadro-grande"><i data-ico="estrella" data-t="24"></i></span><span><b>Construir una marca</b><small>3 presentaciones hiladas</small></span></a>
+          <a class="cl-tarjeta cl-tarjeta-fila cl-f-secondary" href="#tarjetas"><span class="cl-cuadro cl-cuadro-grande"><i data-ico="reproducir" data-t="24"></i></span><span><b>Animación y Motion Graphics</b><small>4 presentaciones hiladas</small></span></a>
+          <a class="cl-tarjeta cl-tarjeta-fila cl-f-primary" href="#tarjetas"><span class="cl-cuadro cl-cuadro-grande"><i data-ico="codigo" data-t="24"></i></span><span><b>Primeros pasos en la web</b><small>4 presentaciones hiladas</small></span></a>
+        </div>
+      </div></div>
+    <div class="doc-sub"><h3>Ficha y datos clave</h3>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-tarjeta cl-hoja">
+          <h1 class="cl-encabezado">Métricas</h1>
+          <p class="cl-nota" style="margin-bottom:18px">Lo que se ha visto en los últimos 30 días.</p>
+          <ul class="cl-datos-clave"><li class="cl-dato-clave"><b>1 284</b><span>Vistas</span></li><li class="cl-dato-clave"><b>312</b><span>Me gusta</span></li><li class="cl-dato-clave"><b>42</b><span>Piezas publicadas</span></li></ul>
+        </div>
+      </div></div>
+  </section>
+
+  <!-- ═══ AVISOS ═══ -->
+  <section class="doc-seccion" id="avisos" aria-labelledby="t-avisos">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-avisos">Avisos</h2>
+      <p>El color nunca va solo: el texto dice lo que pasó y el icono lo refuerza. Los cuatro usan las escalas de estado del Figma —Success, Warning, Danger e Info— en el paso que llega a 4.5:1.</p></header>
+    <div class="doc-ejemplo doc-columna" data-doc-codigo>
+      <p class="cl-aviso cl-aviso-exito" role="status"><i data-ico="check" data-t="18"></i><span>Ficha guardada.</span></p>
+      <p class="cl-aviso cl-aviso-advertencia"><i data-ico="alerta" data-t="18"></i><span>A esta ficha le falta el QR. <a href="#avisos">Cómo generarlo</a></span></p>
+      <p class="cl-aviso cl-aviso-error" role="alert"><i data-ico="alerta" data-t="18"></i><span><b>No se pudo guardar:</b> revise los permisos de la carpeta datos/.</span></p>
+      <p class="cl-aviso"><i data-ico="info" data-t="18"></i><span>Una dirección que empieza por https:// se abre en otra pestaña.</span></p>
+    </div>
+    <div class="doc-sub"><h3>Flotante y vacío</h3>
+      <div class="doc-ejemplo" data-doc-codigo>
+        <button class="cl-boton" type="button" onclick="CodeLibri.aviso('Referencia copiada')"><i data-ico="copiar" data-t="18"></i>Enseñar un aviso flotante</button>
+      </div>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-vacio"><span class="cl-cuadro cl-cuadro-medio"><i data-ico="buscar" data-t="22"></i></span><h3>Nada con esa palabra</h3><p>Ninguna pieza ni lámina menciona «tipografía variable». Pruebe con otra palabra o vea todo el catálogo.</p><a class="cl-boton" href="#avisos">Ver todo el catálogo</a></div>
+      </div></div>
+  </section>
+
+  <!-- ═══ VENTANAS Y MENÚS ═══ -->
+  <section class="doc-seccion" id="ventanas" aria-labelledby="t-vent">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-vent">Ventanas y menús</h2>
+      <p>La ventana modal se abre con <code class="cl-mono">data-cl-abrir="id"</code> y se cierra con Escape, con la × o pulsando fuera. Al abrirse se lleva el foco y lo devuelve al cerrarse. El menú, con <code class="cl-mono">data-cl-menu</code> y <code class="cl-mono">aria-controls</code>.</p></header>
+    <div class="doc-ejemplo" data-doc-codigo>
+      <button class="cl-boton" type="button" data-cl-abrir="doc-modal">Abrir una ventana</button>
+      <div class="cl-modal" id="doc-modal" hidden><div class="cl-caja" role="dialog" aria-modal="true" aria-labelledby="doc-modal-t">
+        <button class="cl-cerrar" type="button" data-cl-cerrar aria-label="Cerrar"><i data-ico="cerrar" data-t="18"></i></button>
+        <h2 id="doc-modal-t">¿Retirar esta ruta?</h2>
+        <p>Las presentaciones no se tocan: siguen en el catálogo y en las demás rutas donde estén.</p>
+        <div class="cl-caja-pie"><button class="cl-boton cl-boton-fantasma" type="button" data-cl-cerrar>Cancelar</button><button class="cl-boton" type="button" data-cl-cerrar>Retirar la ruta</button></div>
+      </div></div>
+      <div class="cl-menu-ancla">
+        <button class="cl-boton" type="button" data-cl-menu aria-controls="doc-menu"><i data-ico="cuadricula" data-t="16"></i>Ecosistema<i data-ico="abajo" data-t="16"></i></button>
+        <div class="cl-menu cl-menu-izquierda" id="doc-menu" hidden>
+          <p class="cl-rotulo">Ecosistema CodeLibri</p>
+          <a href="#ventanas"><span class="cl-cuadro cl-f-secondary2"><i data-ico="recibo"></i></span><span><b>Guía SAT</b><small>Impuestos y facturación para quien diseña</small></span></a>
+          <a href="#ventanas"><span class="cl-cuadro cl-f-secondary"><i data-ico="bloques"></i></span><span><b>Bloques HTML</b><small>Componentes listos para copiar y adaptar</small></span></a>
+          <a href="#ventanas"><span class="cl-cuadro cl-f-primary"><i data-ico="libro"></i></span><span><b>EPUB Reader</b><small>El lector de libros digitales de CodeLibri</small></span><i data-ico="externo" data-t="14"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="doc-sub"><h3>Selector segmentado y lista plegable</h3>
+      <div class="doc-ejemplo doc-columna" data-doc-codigo>
+        <div class="cl-segmentado" role="group" aria-label="Forma de ver la lista" style="align-self:flex-start"><a href="#ventanas" aria-current="page">En orden</a><a href="#ventanas">Por asignatura</a><a href="#ventanas">Por tópico</a></div>
+        <details class="cl-plegable" open><summary><b>Construir una marca</b><span class="cl-texto-3">3 presentaciones</span></summary><div class="cl-plegable-cuerpo cl-nota">Del signo que identifica a una organización al carácter que la vuelve reconocible.</div></details>
+        <details class="cl-plegable"><summary><b>Primeros pasos en la web</b><span class="cl-texto-3">4 presentaciones</span></summary><div class="cl-plegable-cuerpo cl-nota">Del dominio al primer documento HTML.</div></details>
+      </div></div>
+  </section>
+
+  <!-- ═══ NAVEGACIÓN ═══ -->
+  <section class="doc-seccion" id="navegacion" aria-labelledby="t-nav">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-nav">Navegación</h2>
+      <p>Las migas dicen dónde se está; la cabecera de sección lleva el título, una bajada y, a la derecha, «ver todo» y las flechas del carrusel. En un teléfono las flechas se quitan y la fila se desliza con el dedo.</p></header>
+    <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+      <nav class="cl-migas" aria-label="Dónde se está" style="margin-bottom:24px"><a href="#navegacion">Inicio</a><span aria-hidden="true">/</span><a href="#navegacion">Identidad y marca</a><span aria-hidden="true">/</span><span aria-current="page">Fundamentos del color</span></nav>
+      <section class="cl-seccion" aria-labelledby="doc-fila-t">
+        <div class="cl-seccion-cab"><div><h2 id="doc-fila-t">Presentaciones interactivas</h2><p>Láminas que se recorren con el teclado o el dedo.</p></div>
+          <div class="cl-seccion-acciones"><a class="cl-ver-todo" href="#navegacion">Ver todo <i data-ico="flecha" data-t="16"></i></a><button class="cl-boton cl-boton-icono" type="button" data-cl-mover="-1" aria-label="Ver anteriores"><i data-ico="izquierda" data-t="18"></i></button><button class="cl-boton cl-boton-icono" type="button" data-cl-mover="1" aria-label="Ver siguientes"><i data-ico="derecha" data-t="18"></i></button></div></div>
+        <div class="cl-carrusel" data-cl-carrusel role="region" tabindex="0" aria-label="Presentaciones interactivas">
+          <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-ident-color.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary2">Identidad</span><span class="cl-tarjeta-titulo">Fundamentos del color para la identidad</span></span></a>
+          <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-figma-modos-color.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-primary">UI/UX</span><span class="cl-tarjeta-titulo">Modos de color en Figma</span></span></a>
+          <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-dpga-u14.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary">Animación</span><span class="cl-tarjeta-titulo">Los principios de la animación</span></span></a>
+          <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-ident-signos.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary2">Identidad</span><span class="cl-tarjeta-titulo">Signos identificadores</span></span></a>
+          <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-dpga-mg12.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary">Animación</span><span class="cl-tarjeta-titulo">Los doce del motion graphics</span></span></a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ═══ DATOS ═══ -->
+  <section class="doc-seccion" id="datos" aria-labelledby="t-datos">
+    <header class="doc-cab"><p class="cl-rotulo">Componentes</p><h2 class="cl-titulo" id="t-datos">Datos</h2>
+      <p>La tabla apila sus filas en un teléfono si lleva <code class="cl-mono">cl-tabla-apilable</code>: deja de verse como tabla pero el lector sigue oyendo filas y celdas. El avance, en barra o en anillo, siempre con su cifra.</p></header>
+    <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+      <table class="cl-tabla cl-tabla-apilable">
+        <thead><tr><th>Presentación</th><th>Tópicos</th><th>Estado</th><th class="cl-cifra">Vistas</th></tr></thead>
+        <tbody>
+          <tr class="cl-fila-grupo"><td colspan="4">Diseño de Identidad</td></tr>
+          <tr><td><b>Fundamentos del color</b><small>28 láminas</small></td><td class="cl-texto-2">Identidad, Fundamentos</td><td><span class="cl-estado cl-estado-activo">Publicada</span></td><td class="cl-cifra">214</td></tr>
+          <tr><td><b>Personalidad de marca</b><small>20 láminas</small></td><td class="cl-texto-2">Identidad</td><td><span class="cl-estado">Oculta</span></td><td class="cl-cifra">97</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="doc-ejemplo" data-doc-codigo>
+      <div style="flex:1;min-width:220px"><p class="cl-nota" style="margin-bottom:8px">Va por la lámina 10 de 25</p><div class="cl-avance" role="progressbar" aria-valuemin="0" aria-valuemax="25" aria-valuenow="10" aria-label="Avance"><i style="width:40%"></i></div></div>
+      <svg class="cl-anillo" width="52" height="52" viewBox="0 0 52 52" role="img" aria-label="Lámina 7 de 24"><circle cx="26" cy="26" r="20"/><circle class="cl-valor" cx="26" cy="26" r="20" stroke-dasharray="36.7 125.7"/><text x="26" y="30">7/24</text></svg>
+      <span class="cl-avatar cl-avatar-grande cl-f-secondary2" aria-hidden="true">EC</span>
+    </div>
+    <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+<pre class="cl-codigo">@misc{aula-ident-color,
+  author = {{Espinoza Castillo}, Elisa},
+  title  = {Fundamentos del color para la identidad},
+  year   = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <!-- ═══ ARMAZÓN ═══ -->
+  <section class="doc-seccion" id="armazon" aria-labelledby="t-arm">
+    <header class="doc-cab"><p class="cl-rotulo">Armazón</p><h2 class="cl-titulo" id="t-arm">Armazón</h2>
+      <p>La página entera: barra lateral fija a la izquierda, barra superior con el buscador y las acciones, el contenido y el pie. Vidrio solo en las dos barras. Esta misma documentación está hecha con él.</p></header>
+    <ul class="doc-notas">
+      <li><b>Barra lateral.</b> Marca arriba, a la altura de la barra superior; grupos de enlaces con rótulo; la opción de la página actual se marca con <code class="cl-mono">aria-current</code>, que además la anuncia al lector.</li>
+      <li><b>Plegada a iconos.</b> Si la página trae el botón con <code class="cl-mono">data-cl-plegar</code>, se pliega y lo recuerda. Para que una página nazca plegada —un visor—, <code class="cl-mono">data-cl-lat-inicial="plegada"</code> en <code class="cl-mono">&lt;html&gt;</code>.</li>
+      <li><b>Cajón.</b> A 900 px o menos la barra sale de lado con el botón de menú, deja un velo detrás, atrapa el foco y se cierra con Escape.</li>
+      <li><b>Barra superior.</b> En pantallas estrechas los botones con rótulo (<code class="cl-mono">cl-txt</code>) se quedan en su icono; el rótulo sigue para el lector.</li>
+      <li><b>Contenido.</b> Secciones sin caja, separadas por 52 px de aire; las anclas quedan por debajo de la barra superior.</li>
+    </ul>
+    <div class="doc-sub"><h3>El esqueleto</h3>
+<pre class="cl-codigo">&lt;body class="cl"&gt;
+&lt;a class="cl-saltar" href="#contenido"&gt;Saltar al contenido&lt;/a&gt;
+&lt;div class="cl-armazon"&gt;
+  &lt;aside class="cl-lat" id="lateral" aria-label="Navegación"&gt;
+    &lt;a class="cl-marca" href="/"&gt;&lt;img src="logo.svg" alt=""&gt;&lt;span&gt;&lt;b&gt;CodeLibri&lt;/b&gt;&lt;em&gt;Producto&lt;/em&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;nav class="cl-grupo" aria-label="Principal"&gt;
+      &lt;a href="/" aria-current="page"&gt;…icono…&lt;span&gt;Inicio&lt;/span&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;p class="cl-rotulo" id="g1"&gt;Sección&lt;/p&gt;
+    &lt;nav class="cl-grupo" aria-labelledby="g1"&gt;…&lt;/nav&gt;
+    &lt;div class="cl-lat-pie"&gt;
+      &lt;button class="cl-plegar" type="button" data-cl-plegar aria-controls="lateral"&gt;…&lt;span&gt;Plegar la barra&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;div class="cl-principal"&gt;
+    &lt;header class="cl-superior"&gt;
+      &lt;button class="cl-boton cl-boton-icono cl-solo-estrecho" type="button" data-cl-abrir-lat
+              aria-controls="lateral" aria-expanded="false" aria-label="Abrir la navegación"&gt;…&lt;/button&gt;
+      &lt;form class="cl-buscador" role="search"&gt;…&lt;/form&gt;
+      &lt;div class="cl-superior-acciones"&gt;…&lt;/div&gt;
+    &lt;/header&gt;
+    &lt;main id="contenido" class="cl-contenido" tabindex="-1"&gt;…&lt;/main&gt;
+    &lt;footer class="cl-pie"&gt;…&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cl-velo" data-cl-velo hidden&gt;&lt;/div&gt;
+&lt;script src="/sistema/codelibri.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
+      <div class="cl-botones"><a class="cl-boton cl-boton-primario" href="ejemplo.html">Ver la página de ejemplo <i data-ico="flecha" data-t="18"></i></a></div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="cl-pie"><span>© 2026 CodeLibri · Elisa Espinoza Castillo y Luis E. Maldonado Gil</span><span>Sistema de diseño <span class="doc-version">0.1.0</span></span><a href="#inicio">Volver arriba</a></footer>
+</div>
+</div>
+<div class="cl-velo" data-cl-velo hidden></div>
+
+<script src="tokens.js"></script>
+<script src="docs.js"></script>
+<script src="../dist/codelibri.js"></script>
+</body>
+</html>

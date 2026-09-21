@@ -1,0 +1,125 @@
+/* ═══ BASE ═══
+   Todo cuelga de .cl —normalmente el <body>—, como el Aula colgaba de
+   body.app: así la hoja puede convivir con otra (un WordPress, un tema de
+   Divi) sin tocar nada fuera de su zona. Los componentes también llevan
+   .cl delante; su peso es el de dos clases y cualquier ajuste local gana
+   con solo ir detrás. */
+
+.cl{
+  font-family:var(--cl-fuente);font-size:var(--cl-t-cuerpo);line-height:var(--cl-lh-normal);
+  color:var(--cl-texto);background:var(--cl-fondo);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility
+}
+body.cl{margin:0;min-height:100vh}
+.cl *,.cl *::before,.cl *::after{box-sizing:border-box}
+.cl :where(h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd,pre){margin:0}
+.cl :where(ul,ol)[class]{margin:0;padding:0;list-style:none}
+.cl :where(a){color:inherit;text-decoration:none}
+.cl :where(button){font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.cl :where(input,select,textarea){font:inherit;color:inherit}
+.cl :where(img,video){max-width:100%;height:auto}
+.cl :where(code,kbd,samp,pre){font-family:var(--cl-fuente-mono)}
+/* El atributo hidden manda siempre: varios componentes llevan display
+   propio y, sin esto, esconderlos desde un guion no hacía nada. */
+.cl [hidden]{display:none!important}
+.cl ::selection{background:var(--cl-acento-suave)}
+
+/* El foco se ve siempre que llega por teclado. Con :where para que no pese:
+   así cada componente conserva su propio radio y el anillo lo sigue. */
+.cl :where(:focus-visible){outline:2px solid var(--cl-acento);outline-offset:3px}
+.cl :where(a:focus-visible){border-radius:4px}
+
+/* Los iconos del sprite: tamaño fijo y sin encogerse dentro de un flex.
+   El trazo se declara aquí y no en el sprite: un <use> hereda del <svg>
+   que lo contiene, no de la raíz del archivo de donde sale el símbolo. Y
+   así un icono puede rellenarse con solo cambiar fill (el corazón de «me
+   gusta»). */
+.cl .cl-ico{flex:none;display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── barras de desplazamiento ──
+   Finas, del color del filete y sin las flechas de Windows; se marcan un
+   poco más al pasar por encima. Se ven seis píxeles y se agarran diez: el
+   borde transparente con background-clip adelgaza el dibujo sin encoger
+   el blanco. Chrome solo atiende a ::-webkit-scrollbar si el elemento no
+   declara scrollbar-color ni scrollbar-width, así que aquí van a auto; y
+   la barra de la página solo obedece a la regla global, por eso el color
+   se toma de --cl-barra en <html>. Firefox, con la forma estándar. */
+html:has(> body.cl),.cl,.cl *{scrollbar-width:auto;scrollbar-color:auto}
+html:has(> body.cl){--cl-barra-pagina:rgba(20,20,22,.12);--cl-barra-pagina-viva:rgba(20,20,22,.22)}
+html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);--cl-barra-pagina-viva:rgba(255,255,255,.22)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track,::-webkit-scrollbar-corner{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--cl-barra-pagina,rgba(20,20,22,.18));border:3px solid transparent;background-clip:content-box;border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:var(--cl-barra-pagina-viva,rgba(20,20,22,.3));background-clip:content-box}
+.cl ::-webkit-scrollbar{width:10px;height:10px}
+.cl ::-webkit-scrollbar-button{display:none}
+.cl ::-webkit-scrollbar-track,.cl ::-webkit-scrollbar-corner{background:transparent}
+.cl ::-webkit-scrollbar-thumb{background:var(--cl-barra);border:2px solid transparent;background-clip:content-box;border-radius:999px}
+.cl ::-webkit-scrollbar-thumb:hover{background:var(--cl-barra-viva);background-clip:content-box}
+@supports not selector(::-webkit-scrollbar){
+  html:has(> body.cl){scrollbar-width:thin;scrollbar-color:rgba(20,20,22,.2) transparent}
+  html[data-theme="dark"]:has(> body.cl){scrollbar-color:rgba(255,255,255,.2) transparent}
+  .cl *{scrollbar-width:thin;scrollbar-color:var(--cl-barra) transparent}
+}
+
+/* ── solo para quien escucha la página ──
+   No se usa display ni visibility: eso también lo retiraría del lector. */
+.cl .cl-solo-lector{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0
+}
+
+/* ── saltar al contenido ──
+   El primer enlace de la página, fuera de la vista hasta que recibe el
+   foco. Sin él, llegar al contenido con el teclado obliga a recorrer la
+   barra lateral entera en cada visita. */
+.cl .cl-saltar{
+  position:fixed;top:12px;left:12px;z-index:var(--cl-z-saltar);
+  padding:10px 16px;border-radius:var(--cl-r-medio);font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);
+  color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);
+  box-shadow:var(--cl-sombra-3);transform:translateY(-200%);transition:transform var(--cl-mov-rapido) ease
+}
+.cl .cl-saltar:focus{transform:none}
+.cl #contenido:focus{outline:none}
+
+/* ═══ TIPOGRAFÍA ═══
+   Los encabezados sin clase ya salen con su escala; las clases sirven para
+   dar a un elemento el aspecto de otro nivel sin cambiar la jerarquía. */
+.cl :where(h1),.cl .cl-titulo{font-size:var(--cl-t-titulo);font-weight:var(--cl-peso-extra);letter-spacing:var(--cl-tr-titulo);line-height:1.15}
+.cl :where(h2),.cl .cl-titulo-seccion{font-size:var(--cl-t-seccion);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-seccion);line-height:1.25}
+.cl :where(h3),.cl .cl-titulo-sub{font-size:var(--cl-t-subseccion);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-tarjeta);line-height:1.3}
+.cl :where(h4),.cl .cl-titulo-menor{font-size:var(--cl-t-ui);font-weight:var(--cl-peso-negrita);line-height:1.35}
+.cl .cl-display{font-size:var(--cl-t-display);font-weight:var(--cl-peso-extra);letter-spacing:var(--cl-tr-display);line-height:var(--cl-lh-apretado)}
+.cl .cl-encabezado{font-size:var(--cl-t-encabezado);font-weight:var(--cl-peso-extra);letter-spacing:var(--cl-tr-titulo);line-height:1.15}
+/* La entrada de una portada: más grande y con aire, pero en gris. */
+.cl .cl-entrada{font-size:var(--cl-t-subseccion);line-height:var(--cl-lh-holgado);color:var(--cl-texto-2);max-width:46em}
+.cl .cl-nota{font-size:var(--cl-t-chico);line-height:var(--cl-lh-normal);color:var(--cl-texto-2)}
+.cl .cl-mini{font-size:var(--cl-t-mini);color:var(--cl-texto-3)}
+.cl .cl-rotulo{font-size:var(--cl-t-rotulo);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;color:var(--cl-texto-3)}
+.cl .cl-texto-2{color:var(--cl-texto-2)}
+.cl .cl-texto-3{color:var(--cl-texto-3)}
+.cl .cl-acento{color:var(--cl-acento)}
+.cl .cl-mono{font-family:var(--cl-fuente-mono);font-size:.93em}
+.cl .cl-cifras{font-variant-numeric:tabular-nums}
+/* El nombre de la marca en un titular, con su degradado. */
+.cl .cl-degradado{background:var(--cl-grad-marca);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ── texto largo ──
+   Lo que se lee y no se ojea —un aviso legal, una guía— va con medida
+   acotada y más aire que una tarjeta. */
+.cl .cl-prosa{max-width:72ch}
+.cl .cl-prosa > * + *{margin-top:12px}
+.cl .cl-prosa :where(h2){font-size:var(--cl-t-subseccion);font-weight:var(--cl-peso-semi);letter-spacing:0;margin-top:30px}
+.cl .cl-prosa :where(h3){font-size:var(--cl-t-cuerpo);font-weight:var(--cl-peso-semi);margin-top:24px}
+.cl .cl-prosa :where(p,li){font-size:var(--cl-t-cuerpo);line-height:1.7;color:var(--cl-texto-2)}
+.cl .cl-prosa :where(ul,ol){padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.cl .cl-prosa :where(strong,b){color:var(--cl-texto);font-weight:var(--cl-peso-semi)}
+.cl .cl-prosa :where(a),.cl .cl-enlace{color:var(--cl-acento);text-decoration:underline;text-decoration-color:var(--cl-acento-linea);text-underline-offset:3px}
+.cl .cl-prosa :where(a):hover,.cl .cl-enlace:hover{text-decoration-color:currentColor}
+.cl .cl-prosa :where(code){font-size:.9em;padding:1px 5px;border-radius:var(--cl-r-chico);background:var(--cl-campo);border:1px solid var(--cl-linea)}
+
+/* El movimiento se apaga a petición del sistema operativo. */
+@media (prefers-reduced-motion:reduce){
+  .cl *,.cl *::before,.cl *::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}

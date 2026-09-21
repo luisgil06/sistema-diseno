@@ -1,0 +1,63 @@
+/* ═══ ETIQUETAS ═══
+   Cuatro piezas pequeñas que se confunden si no se separan:
+   - .cl-etiqueta clasifica (un tópico, una categoría). Lleva familia.
+   - .cl-insignia llama la atención sobre algo nuevo o destacado.
+   - .cl-estado dice en qué situación está algo (publicado, oculto).
+   - .cl-pildora cuenta o resume (24 presentaciones, 6 rutas). */
+
+.cl .cl-etiqueta{
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  font-size:var(--cl-t-etiqueta);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;line-height:1.2;
+  padding:4px 10px;border-radius:var(--cl-r-chico);
+  color:var(--cl-f-texto,var(--cl-texto-2));background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);
+  box-shadow:0 1px 2px rgba(20,20,22,.03)
+}
+[data-theme="dark"] .cl .cl-etiqueta,.cl [data-theme="dark"] .cl-etiqueta{background:rgba(255,255,255,.03)}
+/* Una etiqueta que lleva a su página: el filete toma el color al apuntar. */
+.cl a.cl-etiqueta{transition:border-color var(--cl-mov-medio) ease}
+.cl a.cl-etiqueta:hover{border-color:currentColor}
+/* Rellena: para cuando la etiqueta va sobre una imagen o necesita pesar más. */
+.cl .cl-etiqueta-llena{background:var(--cl-f-fondo,var(--cl-acento-suave));border-color:var(--cl-f-linea,transparent)}
+
+.cl .cl-insignia{
+  display:inline-flex;align-items:center;font-size:var(--cl-t-etiqueta);font-weight:var(--cl-peso-negrita);
+  letter-spacing:.08em;text-transform:uppercase;line-height:1.2;padding:4px 8px;border-radius:var(--cl-r-chico);
+  background:var(--cl-secondary-500);color:var(--cl-text-900)
+}
+.cl .cl-insignia-acento{background:var(--cl-acento-solido);color:var(--cl-acento-sobre)}
+/* Encima de una imagen, en la esquina. */
+.cl .cl-insignia-flotante{position:absolute;left:12px;top:12px;z-index:2}
+
+.cl .cl-estado{
+  display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 12px;border-radius:var(--cl-r-pildora);
+  font-size:var(--cl-t-micro);font-weight:var(--cl-peso-semi);color:var(--cl-texto-2);
+  background:var(--cl-superficie);border:1px solid var(--cl-linea);white-space:nowrap
+}
+.cl .cl-estado::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cl-text-200)}
+.cl .cl-estado-activo{color:var(--cl-exito-texto);background:var(--cl-exito-fondo);border-color:var(--cl-exito-linea)}
+.cl .cl-estado-activo::before{background:var(--cl-success-600)}
+.cl .cl-estado-pendiente{color:var(--cl-advertencia-texto);background:var(--cl-advertencia-fondo);border-color:var(--cl-advertencia-linea)}
+.cl .cl-estado-pendiente::before{background:var(--cl-warning-500)}
+.cl .cl-estado-error{color:var(--cl-error-texto);background:var(--cl-error-fondo);border-color:var(--cl-error-linea)}
+.cl .cl-estado-error::before{background:var(--cl-danger-500)}
+/* Si es un botón —cambiar el estado con un clic—, se nota al apuntar. */
+.cl button.cl-estado{cursor:pointer;transition:border-color var(--cl-mov-medio) ease}
+.cl button.cl-estado:hover{border-color:var(--cl-acento-solido)}
+
+.cl .cl-pildora{
+  display:inline-flex;align-items:center;gap:4px;font-size:var(--cl-t-nota);color:var(--cl-texto-2);
+  padding:4px 12px;border-radius:var(--cl-r-pildora);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea)
+}
+.cl .cl-pildora b{color:var(--cl-texto);font-weight:var(--cl-peso-negrita)}
+.cl .cl-pildoras{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.cl .cl-pildoras:empty{display:none}
+
+/* Un número al lado de un rótulo: el contador de la barra lateral. */
+.cl .cl-contador{font-size:11.5px;font-weight:var(--cl-peso-medio);color:var(--cl-texto-3);font-variant-numeric:tabular-nums}
+
+/* Una tecla, para los atajos. */
+.cl .cl-tecla{
+  display:inline-block;min-width:22px;padding:2px 6px;border-radius:5px;text-align:center;
+  font-family:var(--cl-fuente-mono);font-size:11.5px;line-height:1.4;color:var(--cl-texto);
+  background:var(--cl-superficie);border:1px solid var(--cl-linea);border-bottom-width:2px
+}

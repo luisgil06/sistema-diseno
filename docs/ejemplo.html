@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" data-acento="secondary" data-cl-clave="cl-ejemplo" data-cl-iconos="../dist/iconos.svg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloques HTML · ejemplo del sistema de diseño CodeLibri</title>
+<script>(function(r){try{var q=new URLSearchParams(location.search),k=r.getAttribute("data-cl-clave")||"cl",t=q.get("tema")||localStorage.getItem(k+"-tema"),l=localStorage.getItem(k+"-lat");if(t)r.setAttribute("data-theme",t);if(l==="plegada"||(!l&&r.getAttribute("data-cl-lat-inicial")==="plegada"))r.classList.add("cl-lat-plegada")}catch(e){}})(document.documentElement);</script>
+<link rel="stylesheet" href="../dist/codelibri.css">
+<link rel="icon" type="image/svg+xml" href="img/logo-codelibri.svg">
+<style>
+  /* Solo de este ejemplo: el relleno de las tarjetas que no tienen foto. */
+  .cl .ej-imagen{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,var(--cl-f-fondo,var(--cl-acento-suave)),transparent 90%);color:var(--cl-f-texto,var(--cl-acento))}
+</style>
+</head>
+<body class="cl">
+<a class="cl-saltar" href="#contenido">Saltar al contenido</a>
+<div class="cl-fondo" aria-hidden="true"><span></span><span></span></div>
+
+<div class="cl-armazon">
+<aside class="cl-lat" id="lateral" aria-label="Navegación de Bloques HTML">
+  <a class="cl-marca" href="ejemplo.html"><img src="img/logo-codelibri.svg" alt="" width="32" height="32"><span><b>CodeLibri</b><em>Bloques</em></span></a>
+  <nav class="cl-grupo" aria-label="Principal">
+    <a href="ejemplo.html" aria-current="page"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-inicio"/></svg><span>Inicio</span></a>
+    <a href="#todos"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-catalogo"/></svg><span>Todos los bloques</span><b class="cl-contador">48</b></a>
+    <a href="#todos"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-corazon"/></svg><span>Favoritos</span><b class="cl-contador">3</b></a>
+  </nav>
+  <p class="cl-rotulo" id="g-cat">Categorías</p>
+  <nav class="cl-grupo" aria-labelledby="g-cat">
+    <a href="#categorias"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-anadir"/></svg><span>Botones</span><b class="cl-contador">12</b></a>
+    <a href="#categorias"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-documento"/></svg><span>Formularios</span><b class="cl-contador">9</b></a>
+    <a href="#categorias"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-bloques"/></svg><span>Tarjetas</span><b class="cl-contador">11</b></a>
+    <a href="#categorias"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-ruta"/></svg><span>Navegación</span><b class="cl-contador">8</b></a>
+    <a href="#categorias"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-columnas"/></svg><span>Tablas</span><b class="cl-contador">4</b></a>
+  </nav>
+  <p class="cl-rotulo" id="g-rec">Recursos</p>
+  <nav class="cl-grupo" aria-labelledby="g-rec">
+    <a href="#preguntas"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-info"/></svg><span>Cómo se usan</span></a>
+    <a href="index.html"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-formas"/></svg><span>Sistema de diseño</span></a>
+  </nav>
+  <div class="cl-lat-pie">
+    <div class="cl-lat-tarjeta"><b>Bloques es abierto</b><p>Sin cuentas ni anuncios. Si te sirve, puedes apoyar a que siga creciendo.</p><a class="cl-boton cl-boton-apoyo" href="#contenido"><svg class="cl-ico" width="16" height="16" aria-hidden="true"><use href="#cl-cafe"/></svg>Apoyar</a></div>
+    <button class="cl-plegar" type="button" data-cl-plegar aria-controls="lateral"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-plegar"/></svg><span>Plegar la barra</span></button>
+  </div>
+</aside>
+
+<div class="cl-principal">
+  <header class="cl-superior">
+    <button class="cl-boton cl-boton-icono cl-solo-estrecho" type="button" data-cl-abrir-lat aria-controls="lateral" aria-expanded="false" aria-label="Abrir la navegación"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-menu"/></svg></button>
+    <form class="cl-buscador" role="search" onsubmit="return false"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-buscar"/></svg><input type="search" data-cl-buscar placeholder="Buscar entre 48 bloques" aria-label="Buscar bloques" aria-keyshortcuts="/"></form>
+    <div class="cl-superior-acciones">
+      <div class="cl-menu-ancla">
+        <button class="cl-boton" type="button" data-cl-menu aria-controls="menu-eco"><svg class="cl-ico" width="16" height="16" aria-hidden="true"><use href="#cl-cuadricula"/></svg><span class="cl-txt">Ecosistema</span></button>
+        <div class="cl-menu" id="menu-eco" hidden>
+          <p class="cl-rotulo">Ecosistema CodeLibri</p>
+          <a href="#contenido" data-acento="primary"><span class="cl-cuadro"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-birrete"/></svg></span><span><b>Aula</b><small>Presentaciones interactivas y tutoriales</small></span></a>
+          <a href="#contenido" data-acento="secondary2"><span class="cl-cuadro"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-recibo"/></svg></span><span><b>Guía SAT</b><small>Impuestos y facturación para quien diseña</small></span></a>
+          <a href="#contenido" data-acento="primary"><span class="cl-cuadro"><svg class="cl-ico" width="20" height="20" aria-hidden="true"><use href="#cl-libro"/></svg></span><span><b>EPUB Reader</b><small>El lector de libros digitales de CodeLibri</small></span></a>
+        </div>
+      </div>
+      <button class="cl-interruptor-tema" type="button" data-cl-tema role="switch" aria-checked="false" aria-label="Modo oscuro"><span class="cl-riel"><svg class="cl-ico" width="14" height="14" aria-hidden="true"><use href="#cl-sol"/></svg><svg class="cl-ico" width="14" height="14" aria-hidden="true"><use href="#cl-luna"/></svg></span><span class="cl-perilla"></span></button>
+      <a class="cl-boton cl-boton-apoyo" href="#contenido"><svg class="cl-ico" width="16" height="16" aria-hidden="true"><use href="#cl-cafe"/></svg><span class="cl-txt">Apoya Bloques</span></a>
+    </div>
+  </header>
+
+  <main id="contenido" class="cl-contenido" tabindex="-1">
+    <p class="cl-aviso"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-info"/></svg><span><b>Página de ejemplo.</b> Enseña el sistema de diseño en un producto con el acento menta; el contenido es de muestra. <a href="index.html">Volver a la documentación</a></span></p>
+
+    <section class="cl-portada" aria-labelledby="t-portada">
+      <div>
+        <h1 class="cl-display" id="t-portada">Bloques HTML de <span class="cl-degradado">CodeLibri</span></h1>
+        <p class="cl-entrada">Componentes listos para copiar y adaptar: botones, formularios, tarjetas y tablas que ya cumplen el contraste y se usan con teclado.</p>
+        <ul class="cl-pildoras"><li class="cl-pildora"><b>48</b> bloques</li><li class="cl-pildora"><b>5</b> categorías</li><li class="cl-pildora">Sin dependencias</li></ul>
+        <div class="cl-botones"><a class="cl-boton cl-boton-primario" href="#todos">Explorar los bloques <svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-flecha"/></svg></a><a class="cl-boton" href="#preguntas">Cómo se usan</a></div>
+      </div>
+      <a class="cl-tarjeta cl-destacada cl-f-secondary" href="#todos">
+        <span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="48" height="48" aria-hidden="true"><use href="#cl-tienda"/></svg></span></span>
+        <span class="cl-tarjeta-cuerpo"><span class="cl-rotulo">Lo más nuevo</span><span class="cl-tarjeta-titulo">Tarjeta de producto con precio</span><span class="cl-tarjeta-resumen">Imagen, nombre, precio y botón de compra, con su versión para modo oscuro.</span></span>
+      </a>
+    </section>
+
+    <section class="cl-seccion" id="todos" aria-labelledby="t-usados">
+      <div class="cl-seccion-cab"><div><h2 id="t-usados">Lo más usado</h2><p>Los bloques que más se copian este mes.</p></div>
+        <div class="cl-seccion-acciones"><a class="cl-ver-todo" href="#todos">Ver todo <svg class="cl-ico" width="16" height="16" aria-hidden="true"><use href="#cl-flecha"/></svg></a><button class="cl-boton cl-boton-icono" type="button" data-cl-mover="-1" aria-label="Ver anteriores"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-izquierda"/></svg></button><button class="cl-boton cl-boton-icono" type="button" data-cl-mover="1" aria-label="Ver siguientes"><svg class="cl-ico" width="18" height="18" aria-hidden="true"><use href="#cl-derecha"/></svg></button></div></div>
+      <div class="cl-carrusel" data-cl-carrusel role="region" tabindex="0" aria-label="Lo más usado">
+        <a class="cl-tarjeta cl-f-primary" href="#todos"><span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="40" height="40" aria-hidden="true"><use href="#cl-anadir"/></svg></span><span class="cl-insignia cl-insignia-flotante">Nuevo</span></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Botones</span><span class="cl-tarjeta-titulo">Grupo de botones con icono</span><span class="cl-tarjeta-resumen">Principal, secundario y de solo icono, alineados y con su foco.</span><span class="cl-tarjeta-pie"><span>HTML y CSS</span><span class="cl-dato">1.2 KB</span></span></span></a>
+        <a class="cl-tarjeta cl-f-secondary" href="#todos"><span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="40" height="40" aria-hidden="true"><use href="#cl-documento"/></svg></span></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Formularios</span><span class="cl-tarjeta-titulo">Formulario de contacto</span><span class="cl-tarjeta-resumen">Rótulos que envuelven, errores enlazados y un envío que avisa.</span><span class="cl-tarjeta-pie"><span>HTML, CSS y JS</span><span class="cl-dato">3.4 KB</span></span></span></a>
+        <a class="cl-tarjeta cl-f-secondary2" href="#todos"><span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="40" height="40" aria-hidden="true"><use href="#cl-bloques"/></svg></span></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Tarjetas</span><span class="cl-tarjeta-titulo">Tarjeta de artículo</span><span class="cl-tarjeta-resumen">Imagen 16:9, etiqueta, título a dos renglones y pie con autor.</span><span class="cl-tarjeta-pie"><span>HTML y CSS</span><span class="cl-dato">1.8 KB</span></span></span></a>
+        <a class="cl-tarjeta cl-f-primary" href="#todos"><span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="40" height="40" aria-hidden="true"><use href="#cl-ruta"/></svg></span></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Navegación</span><span class="cl-tarjeta-titulo">Migas con página actual</span><span class="cl-tarjeta-resumen">Dónde se está, con el último paso marcado para el lector.</span><span class="cl-tarjeta-pie"><span>HTML y CSS</span><span class="cl-dato">0.6 KB</span></span></span></a>
+        <a class="cl-tarjeta cl-f-secondary" href="#todos"><span class="cl-tarjeta-imagen"><span class="ej-imagen"><svg class="cl-ico" width="40" height="40" aria-hidden="true"><use href="#cl-columnas"/></svg></span></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta">Tablas</span><span class="cl-tarjeta-titulo">Tabla que se apila en el teléfono</span><span class="cl-tarjeta-resumen">Filas que pasan a fichas sin dejar de ser tabla para el lector.</span><span class="cl-tarjeta-pie"><span>HTML y CSS</span><span class="cl-dato">1.1 KB</span></span></span></a>
+      </div>
+    </section>
+
+    <section class="cl-seccion" id="categorias" aria-labelledby="t-cat">
+      <div class="cl-seccion-cab"><div><h2 id="t-cat">Categorías</h2><p>Cada una con su tipo de bloque y sus variantes.</p></div></div>
+      <div class="cl-rejilla-3">
+        <a class="cl-tarjeta cl-tarjeta-fila cl-f-primary" href="#categorias"><span class="cl-cuadro cl-cuadro-grande"><svg class="cl-ico" width="24" height="24" aria-hidden="true"><use href="#cl-anadir"/></svg></span><span><b>Botones</b><small>12 bloques</small></span></a>
+        <a class="cl-tarjeta cl-tarjeta-fila cl-f-secondary" href="#categorias"><span class="cl-cuadro cl-cuadro-grande"><svg class="cl-ico" width="24" height="24" aria-hidden="true"><use href="#cl-documento"/></svg></span><span><b>Formularios</b><small>9 bloques</small></span></a>
+        <a class="cl-tarjeta cl-tarjeta-fila cl-f-secondary2" href="#categorias"><span class="cl-cuadro cl-cuadro-grande"><svg class="cl-ico" width="24" height="24" aria-hidden="true"><use href="#cl-bloques"/></svg></span><span><b>Tarjetas</b><small>11 bloques</small></span></a>
+        <a class="cl-tarjeta cl-tarjeta-fila cl-f-primary" href="#categorias"><span class="cl-cuadro cl-cuadro-grande"><svg class="cl-ico" width="24" height="24" aria-hidden="true"><use href="#cl-ruta"/></svg></span><span><b>Navegación</b><small>8 bloques</small></span></a>
+        <a class="cl-tarjeta cl-tarjeta-fila cl-f-secondary" href="#categorias"><span class="cl-cuadro cl-cuadro-grande"><svg class="cl-ico" width="24" height="24" aria-hidden="true"><use href="#cl-columnas"/></svg></span><span><b>Tablas</b><small>4 bloques</small></span></a>
+      </div>
+    </section>
+
+    <section class="cl-seccion" id="preguntas" aria-labelledby="t-preg">
+      <div class="cl-seccion-cab"><div><h2 id="t-preg">Cómo se usan</h2><p>Lo que suele preguntarse antes de copiar el primero.</p></div></div>
+      <details class="cl-plegable" open><summary><b>¿Hace falta instalar algo?</b></summary><div class="cl-plegable-cuerpo cl-nota">No. Cada bloque es HTML y CSS, y los que se mueven llevan unas líneas de JavaScript sin dependencias.</div></details>
+      <details class="cl-plegable"><summary><b>¿Se ven igual en modo oscuro?</b></summary><div class="cl-plegable-cuerpo cl-nota">Sí: usan los tokens del sistema, que cambian con el tema.</div></details>
+      <details class="cl-plegable"><summary><b>¿Puedo cambiar el color?</b></summary><div class="cl-plegable-cuerpo cl-nota">Con el atributo data-acento: violeta, menta o rosa.</div></details>
+    </section>
+  </main>
+
+  <footer class="cl-pie"><span>© 2026 CodeLibri · Elisa Espinoza Castillo y Luis E. Maldonado Gil</span><a href="index.html">Sistema de diseño</a><a href="#contenido">Volver arriba</a></footer>
+</div>
+</div>
+<div class="cl-velo" data-cl-velo hidden></div>
+<script src="../dist/codelibri.js"></script>
+</body>
+</html>

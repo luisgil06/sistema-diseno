@@ -1,0 +1,39 @@
+/* ═══ INTERRUPTOR ═══
+   Un <button role="switch" aria-checked="…">: se anuncia como interruptor
+   y dice si está puesto. El guion solo cambia aria-checked; el dibujo lo
+   sigue desde aquí. */
+
+.cl .cl-interruptor{
+  position:relative;flex:none;width:44px;height:24px;border-radius:var(--cl-r-pildora);
+  background:var(--cl-riel);border:1px solid var(--cl-linea);box-shadow:inset 0 1px 3px rgba(20,20,22,.08);
+  transition:background var(--cl-mov-medio) ease,border-color var(--cl-mov-medio) ease
+}
+.cl .cl-interruptor::after{
+  content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 3px rgba(20,20,22,.25);
+  transition:transform .25s var(--cl-mov-curva-salida)
+}
+.cl .cl-interruptor[aria-checked="true"]{background:var(--cl-acento-solido);border-color:transparent}
+.cl .cl-interruptor[aria-checked="true"]::after{transform:translateX(20px)}
+.cl .cl-interruptor:focus-visible{border-radius:var(--cl-r-pildora)}
+.cl .cl-interruptor-rotulo{display:inline-flex;align-items:center;gap:10px;font-size:var(--cl-t-ui);color:var(--cl-texto);cursor:pointer}
+
+/* ── el de tema ──
+   La perilla es el sol, amarillo, a la izquierda; en oscuro se va a la
+   derecha, sobre la luna, y se vuelve lila. */
+.cl .cl-interruptor-tema{
+  position:relative;flex:none;width:64px;height:32px;border-radius:var(--cl-r-pildora);
+  background:var(--cl-riel);border:1px solid var(--cl-superficie);box-shadow:inset 0 2px 4px rgba(20,20,22,.07)
+}
+.cl .cl-interruptor-tema .cl-riel{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:var(--cl-texto-3)}
+.cl .cl-interruptor-tema .cl-perilla{
+  position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
+  background:var(--cl-perilla);box-shadow:0 2px 4px rgba(253,184,19,.35);
+  transition:transform .25s var(--cl-mov-curva-salida),background .25s ease
+}
+.cl .cl-interruptor-tema[aria-checked="true"] .cl-perilla{transform:translateX(32px);box-shadow:0 2px 6px rgba(0,0,0,.45)}
+.cl .cl-interruptor-tema:focus-visible{border-radius:var(--cl-r-pildora)}
+@media (max-width:520px){
+  .cl .cl-interruptor-tema{width:56px}
+  .cl .cl-interruptor-tema[aria-checked="true"] .cl-perilla{transform:translateX(24px)}
+}

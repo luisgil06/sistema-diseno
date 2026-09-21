@@ -1,0 +1,64 @@
+/* ═══ DATOS ═══ */
+
+/* ── tabla ──
+   Cabecera en rótulo, filas separadas por un filete y resaltadas al pasar.
+   En un teléfono cada fila se apila: la tabla deja de ser tabla a la vista
+   pero no para el lector, que sigue oyendo filas y celdas. */
+.cl .cl-tabla{width:100%;border-collapse:collapse;font-size:var(--cl-t-ui)}
+.cl .cl-tabla th{text-align:left;font-size:var(--cl-t-rotulo);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;color:var(--cl-texto-3);padding:0 12px 10px;border-bottom:1px solid var(--cl-linea)}
+.cl .cl-tabla td{padding:12px;border-top:1px solid var(--cl-linea);vertical-align:middle}
+.cl .cl-tabla thead + tbody tr:first-child td{border-top:0}
+.cl .cl-tabla tbody tr:hover td{background:var(--cl-flotar)}
+.cl .cl-tabla td small{display:block;margin-top:2px;font-size:12.5px;color:var(--cl-texto-3)}
+.cl .cl-tabla .cl-cifra{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* Una fila que separa grupos dentro de la misma tabla. */
+.cl .cl-tabla tr.cl-fila-grupo td{border-top:0;padding:26px 12px 8px;background:none;font-size:var(--cl-t-rotulo);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;color:var(--cl-texto-2)}
+.cl .cl-tabla tr.cl-fila-grupo:first-child td{padding-top:6px}
+@media (max-width:760px){
+  .cl .cl-tabla-apilable thead{display:none}
+  .cl .cl-tabla-apilable td{display:block;border-top:0;padding:4px 0}
+  .cl .cl-tabla-apilable tr{display:block;border-top:1px solid var(--cl-linea);padding:12px 0}
+  .cl .cl-tabla-apilable tbody tr:hover td{background:none}
+  .cl .cl-tabla-apilable .cl-cifra{text-align:left}
+}
+
+/* ── barra de avance ──
+   Con role="progressbar" y sus aria-valuenow: el número se oye. */
+.cl .cl-avance{height:8px;border-radius:var(--cl-r-pildora);background:var(--cl-campo);border:1px solid var(--cl-linea);overflow:hidden}
+.cl .cl-avance > i{display:block;height:100%;border-radius:inherit;background:var(--cl-grad-explorar);transition:width var(--cl-mov-lento) ease}
+.cl .cl-avance-fino{height:4px;border:0}
+
+/* ── anillo ──
+   El avance en un círculo, con la cifra en medio: la tarjeta de
+   «Continuar». El guion o el servidor ponen stroke-dasharray. */
+.cl .cl-anillo{flex:none}
+.cl .cl-anillo circle{fill:none;stroke:var(--cl-linea);stroke-width:5}
+.cl .cl-anillo circle.cl-valor{stroke:var(--cl-acento-solido);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%}
+.cl .cl-anillo text{font-family:var(--cl-fuente);font-size:11px;font-weight:var(--cl-peso-semi);text-anchor:middle;fill:var(--cl-texto)}
+
+/* ── avatar ──
+   Iniciales en el tono de una familia de la marca. */
+.cl .cl-avatar{
+  flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;
+  font-size:10px;font-weight:var(--cl-peso-negrita);
+  background:var(--cl-f-fondo,var(--cl-acento-suave));color:var(--cl-f-texto,var(--cl-acento));border:1px solid var(--cl-f-linea,transparent)
+}
+.cl .cl-avatar-grande{width:40px;height:40px;font-size:14px}
+.cl .cl-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+
+/* ── código ──
+   Un bloque que se lee y se copia: fuente monoespaciada y desplazamiento
+   propio en vez de romper la página. */
+.cl .cl-codigo{
+  margin:0;padding:14px 16px;border-radius:10px;overflow-x:auto;
+  background:var(--cl-campo);border:1px solid var(--cl-linea);
+  font-family:var(--cl-fuente-mono);font-size:12.5px;line-height:1.55;color:var(--cl-texto-2);white-space:pre;tab-size:2
+}
+
+/* ── lista de enlaces con detalle ──
+   Un índice: título y una línea de apoyo en cada casilla. */
+.cl .cl-indice{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.cl .cl-indice a{display:block;padding:12px 14px;border-radius:var(--cl-r-medio);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1);transition:border-color var(--cl-mov-medio) ease}
+.cl .cl-indice a:hover{border-color:var(--cl-acento-linea)}
+.cl .cl-indice b{display:block;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-semi)}
+.cl .cl-indice span{display:block;margin-top:2px;font-size:12.5px;color:var(--cl-texto-3)}

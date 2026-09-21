@@ -1,0 +1,51 @@
+/* ═══ NAVEGACIÓN DENTRO DE LA PÁGINA ═══ */
+
+/* ── migas ──
+   Dónde se está. El último paso no es enlace: va en una cajita. */
+.cl .cl-migas{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
+.cl .cl-migas a:hover{color:var(--cl-texto)}
+.cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-100)}
+[data-theme="dark"] .cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-400)}
+.cl .cl-migas [aria-current="page"]{color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1);padding:2px 8px;border-radius:var(--cl-r-chico)}
+
+/* ── cabecera de sección ──
+   Título y bajada a la izquierda; a la derecha, «ver todo» y las flechas
+   del carrusel si las hay. Las secciones no llevan caja: el aire las
+   separa. */
+.cl .cl-seccion-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+.cl .cl-seccion-cab h2{font-size:var(--cl-t-seccion);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-seccion);line-height:1.25}
+.cl .cl-seccion-cab p{font-size:var(--cl-t-ui);color:var(--cl-texto-2);margin-top:4px}
+.cl .cl-seccion-acciones{display:flex;align-items:center;gap:8px;flex:none}
+.cl .cl-ver-todo{display:inline-flex;align-items:center;gap:4px;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-semi);color:var(--cl-acento);margin-right:8px}
+.cl .cl-ver-todo .cl-ico{transition:transform var(--cl-mov-medio) ease}
+.cl .cl-ver-todo:hover .cl-ico{transform:translateX(3px)}
+
+/* ── carrusel ──
+   Una fila que se desplaza de lado, con parada en cada tarjeta. Las
+   flechas las mueve el guion; en un teléfono se quitan y se desliza con
+   el dedo. Si todo cabe, el guion esconde las flechas. */
+.cl .cl-carrusel{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(256px,280px);gap:24px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:6px;padding:4px 6px 18px;margin:0 -6px
+}
+/* scroll-padding igual al relleno: sin él la parada alineaba la primera
+   tarjeta con el borde, la fila arrancaba corrida 6 px y la flecha de
+   «anteriores» no se apagaba nunca. */
+.cl .cl-carrusel > *{scroll-snap-align:start}
+.cl .cl-carrusel::-webkit-scrollbar-track{margin:0 8px}
+.cl .cl-carrusel:focus-visible{outline-offset:-2px;border-radius:var(--cl-r-grande)}
+.cl .cl-seccion:hover .cl-carrusel::-webkit-scrollbar-thumb,
+.cl .cl-carrusel:focus-visible::-webkit-scrollbar-thumb{background:var(--cl-linea-2);background-clip:content-box}
+.cl .cl-seccion-acciones .cl-boton-icono{--cl-boton-alto:36px}
+.cl .cl-sin-flechas [data-cl-mover]{display:none}
+@media (max-width:900px){
+  .cl .cl-carrusel{grid-auto-columns:minmax(240px,78vw);gap:16px}
+  .cl .cl-seccion-acciones [data-cl-mover]{display:none}
+}
+
+/* ── rejilla ──
+   Tantas columnas como quepan, de 250 px como mínimo. */
+.cl .cl-rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.cl .cl-rejilla-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1180px){.cl .cl-rejilla-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cl .cl-rejilla-3{grid-template-columns:minmax(0,1fr);gap:12px}}

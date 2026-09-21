@@ -1,0 +1,95 @@
+/* ═══ CAMPOS ═══
+   El rótulo envuelve al campo: <label class="cl-campo">Nombre <input></label>.
+   Así el rótulo se anuncia sin necesidad de id. La ayuda va debajo en un
+   <small>; el error, con aria-invalid en el campo y el mensaje en
+   .cl-campo-error, enlazado con aria-describedby. */
+
+.cl .cl-campo{display:block;margin-bottom:16px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
+.cl .cl-campo > small,.cl .cl-ayuda{display:block;margin-top:6px;font-size:var(--cl-t-micro);font-weight:var(--cl-peso-normal);line-height:1.45;color:var(--cl-texto-3)}
+
+.cl .cl-entrada-texto,
+.cl .cl-campo :is(input:not([type="checkbox"],[type="radio"],[type="file"],[type="color"],[type="range"],[type="submit"],[type="button"]),textarea,select){
+  display:block;width:100%;margin-top:6px;
+  font:inherit;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-normal);color:var(--cl-texto);
+  padding:10px 12px;border-radius:var(--cl-r-control);background-color:var(--cl-campo);border:1px solid var(--cl-linea);
+  box-shadow:inset 0 1px 2px rgba(20,20,22,.03);outline:none;
+  transition:border-color var(--cl-mov-medio) ease,box-shadow var(--cl-mov-medio) ease
+}
+.cl .cl-entrada-texto{margin-top:0}
+/* El desplegable sin la apariencia del sistema, que en Windows lo dejaba
+   blanco y con borde negro entre campos grises; la flecha es un SVG en
+   gris claro u oscuro según el tema. */
+.cl .cl-campo select:not([multiple]),.cl select.cl-entrada-texto:not([multiple]){
+  -webkit-appearance:none;appearance:none;padding-right:38px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2359595d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:16px
+}
+[data-theme="dark"] .cl .cl-campo select:not([multiple]),[data-theme="dark"] .cl select.cl-entrada-texto:not([multiple]),.cl [data-theme="dark"] .cl-campo select:not([multiple]){
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bfbfc0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+}
+.cl .cl-campo select option{color:var(--cl-texto);background:var(--cl-superficie)}
+.cl .cl-campo textarea{min-height:88px;resize:vertical;line-height:1.5}
+.cl .cl-campo :is(input,textarea)::placeholder,.cl .cl-entrada-texto::placeholder{color:var(--cl-texto-3)}
+/* El foco con el anillo del acento. El contorno transparente no se ve,
+   pero es el que pinta Windows en alto contraste, donde las sombras
+   desaparecen. */
+.cl .cl-entrada-texto:focus,
+.cl .cl-campo :is(input,textarea,select):focus{border-color:var(--cl-acento-solido);box-shadow:0 0 0 3px var(--cl-foco);outline:2px solid transparent;outline-offset:2px}
+.cl .cl-campo :is(input,textarea,select)[aria-invalid="true"],.cl .cl-entrada-texto[aria-invalid="true"]{border-color:var(--cl-error-texto)}
+.cl .cl-campo :is(input,textarea,select)[aria-invalid="true"]:focus{box-shadow:0 0 0 3px var(--cl-error-linea)}
+.cl .cl-campo-error{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:var(--cl-t-micro);font-weight:var(--cl-peso-medio);color:var(--cl-error-texto)}
+.cl .cl-campo :is(input,textarea,select):disabled{opacity:.55;cursor:not-allowed}
+
+/* El botón del sistema para elegir archivo, con la forma de los secundarios. */
+.cl .cl-campo input[type="file"]{display:block;margin-top:8px;font-size:var(--cl-t-nota);color:var(--cl-texto-2)}
+.cl .cl-campo input[type="file"]::file-selector-button{
+  margin-right:12px;height:34px;padding:0 14px;border-radius:var(--cl-r-control);cursor:pointer;
+  font:inherit;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-semi);color:var(--cl-texto);
+  background:var(--cl-superficie);border:1px solid var(--cl-linea);box-shadow:var(--cl-sombra-1)
+}
+.cl .cl-campo input[type="color"]{display:block;margin-top:6px;width:100%;height:42px;padding:4px;border-radius:var(--cl-r-control);background:var(--cl-campo);border:1px solid var(--cl-linea);cursor:pointer}
+
+/* Casillas y botones de opción: el control nativo, en el color del acento. */
+.cl .cl-casilla{display:inline-flex;align-items:center;gap:8px;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-normal);color:var(--cl-texto);cursor:pointer}
+.cl .cl-casilla input{width:16px;height:16px;margin:0;accent-color:var(--cl-acento-solido);cursor:pointer}
+.cl .cl-casillas{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:12px}
+
+/* Varios campos en rejilla: dos o tres por fila según el ancho. */
+.cl .cl-campos{display:grid;gap:0 16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.cl .cl-campos .cl-entera{grid-column:1/-1}
+
+/* Grupo de campos con su rótulo en mayúsculas. */
+.cl .cl-grupo-campos{border:1px solid var(--cl-linea);border-radius:var(--cl-r-medio);padding:16px 18px 4px;margin:6px 0 20px;min-width:0}
+.cl .cl-grupo-campos > legend{padding:0 6px;font-size:var(--cl-t-rotulo);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;color:var(--cl-texto-3)}
+
+/* ── buscador ──
+   El campo va sin borde dentro de la caja y el foco lo enseña la caja
+   entera. min-width:0 en la caja y width:100% en el campo: un <input>
+   trae unos 170 px de ancho propio y en un teléfono empujaba lo de al lado
+   fuera de la pantalla. */
+.cl .cl-buscador{
+  display:flex;align-items:center;gap:10px;min-width:0;height:40px;padding:0 14px;border-radius:var(--cl-r-control);
+  background:var(--cl-campo);border:1px solid var(--cl-linea);box-shadow:inset 0 1px 2px rgba(20,20,22,.03);color:var(--cl-texto-3);
+  transition:border-color var(--cl-mov-medio) ease,box-shadow var(--cl-mov-medio) ease
+}
+.cl .cl-buscador input{flex:1;width:100%;min-width:0;border:0;background:none;font:inherit;font-size:var(--cl-t-ui);color:var(--cl-texto);outline:none;text-overflow:ellipsis}
+.cl .cl-buscador input::placeholder{color:var(--cl-texto-3)}
+.cl .cl-buscador input::-webkit-search-cancel-button{cursor:pointer}
+.cl .cl-buscador:focus-within{border-color:var(--cl-acento-solido);box-shadow:0 0 0 3px var(--cl-foco)}
+.cl .cl-buscador kbd{flex:none;font-size:11px;padding:2px 6px;border-radius:5px;color:var(--cl-texto-3);border:1px solid var(--cl-linea);background:var(--cl-superficie)}
+
+/* ── selector con dibujo ──
+   Opciones que se eligen por lo que se ven —un icono, un color— y no por
+   su nombre. La casilla de radio queda oculta a la vista pero no al
+   teclado, y el foco se enseña en el dibujo. */
+.cl .cl-selector{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.cl .cl-selector label{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;width:68px;cursor:pointer}
+.cl .cl-selector input{position:absolute;opacity:0;width:1px;height:1px}
+.cl .cl-selector label > span{
+  width:44px;height:44px;border-radius:10px;display:grid;place-items:center;color:var(--cl-texto-2);
+  background:var(--cl-campo);border:1px solid var(--cl-linea);transition:border-color var(--cl-mov-rapido) ease,background var(--cl-mov-rapido) ease
+}
+.cl .cl-selector label:hover > span{border-color:var(--cl-acento-solido)}
+.cl .cl-selector input:checked + span{background:var(--cl-acento-suave);border-color:var(--cl-acento-solido);color:var(--cl-acento);box-shadow:inset 0 0 0 1px var(--cl-acento-solido)}
+.cl .cl-selector input:focus-visible + span{outline:2px solid var(--cl-acento);outline-offset:2px}
+.cl .cl-selector small{font-size:10.5px;color:var(--cl-texto-3);text-align:center;line-height:1.2}

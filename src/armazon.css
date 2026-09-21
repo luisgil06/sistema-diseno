@@ -1,0 +1,158 @@
+/* ═══ ARMAZÓN ═══
+   Pantalla completa: barra lateral fija a la izquierda, barra superior
+   con el buscador y las acciones, el contenido y el pie. Vidrio solo en
+   las dos barras; el contenido va suelto sobre el lienzo. En pantallas
+   de 900 px o menos la barra lateral pasa a cajón. El marcado completo,
+   en la documentación. */
+
+.cl .cl-armazon{display:grid;grid-template-columns:var(--cl-lateral) minmax(0,1fr);min-height:100vh;transition:grid-template-columns .25s ease}
+
+/* ── fondo con manchas ──
+   Dos manchas de color muy tenues, fijas detrás de todo. Opcional. */
+.cl .cl-fondo{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.cl .cl-fondo span{position:absolute;border-radius:50%;filter:blur(110px)}
+.cl .cl-fondo span:nth-child(1){width:44vw;height:44vw;left:-8vw;top:-12vw;background:var(--cl-mancha-1)}
+.cl .cl-fondo span:nth-child(2){width:52vw;height:52vw;right:-14vw;bottom:4vh;background:var(--cl-mancha-2)}
+
+/* ── barra lateral ── */
+.cl .cl-lat{
+  position:sticky;top:0;z-index:var(--cl-z-lateral);height:100vh;overflow-y:auto;overflow-x:hidden;
+  display:flex;flex-direction:column;padding:0 16px 18px;
+  background:var(--cl-vidrio);border-right:1px solid var(--cl-linea);box-shadow:4px 0 24px -12px rgba(20,20,22,.06);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+}
+.cl .cl-lat:hover::-webkit-scrollbar-thumb{background:var(--cl-linea-2);background-clip:content-box}
+/* La franja de la marca mide lo mismo que la barra superior, para que las
+   dos rayas queden a la misma altura. */
+.cl .cl-marca{display:flex;align-items:center;gap:10px;flex:none;height:var(--cl-alto-superior);margin:0 -16px 20px;padding:0 24px;border-bottom:1px solid var(--cl-linea)}
+.cl .cl-marca img,.cl .cl-marca svg{width:32px;height:32px;border-radius:var(--cl-r-control);box-shadow:var(--cl-sombra-1);flex:none}
+.cl .cl-marca b{font-size:19px;font-weight:var(--cl-peso-negrita);letter-spacing:-.025em;line-height:1}
+.cl .cl-marca em{font-style:normal;font-size:11px;font-weight:var(--cl-peso-medio);letter-spacing:.04em;text-transform:uppercase;color:var(--cl-texto-3);margin-left:5px}
+
+.cl .cl-grupo{display:grid;gap:2px}
+.cl .cl-grupo :is(a,button){
+  display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border-radius:var(--cl-r-control);text-align:left;
+  font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2);
+  transition:background var(--cl-mov-rapido) ease,color var(--cl-mov-rapido) ease
+}
+.cl .cl-grupo :is(a,button) > span:not(.cl-avatar){flex:1;min-width:0;line-height:1.3}
+.cl .cl-grupo :is(a,button) .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-grupo :is(a,button) .cl-contador{margin-left:4px}
+.cl .cl-grupo :is(a,button):hover{background:var(--cl-flotar);color:var(--cl-texto)}
+/* La opción marcada: la página en la que se está (aria-current="page") o
+   la sección a la que pertenece (aria-current="true"). */
+.cl .cl-grupo :is(a,button)[aria-current]:not([aria-current="false"]){background:var(--cl-acento-suave);color:var(--cl-acento);font-weight:var(--cl-peso-semi)}
+.cl .cl-grupo :is(a,button)[aria-current]:not([aria-current="false"]) :is(.cl-ico,.cl-contador){color:var(--cl-acento)}
+.cl .cl-lat .cl-rotulo{margin:26px 12px 10px}
+
+/* El pie de la barra: una tarjeta de invitación y el botón de plegar. */
+.cl .cl-lat-pie{margin-top:auto;padding-top:20px;display:grid;gap:6px}
+.cl .cl-lat-tarjeta{padding:16px;border-radius:var(--cl-r-medio);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1)}
+.cl .cl-lat-tarjeta:empty{display:none}
+.cl .cl-lat-tarjeta > b{display:block;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-semi)}
+.cl .cl-lat-tarjeta > p{font-size:var(--cl-t-nota);color:var(--cl-texto-2);line-height:1.45;margin:4px 0 12px}
+.cl .cl-lat-tarjeta .cl-boton{--cl-boton-alto:36px;padding:0 14px;font-size:var(--cl-t-nota)}
+.cl .cl-plegar{display:none}
+
+/* ── la barra plegada a iconos ──
+   Solo en pantalla ancha y solo si la página trae el botón de plegar. Los
+   rótulos se apartan a la vista pero no del lector, y cada icono dice su
+   nombre al pasar el puntero (lo pone el guion). */
+@media (min-width:901px){
+  .cl .cl-plegar{
+    display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border-radius:var(--cl-r-control);
+    font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2);text-align:left
+  }
+  .cl .cl-plegar:hover{background:var(--cl-flotar);color:var(--cl-texto)}
+  .cl .cl-plegar .cl-ico{color:var(--cl-texto-3);transition:transform .25s ease}
+  html.cl-lat-plegada .cl .cl-armazon{--cl-lateral:var(--cl-lateral-plegada)}
+  html.cl-lat-plegada .cl .cl-lat{padding:0 10px 14px}
+  html.cl-lat-plegada .cl .cl-marca{justify-content:center;padding:0;margin:0 -10px 16px}
+  html.cl-lat-plegada .cl .cl-marca > span,
+  html.cl-lat-plegada .cl .cl-grupo :is(a,button) > span:not(.cl-avatar),
+  html.cl-lat-plegada .cl .cl-plegar > span{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  html.cl-lat-plegada .cl .cl-grupo :is(a,button){justify-content:center;padding:10px 0;gap:0}
+  html.cl-lat-plegada .cl .cl-grupo .cl-contador{display:none}
+  /* el rótulo de grupo queda como raya, pero sigue nombrando su lista */
+  html.cl-lat-plegada .cl .cl-lat .cl-rotulo{height:1px;margin:14px 12px;overflow:hidden;color:transparent;background:var(--cl-linea)}
+  html.cl-lat-plegada .cl .cl-lat-tarjeta{display:none}
+  html.cl-lat-plegada .cl .cl-plegar{justify-content:center;padding:10px 0}
+  html.cl-lat-plegada .cl .cl-plegar .cl-ico{transform:scaleX(-1)}
+}
+
+/* ── barra superior ── */
+.cl .cl-principal{min-width:0;display:flex;flex-direction:column}
+.cl .cl-superior{
+  position:sticky;top:0;z-index:var(--cl-z-superior);display:flex;align-items:center;gap:16px;
+  height:var(--cl-alto-superior);padding:0 32px;
+  background:var(--cl-vidrio);border-bottom:1px solid var(--cl-linea);box-shadow:0 4px 24px -12px rgba(20,20,22,.06);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+}
+.cl .cl-superior > .cl-buscador{flex:1;max-width:448px}
+.cl .cl-superior > .cl-migas{min-width:0}
+.cl .cl-superior-acciones{margin-left:auto;display:flex;align-items:center;gap:16px}
+
+/* ── contenido ──
+   Un carril con mínimo cero: sin él, la rejilla toma el ancho natural del
+   carrusel más largo y estira todo lo demás con él. */
+.cl .cl-contenido{flex:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;gap:52px;padding:40px 32px 56px}
+.cl .cl-contenido-estrecho{width:100%;max-width:1240px;margin-inline:auto}
+/* Las anclas quedan por debajo de la barra superior, que es fija. */
+.cl .cl-contenido [id]{scroll-margin-top:calc(var(--cl-alto-superior) + 20px)}
+
+/* La portada de una página: título, entrada y botones; a la derecha,
+   opcional, una tarjeta destacada. */
+.cl .cl-portada{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,400px);gap:48px;align-items:center}
+.cl .cl-portada-sola{grid-template-columns:minmax(0,1fr)}
+.cl .cl-portada .cl-migas{margin-bottom:24px}
+.cl .cl-portada .cl-entrada{margin-top:20px}
+.cl .cl-portada .cl-pildoras{margin-top:22px}
+.cl .cl-portada .cl-botones{margin-top:32px;gap:12px}
+@media (max-width:1180px){.cl .cl-portada{grid-template-columns:minmax(0,1fr);gap:28px}}
+
+/* ── pie ──
+   El pie de la página, no del contenido, con franja de vidrio como la
+   barra de arriba: suelto sobre el lienzo, el texto no llegaba al
+   contraste en oscuro. */
+.cl .cl-pie{
+  margin-top:auto;padding:18px 32px;border-top:1px solid var(--cl-linea);background:var(--cl-vidrio);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:var(--cl-t-nota);color:var(--cl-texto-2)
+}
+.cl .cl-pie :is(a,button){font-size:var(--cl-t-nota);color:var(--cl-texto-2);text-decoration:underline;text-decoration-color:var(--cl-linea-2);text-underline-offset:3px}
+.cl .cl-pie :is(a,button):hover{color:var(--cl-acento);text-decoration-color:currentColor}
+
+.cl .cl-velo{position:fixed;inset:0;z-index:var(--cl-z-velo);background:var(--cl-velo)}
+.cl .cl-solo-estrecho{display:none}
+
+/* ═══ pantallas estrechas: la barra lateral pasa a cajón ═══
+   Cerrado, el cajón queda fuera de la vista y también fuera del
+   tabulador: con solo moverlo, el teclado seguía entrando en él y el foco
+   desaparecía por la izquierda. La visibilidad cambia al terminar la
+   animación al cerrar y al empezarla al abrir. */
+@media (max-width:900px){
+  .cl{--cl-alto-superior:var(--cl-alto-superior-estrecho)}
+  .cl .cl-armazon{grid-template-columns:minmax(0,1fr)}
+  .cl .cl-lat{
+    position:fixed;left:0;top:0;bottom:0;width:min(86vw,300px);height:auto;
+    transform:translateX(-102%);visibility:hidden;background:var(--cl-superficie);box-shadow:var(--cl-sombra-3);
+    transition:transform .25s ease,visibility 0s linear .25s
+  }
+  .cl .cl-lat.cl-abierta{transform:none;visibility:visible;transition:transform .25s ease}
+  .cl .cl-solo-estrecho{display:inline-flex}
+  .cl .cl-superior{padding:0 14px;gap:10px}
+  .cl .cl-superior-acciones{gap:10px}
+  /* En la barra superior, los botones con rótulo se quedan en su icono.
+     El rótulo se aparta a la vista, no del lector. */
+  .cl .cl-superior .cl-boton:has(> .cl-txt){width:40px;padding:0}
+  .cl .cl-superior .cl-boton > .cl-txt{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .cl .cl-superior .cl-menu{position:fixed;left:12px;right:12px;top:calc(var(--cl-alto-superior) + 8px);width:auto}
+  .cl .cl-contenido{padding:24px 16px 32px;gap:36px}
+  .cl .cl-pie{padding:14px 16px}
+}
+@media (max-width:520px){
+  .cl .cl-superior .cl-boton{--cl-boton-alto:38px}
+  .cl .cl-superior .cl-boton:has(> .cl-txt){width:38px}
+  .cl .cl-superior .cl-buscador{height:38px;padding:0 10px}
+  .cl .cl-display{font-size:34px}
+}

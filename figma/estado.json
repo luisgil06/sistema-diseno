@@ -1,0 +1,359 @@
+{
+  "archivo": "VJnzekSGdZmIlyN2482cN8",
+  "version": "0.1.0",
+  "fase": "terminada",
+  "hecho": [
+    "fase0",
+    "1-paleta",
+    "2-acento",
+    "3-tema",
+    "4-tipo",
+    "5-forma",
+    "6-estilos",
+    "fase1-validada",
+    "fase2-paginas",
+    "fase3-componentes",
+    "iconos-aplanados",
+    "fase4-revision"
+  ],
+  "colecciones": {
+    "Paleta": {
+      "id": "VariableCollectionId:45:2",
+      "modos": {
+        "Valor": "45:0"
+      },
+      "variables": 91
+    },
+    "Acento": {
+      "id": "VariableCollectionId:45:94",
+      "modos": {
+        "primary": "45:1",
+        "secondary": "45:2",
+        "secondary2": "45:3"
+      },
+      "variables": 19
+    },
+    "Tema": {
+      "id": "VariableCollectionId:46:2",
+      "modos": {
+        "Claro": "46:0",
+        "Oscuro": "46:1"
+      },
+      "variables": 53
+    },
+    "Tipo": {
+      "id": "VariableCollectionId:46:56",
+      "modos": {
+        "Valor": "46:2"
+      },
+      "variables": 21
+    },
+    "Forma": {
+      "id": "VariableCollectionId:46:78",
+      "modos": {
+        "Valor": "46:3"
+      },
+      "variables": 19
+    }
+  },
+  "estilos": {
+    "texto": 24,
+    "efecto": [
+      "Sombra/1 · reposo",
+      "Sombra/2 · al apuntar",
+      "Sombra/3 · flotante",
+      "Sombra/Marca",
+      "Sombra/Marca · al apuntar",
+      "Foco/Campo"
+    ],
+    "relleno": [
+      "Degradado/Marca",
+      "Degradado/Explorar",
+      "Degradado/Apoyo"
+    ],
+    "nota": "Se buscan por nombre; los guiones de figma/scripts/ actualizan en lugar de duplicar."
+  },
+  "paginas": {
+    "Portada": {
+      "id": "48:2",
+      "marco": "49:2"
+    },
+    "Cómo se usa": {
+      "id": "48:3",
+      "marco": "55:2"
+    },
+    "Color": {
+      "id": "48:5",
+      "marco": "51:2",
+      "paleta": "51:7",
+      "acento": "51:424",
+      "tema": "52:2"
+    },
+    "Tipografía": {
+      "id": "48:6",
+      "marco": "53:2"
+    },
+    "Espacio, forma y sombra": {
+      "id": "48:7",
+      "marco": "54:2"
+    },
+    "Iconos": "48:8",
+    "Botón": "48:10",
+    "Campo": "48:11",
+    "Casilla e interruptor": "48:12",
+    "Etiquetas": "48:13",
+    "Aviso": "48:14",
+    "Tarjeta": "48:15",
+    "Ventanas y menú": "48:16",
+    "Navegación": "48:17",
+    "Datos": "48:18",
+    "Armazón": "48:19",
+    "Design System": "0:1",
+    "separadores": [
+      "48:4",
+      "48:9",
+      "48:20"
+    ]
+  },
+  "componentes": {
+    "iconos": {
+      "rejilla": "56:9",
+      "nota": "55 componentes Icono/<clave>; se buscan por nombre. Algunos: descargar 56:146, flecha 56:188, compartir 56:104, corazon 56:115, buscar 56:57, cerrar 56:77, check 56:82, info 56:33… (ver get_metadata de 56:9)"
+    },
+    "Botón": {
+      "set": "59:2",
+      "doc": "60:2",
+      "props": {
+        "Texto": "Texto#59:0",
+        "Con icono inicial": "Con icono inicial#59:31",
+        "Icono inicial": "Icono inicial#59:62",
+        "Con icono final": "Con icono final#59:93",
+        "Icono final": "Icono final#59:124"
+      }
+    },
+    "Botón icono": {
+      "set": "61:89",
+      "props": {
+        "Icono": "Icono#61:0"
+      }
+    },
+    "Botón conmutable": {
+      "set": "61:114",
+      "props": {
+        "Texto": "Texto#61:13",
+        "Icono": "Icono#61:20"
+      }
+    },
+    "Campo": {
+      "set": "63:142",
+      "doc": "64:30",
+      "props": {
+        "Rótulo": "Rótulo#63:0",
+        "Valor": "Valor#63:13",
+        "Con ayuda": "Con ayuda#63:26",
+        "Ayuda": "Ayuda#63:39",
+        "Error": "Error#63:52"
+      }
+    },
+    "Buscador": {
+      "set": "64:29"
+    },
+    "Casilla": {
+      "set": "66:32",
+      "props": {
+        "Texto": "Texto#66:0"
+      }
+    },
+    "Interruptor": {
+      "set": "66:41",
+      "props": {
+        "Rótulo": "Rótulo#66:9",
+        "Con rótulo": "Con rótulo#66:12"
+      }
+    },
+    "Interruptor de tema": {
+      "set": "66:56"
+    },
+    "Etiqueta": {
+      "set": "68:18",
+      "doc": "68:138",
+      "props": {
+        "Texto": "se busca por prefijo Texto"
+      }
+    },
+    "Insignia": {
+      "set": "68:23"
+    },
+    "Estado": {
+      "set": "68:36"
+    },
+    "Píldora": {
+      "comp": "68:37"
+    },
+    "Contador": {
+      "comp": "68:40"
+    },
+    "Tecla": {
+      "comp": "68:42"
+    },
+    "Cuadro": {
+      "set": "72:50",
+      "pagina": "Tarjeta",
+      "props": {
+        "Icono": "Icono#72:0"
+      }
+    },
+    "Aviso": {
+      "set": "73:28",
+      "doc": "73:185",
+      "props": {
+        "Texto": "Texto#73:0"
+      }
+    },
+    "Aviso flotante": {
+      "comp": "73:29"
+    },
+    "Vacío": {
+      "comp": "73:45"
+    },
+    "Tarjeta de contenido": {
+      "set": "75:56",
+      "doc": "77:32",
+      "props": {
+        "Título": "Título#75:0",
+        "Resumen": "Resumen#75:3",
+        "Autor": "Autor#75:6",
+        "Dato": "Dato#75:9",
+        "Con etiqueta": "Con etiqueta#75:12",
+        "Con avance": "Con avance#75:15",
+        "Con paso": "Con paso#75:18",
+        "Paso": "Paso#75:21"
+      }
+    },
+    "Tarjeta fila": {
+      "set": "76:46"
+    },
+    "Destacada": {
+      "comp": "76:47"
+    },
+    "Dato clave": {
+      "comp": "76:53"
+    },
+    "Elemento de menú": {
+      "set": "80:32"
+    },
+    "Menú": {
+      "comp": "80:33"
+    },
+    "Caja": {
+      "set": "80:154"
+    },
+    "Segmento": {
+      "set": "81:63"
+    },
+    "Segmentado": {
+      "comp": "81:64"
+    },
+    "Plegable": {
+      "set": "81:87",
+      "doc": "81:285"
+    },
+    "Migas": {
+      "comp": "83:2"
+    },
+    "Ver todo": {
+      "comp": "83:9"
+    },
+    "Cabecera de sección": {
+      "comp": "83:14",
+      "doc": "84:16"
+    },
+    "nota-tarjeta": "Tarjeta de contenido ganó Con resumen#83:10 y Con pie#83:13 (el pie va en «Pie envoltura» con 4 px de aire).",
+    "Avance": {
+      "set": "85:6"
+    },
+    "Anillo": {
+      "comp": "85:10"
+    },
+    "Avatar": {
+      "set": "85:28"
+    },
+    "Código": {
+      "comp": "85:29"
+    },
+    "Índice": {
+      "set": "85:37"
+    },
+    "Tabla · cabecera": {
+      "comp": "86:17"
+    },
+    "Tabla · grupo": {
+      "comp": "86:26"
+    },
+    "Tabla · fila": {
+      "set": "86:53",
+      "doc": "86:435",
+      "props": {
+        "Título": "Título#86:2",
+        "Detalle": "Detalle#86:5",
+        "Tópicos": "Tópicos#86:8",
+        "Vistas": "Vistas#86:11"
+      }
+    },
+    "imagenes": {
+      "marco": "74:26",
+      "hash": {
+        "ident-color": "932e6e0c6b58e9d52cff2b67cd2baa2eb5a6f48b",
+        "dpga-mg12": "1a2df622674b64b79773a0398f52908acab6f892",
+        "ident-signos": "4d0bed576f5df21a8e3203530ffad06ae8fa347f"
+      },
+      "nota": "Subidas con upload_assets; los textos de los ejemplos son los del catálogo del servidor."
+    },
+    "Logo CodeLibri": {
+      "comp": "87:21",
+      "nota": "Arte fijo: colores sin enlazar a propósito."
+    },
+    "Elemento de navegación": {
+      "set": "87:76"
+    },
+    "Marca": {
+      "set": "87:123"
+    },
+    "Tarjeta lateral": {
+      "comp": "87:124"
+    },
+    "Plegar": {
+      "set": "87:154"
+    },
+    "Barra lateral": {
+      "set": "88:350"
+    },
+    "Barra superior": {
+      "set": "92:219"
+    },
+    "Pie": {
+      "comp": "92:220"
+    },
+    "ejemplos": {
+      "ancha": "93:196",
+      "telefono": "94:384",
+      "cajon": "94:473",
+      "doc": "94:929"
+    }
+  },
+  "pendiente": [
+    "El marco «Paleta de Color» (1:6) usa de fondo Text/text-50 #EEEEF0, variable de una biblioteca «Colores» que no está conectada. Preguntar a Luis antes de tocarlo.",
+    "Code Connect no se hizo: el sistema es HTML y CSS sin framework; las descripciones de cada componente llevan su marcado."
+  ],
+  "iconos": {
+    "regla": "Cada Icono/<clave> tiene una sola capa «Trazo». Al intercambiar el icono de una instancia, Figma conserva el color porque el nombre coincide. Los intercambios hechos con setProperties ANTES del aplanado se corrigieron uno por uno."
+  },
+  "desvios": [
+    "Etiqueta vacía en oscuro: la hoja usa rgba(255,255,255,.03) sin token; en Figma va enlazada a superficie.",
+    "Separador de las migas en oscuro: la hoja cambia a text-400 sin token; en Figma va enlazado a text-100.",
+    "Raya de avance de la tarjeta: rgba(20,20,22,.18) literal, igual que en la hoja.",
+    "Display y Título llevan su tamaño mayor (Figma no tiene clamp).",
+    "Al apuntar del Botón no es variante: se documenta con instancias (30 variantes es el tope).",
+    "Área de texto: interlineado 1.55 del estilo Texto/Interfaz en vez de 1.5."
+  ]
+}

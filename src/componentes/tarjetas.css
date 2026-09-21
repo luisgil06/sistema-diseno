@@ -1,0 +1,86 @@
+/* ═══ TARJETAS ═══
+   Superficies planas: blanco, filete de siete centésimas y sombra corta.
+   Al pasar por encima de una que es enlace, la sombra se abre en el tono
+   de la marca y el filete toma un poco de violeta. Esquinas de 16. */
+
+.cl .cl-tarjeta{
+  position:relative;display:flex;flex-direction:column;min-width:0;
+  background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);border-radius:var(--cl-r-grande);
+  box-shadow:var(--cl-sombra-1)
+}
+/* Con relleno: la tarjeta de contenido libre. */
+.cl .cl-tarjeta-relleno{padding:20px}
+/* La ficha de un panel o de un formulario: más aire. */
+.cl .cl-hoja{padding:28px 30px}
+.cl .cl-hoja > :is(h1,.cl-encabezado){margin-bottom:8px}
+@media (max-width:760px){.cl .cl-hoja{padding:20px 18px}}
+
+/* Una tarjeta que entera es enlace. Con posición propia: un rótulo solo
+   para lector va en absoluto y, sin ancestro posicionado dentro de un
+   carrusel, ensanchaba la página 2 700 px. */
+.cl a.cl-tarjeta,.cl .cl-tarjeta-enlace{transition:box-shadow var(--cl-mov-lento) ease,border-color var(--cl-mov-lento) ease}
+.cl a.cl-tarjeta:hover,.cl .cl-tarjeta-enlace:hover{box-shadow:var(--cl-sombra-2);border-color:var(--cl-acento-linea)}
+
+/* ── tarjeta de contenido ──
+   Imagen 16:9, etiqueta, título, resumen y pie con autor y medida. El
+   título y el resumen se cortan a dos renglones: las tarjetas de una fila
+   quedan parejas. */
+.cl .cl-tarjeta-imagen{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid var(--cl-superficie-linea);border-radius:var(--cl-r-grande) var(--cl-r-grande) 0 0;background:var(--cl-f-fondo,var(--cl-campo))}
+.cl .cl-tarjeta-imagen > img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.cl a.cl-tarjeta:hover .cl-tarjeta-imagen > img{transform:scale(1.03)}
+.cl .cl-tarjeta-cuerpo{display:flex;flex-direction:column;flex:1;padding:18px 20px 16px}
+.cl .cl-tarjeta-cuerpo > .cl-etiqueta{margin-bottom:12px}
+.cl .cl-tarjeta-titulo{font-size:var(--cl-t-tarjeta);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-tarjeta);line-height:var(--cl-lh-compacto);color:var(--cl-texto);transition:color var(--cl-mov-medio) ease;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cl a.cl-tarjeta:hover .cl-tarjeta-titulo{color:var(--cl-acento)}
+.cl .cl-tarjeta-resumen{margin:6px 0 16px;font-size:var(--cl-t-chico);line-height:1.5;color:var(--cl-texto-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* Si lo de la izquierda y la medida no caben juntos, la medida baja de
+   renglón en vez de cortar el nombre. */
+.cl .cl-tarjeta-pie{margin-top:auto;padding-top:13px;border-top:1px solid var(--cl-superficie-linea);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
+.cl .cl-tarjeta-pie .cl-dato{color:var(--cl-texto-3)}
+/* Un dato que invita a volver —«va por la 10 de 25»— va en el acento. */
+.cl .cl-tarjeta-pie .cl-dato.cl-acento{color:var(--cl-acento);font-weight:var(--cl-peso-semi)}
+/* El avance: una raya en el pie de la imagen, con el degradado de la casa. */
+.cl .cl-tarjeta-avance{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:rgba(20,20,22,.18)}
+.cl .cl-tarjeta-avance > i{display:block;height:100%;background:var(--cl-grad-explorar)}
+/* El puesto dentro de una serie: un círculo blanco en la esquina. */
+.cl .cl-tarjeta-paso{position:absolute;top:12px;left:12px;z-index:2;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-negrita);color:var(--cl-primary-700);background:#fff;box-shadow:0 2px 6px rgba(20,20,22,.2)}
+
+/* ── tarjeta horizontal ──
+   El icono en un recuadro de su familia, nombre y una línea de apoyo. Se
+   distingue de un vistazo de las de contenido: no se abre, se recorre. */
+.cl .cl-tarjeta-fila{flex-direction:row;align-items:center;gap:16px;padding:16px;box-shadow:0 2px 8px -4px rgba(20,20,22,.06)}
+.cl a.cl-tarjeta-fila:hover{border-color:var(--cl-linea-2);box-shadow:0 8px 16px -6px rgba(20,20,22,.1)}
+.cl .cl-tarjeta-fila .cl-cuadro{transition:transform var(--cl-mov-lento) ease}
+.cl a.cl-tarjeta-fila:hover .cl-cuadro{transform:scale(1.05)}
+.cl .cl-tarjeta-fila b{display:block;font-size:15px;font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-tarjeta);line-height:1.3;color:var(--cl-texto);transition:color var(--cl-mov-medio) ease}
+.cl a.cl-tarjeta-fila:hover b{color:var(--cl-acento)}
+.cl .cl-tarjeta-fila small{display:block;margin-top:3px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
+.cl .cl-tarjeta-fila > span:last-child{min-width:0}
+
+/* ── destacada ──
+   Lo más nuevo, al lado de una descripción: con tope de ancho, porque es
+   un aviso y no el protagonista. En pantalla mediana pasa a horizontal. */
+.cl .cl-destacada{overflow:hidden;max-width:400px}
+.cl .cl-destacada .cl-tarjeta-imagen{border-radius:0}
+.cl .cl-destacada .cl-rotulo{color:var(--cl-f-secondary2-texto)}
+.cl .cl-destacada .cl-tarjeta-titulo{font-size:var(--cl-t-subseccion);-webkit-line-clamp:3;margin:6px 0}
+@media (max-width:1180px) and (min-width:901px){
+  .cl .cl-destacada{flex-direction:row;align-items:center;max-width:760px}
+  .cl .cl-destacada .cl-tarjeta-imagen{width:44%;flex:none;margin:16px 0 16px 16px;border-radius:var(--cl-r-medio);border-bottom:0}
+}
+
+/* ── recuadro de icono ──
+   El icono sobre el fondo suave de su familia. Tres tamaños. */
+.cl .cl-cuadro{
+  flex:none;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:var(--cl-r-control);
+  background:var(--cl-f-fondo,var(--cl-acento-suave));color:var(--cl-f-texto,var(--cl-acento))
+}
+.cl .cl-cuadro-medio{width:48px;height:48px;border-radius:var(--cl-r-medio)}
+.cl .cl-cuadro-grande{width:56px;height:56px;border-radius:14px}
+
+/* ── datos clave ──
+   Cifras grandes con su rótulo: el resumen de unas métricas. */
+.cl .cl-datos-clave{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;list-style:none;margin:0;padding:0}
+.cl .cl-dato-clave{padding:18px 20px;border-radius:var(--cl-r-medio);background:var(--cl-campo);border:1px solid var(--cl-linea)}
+.cl .cl-dato-clave b{display:block;font-size:30px;font-weight:var(--cl-peso-extra);letter-spacing:-.03em;line-height:1.1;color:var(--cl-texto);font-variant-numeric:tabular-nums}
+.cl .cl-dato-clave span{font-size:12.5px;color:var(--cl-texto-2)}

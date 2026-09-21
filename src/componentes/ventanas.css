@@ -1,0 +1,70 @@
+/* ═══ VENTANAS Y MENÚS ═══ */
+
+/* ── ventana modal ──
+   La capa oscurece la página; la caja lleva role="dialog" y aria-modal.
+   El guion mete el foco al abrir, lo hace dar vueltas dentro y lo devuelve
+   al botón que la abrió al cerrar. */
+.cl .cl-modal{
+  position:fixed;inset:0;z-index:var(--cl-z-modal);display:grid;place-items:center;padding:24px;
+  background:var(--cl-velo-modal);opacity:0;transition:opacity .18s ease
+}
+.cl .cl-modal.cl-visible{opacity:1}
+.cl .cl-caja{
+  position:relative;width:min(520px,100%);max-height:calc(100vh - 48px);overflow:auto;padding:30px 32px 28px;
+  border-radius:var(--cl-r-grande);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-3)
+}
+.cl .cl-caja-ancha{width:min(680px,100%)}
+.cl .cl-caja h2{font-size:var(--cl-t-seccion);font-weight:var(--cl-peso-negrita);letter-spacing:-.01em;padding-right:32px}
+.cl .cl-caja > p{margin-top:14px;font-size:var(--cl-t-ui);color:var(--cl-texto-2);line-height:1.55}
+.cl .cl-caja-pie{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid var(--cl-linea)}
+.cl .cl-cerrar{
+  position:absolute;top:14px;right:14px;display:grid;place-items:center;width:32px;height:32px;border-radius:var(--cl-r-control);
+  color:var(--cl-texto-3);transition:background var(--cl-mov-rapido) ease,color var(--cl-mov-rapido) ease
+}
+.cl .cl-cerrar:hover{background:var(--cl-flotar);color:var(--cl-texto)}
+
+/* ── menú desplegable ──
+   Opaco a propósito: suele vivir dentro de la barra superior, que ya es de
+   vidrio, y un backdrop-filter anidado solo ve a su padre, no la página. */
+.cl .cl-menu-ancla{position:relative}
+.cl .cl-menu{
+  position:absolute;right:0;top:calc(100% + 10px);z-index:60;width:340px;max-width:calc(100vw - 24px);padding:8px;
+  border-radius:var(--cl-r-medio);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-3)
+}
+.cl .cl-menu-izquierda{right:auto;left:0}
+.cl .cl-menu > .cl-rotulo{padding:8px 10px 6px}
+.cl .cl-menu a,.cl .cl-menu button{
+  display:flex;align-items:center;gap:12px;width:100%;padding:10px;border-radius:var(--cl-r-control);
+  text-align:left;transition:background var(--cl-mov-rapido) ease
+}
+.cl .cl-menu :is(a,button):hover,.cl .cl-menu :is(a,button):focus-visible{background:var(--cl-acento-suave)}
+.cl .cl-menu :is(a,button) > span:not(.cl-cuadro){flex:1;min-width:0}
+.cl .cl-menu b{display:block;font-size:var(--cl-t-ui);font-weight:var(--cl-peso-semi)}
+.cl .cl-menu small{display:block;font-size:12.5px;color:var(--cl-texto-2);line-height:1.35}
+.cl .cl-menu :is(a,button) > .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-menu hr{border:0;border-top:1px solid var(--cl-linea);margin:6px 4px}
+
+/* ── selector segmentado ──
+   Dos a cinco formas de ver lo mismo. Si son enlaces, la marcada lleva
+   aria-current; si son botones que cambian una vista, aria-pressed. */
+.cl .cl-segmentado{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:10px;background:var(--cl-campo);border:1px solid var(--cl-linea)}
+.cl .cl-segmentado :is(a,button){padding:6px 14px;border-radius:7px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2);transition:color var(--cl-mov-rapido) ease}
+.cl .cl-segmentado :is(a,button):hover{color:var(--cl-texto)}
+.cl .cl-segmentado :is([aria-current]:not([aria-current="false"]),[aria-pressed="true"]){background:var(--cl-superficie);color:var(--cl-texto);font-weight:var(--cl-peso-semi);box-shadow:var(--cl-sombra-1)}
+
+/* ── lista plegable ──
+   Un <details> con cara de tarjeta: rutas, enlaces, preguntas. */
+.cl .cl-plegable{border:1px solid var(--cl-superficie-linea);border-radius:var(--cl-r-medio);padding:0 16px;background:var(--cl-superficie);box-shadow:var(--cl-sombra-1)}
+.cl .cl-plegable + .cl-plegable{margin-top:10px}
+.cl .cl-plegable > summary{display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer;font-size:14.5px;list-style:none}
+.cl .cl-plegable > summary::-webkit-details-marker{display:none}
+.cl .cl-plegable > summary::before{
+  content:"";flex:none;width:7px;height:7px;margin:0 2px;border-right:2px solid var(--cl-texto-3);border-bottom:2px solid var(--cl-texto-3);
+  transform:rotate(-45deg);transition:transform var(--cl-mov-medio) ease
+}
+.cl .cl-plegable[open] > summary::before{transform:rotate(45deg)}
+.cl .cl-plegable > summary b{font-weight:var(--cl-peso-semi)}
+.cl .cl-plegable > summary:hover b{color:var(--cl-acento)}
+.cl .cl-plegable > summary .cl-texto-3{font-size:var(--cl-t-nota)}
+.cl .cl-plegable[open] > summary{border-bottom:1px solid var(--cl-linea);margin-bottom:14px}
+.cl .cl-plegable-cuerpo{padding:4px 0 16px}

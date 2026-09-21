@@ -1,0 +1,2 @@
+/* Va en línea dentro del <head>, antes de la hoja: pone el tema y el pliegue de la barra antes de pintar, para que no haya destello. */
+(function(r){try{var k=r.getAttribute("data-cl-clave")||"cl",t=localStorage.getItem(k+"-tema"),l=localStorage.getItem(k+"-lat");if(t)r.setAttribute("data-theme",t);if(l==="plegada"||(!l&&r.getAttribute("data-cl-lat-inicial")==="plegada"))r.classList.add("cl-lat-plegada")}catch(e){}})(document.documentElement);

@@ -1,0 +1,37 @@
+/* ═══ AVISOS ═══
+   Lo que la página le dice a quien la usa: que algo salió bien, que hay
+   que revisar algo, que falló, o un dato que conviene saber. El color
+   nunca va solo: el texto dice lo que pasó y el icono lo refuerza. */
+
+.cl .cl-aviso{
+  display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border-radius:var(--cl-r-medio);
+  font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);line-height:1.5;
+  color:var(--cl-info-texto);background:var(--cl-info-fondo);border:1px solid var(--cl-info-linea)
+}
+.cl .cl-aviso > .cl-ico{margin-top:1px;color:currentColor}
+.cl .cl-aviso b{font-weight:var(--cl-peso-negrita)}
+.cl .cl-aviso a{text-decoration:underline;text-underline-offset:2px}
+.cl .cl-aviso-exito{color:var(--cl-exito-texto);background:var(--cl-exito-fondo);border-color:var(--cl-exito-linea)}
+.cl .cl-aviso-advertencia{color:var(--cl-advertencia-texto);background:var(--cl-advertencia-fondo);border-color:var(--cl-advertencia-linea)}
+.cl .cl-aviso-error{color:var(--cl-error-texto);background:var(--cl-error-fondo);border-color:var(--cl-error-linea)}
+
+/* ── el aviso flotante ──
+   Abajo al centro, un momento: «copiado», «guardado». Lo pinta el guion
+   con CodeLibri.aviso("texto"); va en una región con aria-live para que
+   también se oiga. */
+.cl .cl-flotante{
+  position:fixed;left:50%;bottom:26px;z-index:var(--cl-z-aviso);display:flex;align-items:center;gap:10px;
+  max-width:calc(100vw - 32px);padding:10px 12px 10px 16px;border-radius:var(--cl-r-medio);font-size:13.5px;
+  color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-3);
+  opacity:0;pointer-events:none;transform:translateX(-50%) translateY(10px);
+  transition:opacity var(--cl-mov-medio) ease,transform var(--cl-mov-medio) ease
+}
+.cl .cl-flotante.cl-visible{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.cl .cl-flotante .cl-boton{--cl-boton-alto:32px;padding:0 12px;font-size:var(--cl-t-nota)}
+
+/* ── vacío ──
+   Cuando una lista no tiene nada que enseñar: se dice por qué y qué hacer. */
+.cl .cl-vacio{display:flex;flex-direction:column;align-items:center;gap:10px;padding:40px 20px;text-align:center;border-radius:var(--cl-r-grande);border:1px dashed var(--cl-linea-2)}
+.cl .cl-vacio > .cl-cuadro{margin-bottom:4px}
+.cl .cl-vacio h3{font-size:var(--cl-t-subseccion)}
+.cl .cl-vacio p{font-size:var(--cl-t-ui);color:var(--cl-texto-2);max-width:48ch;line-height:1.5}
