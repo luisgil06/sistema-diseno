@@ -342,7 +342,6 @@
     }
   },
   "pendiente": [
-    "El marco «Paleta de Color» (1:6) usa de fondo Text/text-50 #EEEEF0, variable de una biblioteca «Colores» que no está conectada. Preguntar a Luis antes de tocarlo.",
     "Code Connect no se hizo: el sistema es HTML y CSS sin framework; las descripciones de cada componente llevan su marcado."
   ],
   "iconos": {
@@ -355,5 +354,8 @@
     "Display y Título llevan su tamaño mayor (Figma no tiene clamp).",
     "Al apuntar del Botón no es variante: se documenta con instancias (30 variantes es el tope).",
     "Área de texto: interlineado 1.55 del estilo Texto/Interfaz en vez de 1.5."
+  ],
+  "resuelto": [
+    "21 de septiembre de 2026: el fondo del marco «Paleta de Color» (1:6) pasó de Text/text-50 #EEEEF0 (biblioteca «Colores» desconectada) a la variable local Paleta text/50 #eaeaeb, por decisión de Luis."
   ]
 }
