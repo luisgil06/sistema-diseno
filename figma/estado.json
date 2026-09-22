@@ -1,6 +1,6 @@
 {
   "archivo": "VJnzekSGdZmIlyN2482cN8",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "fase": "terminada",
   "hecho": [
     "fase0",
@@ -14,7 +14,11 @@
     "fase2-paginas",
     "fase3-componentes",
     "iconos-aplanados",
-    "fase4-revision"
+    "fase4-revision",
+    "0.3.0-variables",
+    "0.3.0-iconos",
+    "0.3.0-pestanas",
+    "0.3.0-desvios"
   ],
   "colecciones": {
     "Paleta": {
@@ -118,7 +122,7 @@
   "componentes": {
     "iconos": {
       "rejilla": "56:9",
-      "nota": "55 componentes Icono/<clave>; se buscan por nombre. Algunos: descargar 56:146, flecha 56:188, compartir 56:104, corazon 56:115, buscar 56:57, cerrar 56:77, check 56:82, info 56:33… (ver get_metadata de 56:9)"
+      "nota": "65 componentes Icono/<clave>; se buscan por nombre. Algunos: descargar 56:146, flecha 56:188, compartir 56:104, corazon 56:115, buscar 56:57, cerrar 56:77, check 56:82, info 56:33… (ver get_metadata de 56:9)"
     },
     "Botón": {
       "set": "59:2",
@@ -339,23 +343,40 @@
       "telefono": "94:384",
       "cajon": "94:473",
       "doc": "94:929"
+    },
+    "Pestaña": {
+      "set": "107:72",
+      "pagina": "Navegación",
+      "props": {
+        "Texto": "Texto#107:0",
+        "Icono": "Icono#107:3",
+        "Con icono": "Con icono#107:6",
+        "Marcada": "VARIANT"
+      }
+    },
+    "Pestañas": {
+      "comp": "107:868",
+      "pagina": "Navegación"
     }
   },
   "pendiente": [
     "Code Connect no se hizo: el sistema es HTML y CSS sin framework; las descripciones de cada componente llevan su marcado."
   ],
   "iconos": {
-    "regla": "Cada Icono/<clave> tiene una sola capa «Trazo». Al intercambiar el icono de una instancia, Figma conserva el color porque el nombre coincide. Los intercambios hechos con setProperties ANTES del aplanado se corrigieron uno por uno."
+    "regla": "Cada Icono/<clave> tiene una sola capa «Trazo». Al intercambiar el icono de una instancia, Figma conserva el color porque el nombre coincide. Los intercambios hechos con setProperties ANTES del aplanado se corrigieron uno por uno.",
+    "trampa": "Al cambiar la variante de una instancia y volver a asignarle en la misma llamada el icono que ya tenía, Figma descarta el color del Trazo (pasó con la pestaña Índice, 22 de septiembre de 2026). Crear la instancia desde la variante correcta y no reasignar el icono por omisión."
   },
   "desvios": [
-    "Etiqueta vacía en oscuro: la hoja usa rgba(255,255,255,.03) sin token; en Figma va enlazada a superficie.",
-    "Separador de las migas en oscuro: la hoja cambia a text-400 sin token; en Figma va enlazado a text-100.",
-    "Raya de avance de la tarjeta: rgba(20,20,22,.18) literal, igual que en la hoja.",
     "Display y Título llevan su tamaño mayor (Figma no tiene clamp).",
-    "Al apuntar del Botón no es variante: se documenta con instancias (30 variantes es el tope).",
-    "Área de texto: interlineado 1.55 del estilo Texto/Interfaz en vez de 1.5."
+    "Al apuntar del Botón no es variante: se documenta con instancias (30 variantes es el tope)."
   ],
   "resuelto": [
-    "21 de septiembre de 2026: el fondo del marco «Paleta de Color» (1:6) pasó de Text/text-50 #EEEEF0 (biblioteca «Colores» desconectada) a la variable local Paleta text/50 #eaeaeb, por decisión de Luis."
-  ]
+    "21 de septiembre de 2026: el fondo del marco «Paleta de Color» (1:6) pasó de Text/text-50 #EEEEF0 (biblioteca «Colores» desconectada) a la variable local Paleta text/50 #eaeaeb, por decisión de Luis.",
+    "22 de septiembre de 2026 (0.3.0): la etiqueta vacía en oscuro, el separador de las migas y la raya de avance pasan a tokens (etiqueta-fondo, separador, raya) en la hoja y en Figma; el área de texto usa el interlineado 1.55 del estilo, también en la hoja."
+  ],
+  "variablesNuevas": {
+    "Tema:superficie/etiqueta-fondo": "VariableID:104:2",
+    "Tema:texto/separador": "VariableID:104:3",
+    "Tema:control/raya": "VariableID:104:4"
+  }
 }

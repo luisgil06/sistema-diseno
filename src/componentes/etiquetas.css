@@ -9,10 +9,9 @@
   display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
   font-size:var(--cl-t-etiqueta);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;line-height:1.2;
   padding:4px 10px;border-radius:var(--cl-r-chico);
-  color:var(--cl-f-texto,var(--cl-texto-2));background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);
+  color:var(--cl-f-texto,var(--cl-texto-2));background:var(--cl-etiqueta-fondo);border:1px solid var(--cl-superficie-linea);
   box-shadow:0 1px 2px rgba(20,20,22,.03)
 }
-[data-theme="dark"] .cl .cl-etiqueta,.cl [data-theme="dark"] .cl-etiqueta{background:rgba(255,255,255,.03)}
 /* Una etiqueta que lleva a su página: el filete toma el color al apuntar. */
 .cl a.cl-etiqueta{transition:border-color var(--cl-mov-medio) ease}
 .cl a.cl-etiqueta:hover{border-color:currentColor}

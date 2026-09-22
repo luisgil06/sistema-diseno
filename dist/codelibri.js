@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.2.0 · guion
+ * Sistema de diseño CodeLibri 0.3.0 · guion
  * (c) CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  *
  * Se engancha solo por atributos data-cl-*; no hace falta escribir código
@@ -17,6 +17,7 @@
  *   data-cl-mover="-1" / "1"     sus flechas, dentro de la misma .cl-seccion
  *   data-cl-buscar               el campo al que lleva la tecla «/»
  *   data-cl-copiar="#selector"   copia el texto de ese elemento
+ *   data-cl-pestanas             la fila de pestañas (role="tablist")
  *
  * Y desde fuera: CodeLibri.aviso("Guardado"), CodeLibri.abrir("id"),
  * CodeLibri.cerrar(), CodeLibri.tema("dark").
@@ -188,6 +189,37 @@
     });
   }
 
+  /* ── pestañas ──
+     Cada pestaña es un botón role="tab" con aria-controls hacia su panel
+     (role="tabpanel"). La marcada lleva aria-selected="true" y es la única
+     alcanzable con el tabulador; las flechas, Inicio y Fin pasan de una a
+     otra y la muestran, como pide el patrón de ARIA. */
+  function pestanas() {
+    todos('[data-cl-pestanas]').forEach(function (fila) {
+      var tabs = todos('[role="tab"]', fila);
+      function elegir(t, enfocar) {
+        tabs.forEach(function (x) {
+          var si = x === t;
+          x.setAttribute('aria-selected', si ? 'true' : 'false');
+          x.tabIndex = si ? 0 : -1;
+          var p = d.getElementById(x.getAttribute('aria-controls'));
+          if (p) p.hidden = !si;
+        });
+        if (enfocar) t.focus();
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { elegir(t); });
+        t.addEventListener('keydown', function (e) {
+          var n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+          if (n === undefined) return;
+          e.preventDefault();
+          elegir(tabs[(n + tabs.length) % tabs.length], true);
+        });
+      });
+      elegir(tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || tabs[0]);
+    });
+  }
+
   /* ── iconos ──
      Con data-cl-iconos="ruta/iconos.svg" en <html>, el sprite se trae una
      vez y se mete en la página: así <use href="#cl-buscar"> funciona igual
@@ -261,6 +293,7 @@
     });
 
     carruseles();
+    pestanas();
 
     d.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
@@ -277,6 +310,6 @@
     });
   }
 
-  w.CodeLibri = { version: '0.2.0', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
+  w.CodeLibri = { version: '0.3.0', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }(window, document));

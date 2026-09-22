@@ -40,7 +40,7 @@
 /* Un dato que invita a volver —«va por la 10 de 25»— va en el acento. */
 .cl .cl-tarjeta-pie .cl-dato.cl-acento{color:var(--cl-acento);font-weight:var(--cl-peso-semi)}
 /* El avance: una raya en el pie de la imagen, con el degradado de la casa. */
-.cl .cl-tarjeta-avance{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:rgba(20,20,22,.18)}
+.cl .cl-tarjeta-avance{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:var(--cl-raya)}
 .cl .cl-tarjeta-avance > i{display:block;height:100%;background:var(--cl-grad-explorar)}
 /* El puesto dentro de una serie: un círculo blanco en la esquina. */
 .cl .cl-tarjeta-paso{position:absolute;top:12px;left:12px;z-index:2;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-negrita);color:var(--cl-primary-700);background:#fff;box-shadow:0 2px 6px rgba(20,20,22,.2)}

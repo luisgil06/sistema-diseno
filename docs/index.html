@@ -104,7 +104,7 @@
   <!-- ═══ CÓMO SE USA ═══ -->
   <section class="doc-seccion" id="uso" aria-labelledby="t-uso">
     <header class="doc-cab"><p class="cl-rotulo">Empezar</p><h2 class="cl-titulo" id="t-uso">Cómo se usa</h2>
-      <p>Un producto necesita cinco archivos de <code class="cl-mono">dist/</code>: la hoja, el guion, la cabecera, el sprite de iconos y la carpeta de fuentes. Se copian a su servidor y se enlazan así.</p></header>
+      <p>Una página sin compilador necesita cinco archivos de <code class="cl-mono">dist/</code>: la hoja, el guion, la cabecera, el sprite de iconos y la carpeta de fuentes. Se copian a su servidor —<code class="cl-mono">herramientas/llevar.js</code> lo hace con la versión anotada— y se enlazan así. Un producto en React lo instala con npm: ver más abajo.</p></header>
 
     <div class="doc-sub">
       <h3>1. La cabecera</h3>
@@ -127,6 +127,19 @@
       <h3>3. Los iconos</h3>
       <p>Con <code class="cl-mono">data-cl-iconos</code> en <code class="cl-mono">&lt;html&gt;</code>, el guion trae el sprite una vez y lo mete en la página. Cada icono es un <code class="cl-mono">&lt;use&gt;</code> con el nombre precedido de <code class="cl-mono">cl-</code>. El dibujo no se lee: si el icono va solo, el botón necesita <code class="cl-mono">aria-label</code>.</p>
 <pre class="cl-codigo">&lt;svg class="cl-ico" width="20" height="20" aria-hidden="true"&gt;&lt;use href="#cl-buscar"/&gt;&lt;/svg&gt;</pre>
+    </div>
+    <div class="doc-sub">
+      <h3>En un producto con React</h3>
+      <p>Se instala con npm desde el repositorio, fijado a una versión. La hoja trae sus fuentes y Vite las empaqueta; los tokens y los iconos llegan también como módulos, y <code class="cl-mono">&lt;Icono&gt;</code> dibuja cualquiera de los del sistema sin sprite.</p>
+<pre class="cl-codigo">npm install github:luisgil06/sistema-diseno#v0.3.0
+
+import '@codelibri/sistema/codelibri.css';
+import { tema, paleta } from '@codelibri/sistema';
+import { Icono } from '@codelibri/sistema/react';
+
+&lt;button className="cl-boton cl-boton-icono" aria-label="Buscar"&gt;
+  &lt;Icono nombre="buscar" /&gt;
+&lt;/button&gt;</pre>
     </div>
     <div class="doc-sub">
       <h3>4. Cambiar algo</h3>
@@ -456,6 +469,19 @@
           <a class="cl-tarjeta" href="#navegacion"><span class="cl-tarjeta-imagen"><img src="img/portada-dpga-mg12.jpg" alt=""></span><span class="cl-tarjeta-cuerpo"><span class="cl-etiqueta cl-f-secondary">Animación</span><span class="cl-tarjeta-titulo">Los doce del motion graphics</span></span></a>
         </div>
       </section>
+    </div>
+    <div class="doc-sub"><h3>Pestañas</h3>
+      <p>Paneles que comparten el mismo sitio. El marcado es el de ARIA y, con <code class="cl-mono">data-cl-pestanas</code>, el guion cambia el panel y mueve el foco con las flechas. Con <code class="cl-mono">cl-pestanas-llenas</code> se reparten el ancho, para una columna estrecha.</p>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-pestanas cl-pestanas-llenas" role="tablist" aria-label="Panel del libro" data-cl-pestanas style="max-width:420px">
+          <button class="cl-pestana" type="button" role="tab" id="doc-p-1" aria-controls="doc-pp-1" aria-selected="true"><i data-ico="lista" data-t="16"></i>Índice</button>
+          <button class="cl-pestana" type="button" role="tab" id="doc-p-2" aria-controls="doc-pp-2" aria-selected="false"><i data-ico="buscar" data-t="16"></i>Buscar</button>
+          <button class="cl-pestana" type="button" role="tab" id="doc-p-3" aria-controls="doc-pp-3" aria-selected="false"><i data-ico="marcador" data-t="16"></i>Guardado</button>
+        </div>
+        <div role="tabpanel" id="doc-pp-1" aria-labelledby="doc-p-1" class="cl-nota" style="padding:16px 4px">Capítulo I · Capítulo II · Capítulo III</div>
+        <div role="tabpanel" id="doc-pp-2" aria-labelledby="doc-p-2" class="cl-nota" style="padding:16px 4px" hidden>El buscador del libro.</div>
+        <div role="tabpanel" id="doc-pp-3" aria-labelledby="doc-p-3" class="cl-nota" style="padding:16px 4px" hidden>Marcadores y subrayados.</div>
+      </div>
     </div>
   </section>
 

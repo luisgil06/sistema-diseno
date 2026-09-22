@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.2.0
+ * Sistema de diseño CodeLibri 0.3.0
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -116,6 +116,9 @@
   --cl-velo-modal:rgba(14,10,32,.5);
   --cl-barra:rgba(20,20,22,.1);
   --cl-barra-viva:rgba(20,20,22,.2);
+  --cl-etiqueta-fondo:#ffffff;
+  --cl-separador:var(--cl-text-100);
+  --cl-raya:rgba(20,20,22,.18);
   --cl-f-primary-fondo:var(--cl-primary-50);
   --cl-f-primary-linea:var(--cl-primary-100);
   --cl-f-primary-texto:var(--cl-primary-600);
@@ -171,6 +174,9 @@
   --cl-velo-modal:rgba(0,0,0,.6);
   --cl-barra:rgba(255,255,255,.1);
   --cl-barra-viva:rgba(255,255,255,.2);
+  --cl-etiqueta-fondo:rgba(255,255,255,.03);
+  --cl-separador:var(--cl-text-400);
+  --cl-raya:rgba(20,20,22,.18);
   --cl-f-primary-fondo:rgba(108,85,246,.18);
   --cl-f-primary-linea:transparent;
   --cl-f-primary-texto:var(--cl-primary-300);
@@ -430,7 +436,7 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bfbfc0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
 }
 .cl .cl-campo select option{color:var(--cl-texto);background:var(--cl-superficie)}
-.cl .cl-campo textarea{min-height:88px;resize:vertical;line-height:1.5}
+.cl .cl-campo textarea{min-height:88px;resize:vertical;line-height:var(--cl-lh-normal)}
 .cl .cl-campo :is(input,textarea)::placeholder,.cl .cl-entrada-texto::placeholder{color:var(--cl-texto-3)}
 /* El foco con el anillo del acento. El contorno transparente no se ve,
    pero es el que pinta Windows en alto contraste, donde las sombras
@@ -547,10 +553,9 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
   display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
   font-size:var(--cl-t-etiqueta);font-weight:var(--cl-peso-negrita);letter-spacing:var(--cl-tr-rotulo);text-transform:uppercase;line-height:1.2;
   padding:4px 10px;border-radius:var(--cl-r-chico);
-  color:var(--cl-f-texto,var(--cl-texto-2));background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);
+  color:var(--cl-f-texto,var(--cl-texto-2));background:var(--cl-etiqueta-fondo);border:1px solid var(--cl-superficie-linea);
   box-shadow:0 1px 2px rgba(20,20,22,.03)
 }
-[data-theme="dark"] .cl .cl-etiqueta,.cl [data-theme="dark"] .cl-etiqueta{background:rgba(255,255,255,.03)}
 /* Una etiqueta que lleva a su página: el filete toma el color al apuntar. */
 .cl a.cl-etiqueta{transition:border-color var(--cl-mov-medio) ease}
 .cl a.cl-etiqueta:hover{border-color:currentColor}
@@ -642,7 +647,7 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 /* Un dato que invita a volver —«va por la 10 de 25»— va en el acento. */
 .cl .cl-tarjeta-pie .cl-dato.cl-acento{color:var(--cl-acento);font-weight:var(--cl-peso-semi)}
 /* El avance: una raya en el pie de la imagen, con el degradado de la casa. */
-.cl .cl-tarjeta-avance{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:rgba(20,20,22,.18)}
+.cl .cl-tarjeta-avance{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:var(--cl-raya)}
 .cl .cl-tarjeta-avance > i{display:block;height:100%;background:var(--cl-grad-explorar)}
 /* El puesto dentro de una serie: un círculo blanco en la esquina. */
 .cl .cl-tarjeta-paso{position:absolute;top:12px;left:12px;z-index:2;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-negrita);color:var(--cl-primary-700);background:#fff;box-shadow:0 2px 6px rgba(20,20,22,.2)}
@@ -802,8 +807,7 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
    Dónde se está. El último paso no es enlace: va en una cajita. */
 .cl .cl-migas{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
 .cl .cl-migas a:hover{color:var(--cl-texto)}
-.cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-100)}
-[data-theme="dark"] .cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-400)}
+.cl .cl-migas [aria-hidden="true"]{color:var(--cl-separador)}
 .cl .cl-migas [aria-current="page"]{color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1);padding:2px 8px;border-radius:var(--cl-r-chico)}
 
 /* ── cabecera de sección ──
@@ -847,6 +851,29 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 .cl .cl-rejilla-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 @media (max-width:1180px){.cl .cl-rejilla-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.cl .cl-rejilla-3{grid-template-columns:minmax(0,1fr);gap:12px}}
+
+/* ── pestañas ──
+   Paneles que comparten el mismo sitio: índice, búsqueda, guardado. La
+   marcada lleva el acento y una raya debajo; las demás, en gris. El
+   marcado es el de ARIA —role="tablist", botones role="tab" con
+   aria-selected y aria-controls, paneles role="tabpanel"— y con
+   data-cl-pestanas el guion hace el resto. Con .cl-pestanas-llenas se
+   reparten el ancho a partes iguales, para columnas estrechas. */
+.cl .cl-pestanas{display:flex;gap:2px;border-bottom:1px solid var(--cl-linea);overflow-x:auto;scrollbar-width:none}
+.cl .cl-pestanas::-webkit-scrollbar{display:none}
+.cl .cl-pestana{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:none;
+  height:44px;padding:0 14px;margin-bottom:-1px;
+  font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);white-space:nowrap;color:var(--cl-texto-2);
+  border-bottom:2px solid transparent;
+  transition:color var(--cl-mov-rapido) ease,border-color var(--cl-mov-medio) ease
+}
+.cl .cl-pestana .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-pestana:hover{color:var(--cl-texto)}
+.cl .cl-pestana[aria-selected="true"]{color:var(--cl-acento);font-weight:var(--cl-peso-semi);border-bottom-color:var(--cl-acento-solido)}
+.cl .cl-pestana[aria-selected="true"] .cl-ico{color:currentColor}
+.cl .cl-pestana:focus-visible{outline-offset:-2px;border-radius:var(--cl-r-chico) var(--cl-r-chico) 0 0}
+.cl .cl-pestanas-llenas .cl-pestana{flex:1 1 0;padding:0 8px}
 
 /* ═══ DATOS ═══ */
 

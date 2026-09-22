@@ -259,6 +259,10 @@ escribir('dist/tokens.js', modTokens.js);
 escribir('dist/tokens.d.ts', modTokens.dts);
 escribir('dist/iconos.js', modIconos.js);
 escribir('dist/iconos.d.ts', modIconos.dts);
+/* El componente de icono para React: se escribe a mano en src/react/ y
+   aquí solo se le pone la versión. */
+escribir('dist/react.js', leer('src/react/react.js').replace(/__VERSION__/g, VERSION));
+escribir('dist/react.d.ts', leer('src/react/react.d.ts').replace(/__VERSION__/g, VERSION));
 escribir('docs/tokens.js', '/* Generado por herramientas/compilar.js */\nwindow.CL_TOKENS = ' + JSON.stringify(resueltos) + ';\n');
 /* El sprite, metido en la propia página: así <use href="#cl-…"> funciona
    también abriendo la documentación con doble clic, sin servidor. */

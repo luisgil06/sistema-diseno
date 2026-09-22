@@ -13,6 +13,29 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.3.0 · 22 de septiembre de 2026
+
+Crecimiento: lo que pedían los productos, y el código y Figma a la par.
+
+- **Diez iconos nuevos** (65 en total): subir, letra, menos, una página,
+  restablecer, marcador, marcador guardado, lista, paleta y borrar. Salieron
+  de lo que usa el EPUB Reader y el sistema no tenía.
+- **Pestañas** (`.cl-pestanas`, `.cl-pestana`, `.cl-pestanas-llenas`): paneles
+  que comparten el mismo sitio, con el marcado de ARIA. Con
+  `data-cl-pestanas`, el guion cambia el panel y mueve el foco con las flechas.
+- **`@codelibri/sistema/react`**, con `<Icono nombre="…" />`. React es una
+  dependencia opcional: la pone el producto.
+- **Tres tokens de tema** que cierran los desvíos entre el código y Figma:
+  `etiqueta-fondo`, `separador` y `raya`. El área de texto usa el
+  interlineado normal (1.55), como su estilo en Figma. Solo quedan dos
+  diferencias, y las dos son límites de Figma: los tamaños con `clamp()` y el
+  estado «al apuntar» del botón.
+- **Corrección:** en modo oscuro, una etiqueta rellena (`.cl-etiqueta-llena`)
+  perdía su fondo, porque la regla del oscuro pesaba más.
+- **Figma, al día:** las tres variables, los diez iconos, los componentes
+  Pestaña y Pestañas, y la etiqueta, las migas y la raya enlazadas a sus
+  variables nuevas.
+
 ## 0.2.0 · 22 de septiembre de 2026
 
 Crecimiento: el sistema sale hacia los productos.

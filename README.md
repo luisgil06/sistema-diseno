@@ -17,8 +17,9 @@ src/                      las hojas y el guion, por partes
   componentes/*.css       botones, campos, interruptor, etiquetas, tarjetas,
                           avisos, ventanas, navegación, datos
   armazon.css             barra lateral, barra superior, contenido, pie, cajón
-  js/codelibri.js         tema, foco, cajón, menús, ventanas, carruseles
+  js/codelibri.js         tema, foco, cajón, menús, ventanas, carruseles, pestañas
   js/cabeza.js            lo que va en línea en el <head>
+  react/                  <Icono> para los productos en React
 iconos/iconos.json        los iconos: nombre y trazo
 herramientas/
   compilar.js             genera dist/ y mide el contraste
@@ -86,10 +87,10 @@ El repositorio es público y el paquete se instala desde GitHub, fijado a una
 etiqueta:
 
 ```
-npm install github:luisgil06/sistema-diseno#v0.2.0
+npm install github:luisgil06/sistema-diseno#v0.3.0
 ```
 
-Queda en `package.json` como `"@codelibri/sistema": "github:luisgil06/sistema-diseno#v0.2.0"`
+Queda en `package.json` como `"@codelibri/sistema": "github:luisgil06/sistema-diseno#v0.3.0"`
 y el `package-lock.json` anota el commit exacto. Hostinger lo descarga al
 compilar, sin credenciales. Para actualizar, se cambia la etiqueta, se vuelve a
 correr `npm install` y se hace commit en el producto.
@@ -98,6 +99,7 @@ correr `npm install` y se hace commit en el producto.
 import '@codelibri/sistema/codelibri.css';        // tokens, componentes, Inter
 import { tema, paleta, variable } from '@codelibri/sistema';
 import { iconos } from '@codelibri/sistema/iconos'; // nombre y trazo de cada icono
+import { Icono } from '@codelibri/sistema/react';    // <Icono nombre="buscar" />
 ```
 
 La hoja referencia sus fuentes con rutas relativas, así que Vite las empaqueta
@@ -151,8 +153,8 @@ desde el propio sitio.
 
 ## Convenciones
 
-- **Prefijo `cl-`** en clases y `--cl-` en variables: no chocan con un
-  WordPress ni con Divi.
+- **Prefijo `cl-`** en clases y `--cl-` en variables: no chocan con
+  WordPress ni con BeTheme y Elementor.
 - **Todo cuelga de `.cl`**, como el Aula colgaba de `body.app`. Fuera de esa
   zona la hoja no toca nada salvo las barras de desplazamiento de la página.
 - **Tema** con `data-theme="dark"` en `<html>` (o en una zona); **acento**
@@ -211,10 +213,10 @@ instancia, Figma conserva el color que le pone el componente que lo lleva.
 
 ## Lo que sigue
 
-- El rediseño de `codelibri.com.mx` con el sistema.
-- Dos literales de tema sin token en la hoja, que convendría volver tokens:
-  - el fondo de la etiqueta vacía en oscuro;
-  - el separador de las migas en oscuro.
+- El rediseño de `codelibri.com.mx`, que será WordPress con BeTheme y
+  Elementor: el sistema necesitará una salida para Elementor (colores y
+  tipografías globales).
+- Los productos, uno por uno: EPUB Reader, Guía SAT y Bloques.
 
 ## Licencia
 

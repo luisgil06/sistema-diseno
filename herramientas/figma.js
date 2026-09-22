@@ -102,11 +102,11 @@ for (const [token, corto] of Object.entries(TRANSLUCIDOS)) {
 
 /* ── Tema ─────────────────────────────────────────────────────────── */
 const GRUPOS = [
-  ['superficie', ['fondo', 'superficie', 'vidrio', 'campo', 'flotar', 'mancha-1', 'mancha-2', 'velo', 'velo-modal']],
+  ['superficie', ['fondo', 'superficie', 'vidrio', 'campo', 'flotar', 'mancha-1', 'mancha-2', 'velo', 'velo-modal', 'etiqueta-fondo']],
   ['linea', ['superficie-linea', 'vidrio-linea', 'linea', 'linea-2']],
-  ['texto', ['texto', 'texto-2', 'texto-3']],
+  ['texto', ['texto', 'texto-2', 'texto-3', 'separador']],
   ['acento', ['acento', 'acento-solido', 'acento-suave', 'acento-linea', 'acento-sobre', 'foco']],
-  ['control', ['riel', 'perilla', 'barra', 'barra-viva']],
+  ['control', ['riel', 'perilla', 'barra', 'barra-viva', 'raya']],
 ];
 const RELLENO = ['FRAME_FILL', 'SHAPE_FILL'];
 const FILETE = ['STROKE_COLOR'];
@@ -114,7 +114,7 @@ const LETRA = ['TEXT_FILL', 'STROKE_COLOR'];
 function ambito(token) {
   if (token === 'acento-solido') return [...RELLENO, 'STROKE_COLOR'];
   if (token === 'foco') return ['STROKE_COLOR', 'EFFECT_COLOR'];
-  if (/^(texto|acento|acento-sobre)$|-texto(-\d)?$|^texto-\d$/.test(token)) return LETRA;
+  if (/^(texto|acento|acento-sobre|separador)$|-texto(-\d)?$|^texto-\d$/.test(token)) return LETRA;
   if (/linea(-2)?$/.test(token)) return FILETE;
   return RELLENO;
 }

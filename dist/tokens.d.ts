@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.2.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.3.0 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -178,6 +178,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -232,6 +235,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -286,6 +292,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -342,6 +351,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -396,6 +408,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -450,6 +465,9 @@ export declare const tema: {
       readonly "velo-modal": string;
       readonly barra: string;
       readonly "barra-viva": string;
+      readonly "etiqueta-fondo": string;
+      readonly separador: string;
+      readonly raya: string;
       readonly "f-primary-fondo": string;
       readonly "f-primary-linea": string;
       readonly "f-primary-texto": string;
@@ -489,6 +507,9 @@ export declare const notas: {
   readonly "sombra-marca": string;
   readonly velo: string;
   readonly barra: string;
+  readonly "etiqueta-fondo": string;
+  readonly separador: string;
+  readonly raya: string;
 };
 export declare const tipo: {
   readonly fuente: string;
@@ -621,6 +642,7 @@ export declare const iconos: {
   readonly arriba: string;
   readonly birrete: string;
   readonly bloques: string;
+  readonly borrar: string;
   readonly buscar: string;
   readonly cafe: string;
   readonly catalogo: string;
@@ -649,22 +671,31 @@ export declare const iconos: {
   readonly info: string;
   readonly inicio: string;
   readonly izquierda: string;
+  readonly letra: string;
   readonly libro: string;
+  readonly lista: string;
   readonly luna: string;
+  readonly marcador: string;
+  readonly "marcador-guardado": string;
   readonly matraz: string;
+  readonly menos: string;
   readonly menu: string;
   readonly microfono: string;
   readonly mundo: string;
   readonly ojo: string;
+  readonly pagina: string;
+  readonly paleta: string;
   readonly pantalla: string;
   readonly plegar: string;
   readonly portafolio: string;
   readonly recibo: string;
   readonly regalo: string;
   readonly reproducir: string;
+  readonly restablecer: string;
   readonly ruta: string;
   readonly salir: string;
   readonly sol: string;
+  readonly subir: string;
   readonly tienda: string;
   readonly usuario: string;
   readonly ventana: string;

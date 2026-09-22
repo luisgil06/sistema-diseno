@@ -4,8 +4,7 @@
    Dónde se está. El último paso no es enlace: va en una cajita. */
 .cl .cl-migas{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2)}
 .cl .cl-migas a:hover{color:var(--cl-texto)}
-.cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-100)}
-[data-theme="dark"] .cl .cl-migas [aria-hidden="true"]{color:var(--cl-text-400)}
+.cl .cl-migas [aria-hidden="true"]{color:var(--cl-separador)}
 .cl .cl-migas [aria-current="page"]{color:var(--cl-texto);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1);padding:2px 8px;border-radius:var(--cl-r-chico)}
 
 /* ── cabecera de sección ──
@@ -49,3 +48,26 @@
 .cl .cl-rejilla-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 @media (max-width:1180px){.cl .cl-rejilla-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.cl .cl-rejilla-3{grid-template-columns:minmax(0,1fr);gap:12px}}
+
+/* ── pestañas ──
+   Paneles que comparten el mismo sitio: índice, búsqueda, guardado. La
+   marcada lleva el acento y una raya debajo; las demás, en gris. El
+   marcado es el de ARIA —role="tablist", botones role="tab" con
+   aria-selected y aria-controls, paneles role="tabpanel"— y con
+   data-cl-pestanas el guion hace el resto. Con .cl-pestanas-llenas se
+   reparten el ancho a partes iguales, para columnas estrechas. */
+.cl .cl-pestanas{display:flex;gap:2px;border-bottom:1px solid var(--cl-linea);overflow-x:auto;scrollbar-width:none}
+.cl .cl-pestanas::-webkit-scrollbar{display:none}
+.cl .cl-pestana{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:none;
+  height:44px;padding:0 14px;margin-bottom:-1px;
+  font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);white-space:nowrap;color:var(--cl-texto-2);
+  border-bottom:2px solid transparent;
+  transition:color var(--cl-mov-rapido) ease,border-color var(--cl-mov-medio) ease
+}
+.cl .cl-pestana .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-pestana:hover{color:var(--cl-texto)}
+.cl .cl-pestana[aria-selected="true"]{color:var(--cl-acento);font-weight:var(--cl-peso-semi);border-bottom-color:var(--cl-acento-solido)}
+.cl .cl-pestana[aria-selected="true"] .cl-ico{color:currentColor}
+.cl .cl-pestana:focus-visible{outline-offset:-2px;border-radius:var(--cl-r-chico) var(--cl-r-chico) 0 0}
+.cl .cl-pestanas-llenas .cl-pestana{flex:1 1 0;padding:0 8px}

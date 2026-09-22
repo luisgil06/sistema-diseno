@@ -28,7 +28,7 @@
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bfbfc0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
 }
 .cl .cl-campo select option{color:var(--cl-texto);background:var(--cl-superficie)}
-.cl .cl-campo textarea{min-height:88px;resize:vertical;line-height:1.5}
+.cl .cl-campo textarea{min-height:88px;resize:vertical;line-height:var(--cl-lh-normal)}
 .cl .cl-campo :is(input,textarea)::placeholder,.cl .cl-entrada-texto::placeholder{color:var(--cl-texto-3)}
 /* El foco con el anillo del acento. El contorno transparente no se ve,
    pero es el que pinta Windows en alto contraste, donde las sombras
