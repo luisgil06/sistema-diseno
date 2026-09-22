@@ -1,0 +1,47 @@
+MIT License
+
+Copyright (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+-------------------------------------------------------------------------------
+Marca reservada · Trademarks are not licensed
+-------------------------------------------------------------------------------
+
+La licencia MIT cubre el código, las hojas de estilo, los tokens, los iconos y
+la documentación de este repositorio. NO cubre la marca: el nombre
+«CodeLibri», su logotipo (dist/logo-codelibri.svg y docs/img/logo-codelibri.svg)
+ni las imágenes de muestra de docs/img, que siguen siendo de sus titulares y no
+se pueden usar sin permiso. Quien reutilice este sistema en un producto propio
+tiene que quitar el logotipo y no presentar su producto como de CodeLibri.
+
+The MIT License above covers the code, stylesheets, tokens, icons and
+documentation in this repository. It does NOT cover the brand: the name
+"CodeLibri", its logo (dist/logo-codelibri.svg and docs/img/logo-codelibri.svg)
+and the sample images in docs/img remain the property of their owners and may
+not be used without permission.
+
+
+-------------------------------------------------------------------------------
+Tipografía · Third-party font
+-------------------------------------------------------------------------------
+
+Inter (fuentes/ y dist/fuentes/) is licensed under the SIL Open Font License,
+Version 1.1. See fuentes/OFL.txt.

@@ -24,7 +24,10 @@ herramientas/
   compilar.js             genera dist/ y mide el contraste
   contraste.js            144 parejas de texto y fondo; falla si alguna baja de 4.5:1
   documento-unico.js      la documentación empaquetada en un solo HTML
+  llevar.js               copia una versión dentro de un producto
+  figma.js                los guiones que sincronizan la biblioteca de Figma
 dist/                     lo que usa un producto (se genera; no se edita)
+CHANGELOG.md              qué trajo cada versión
 docs/                     la documentación, hecha con el propio sistema
 ```
 
@@ -57,7 +60,71 @@ node herramientas/documento-unico.js ejemplo.html → docs/unico/ejemplo.html
 Con `--fragmento` sale sin `<html>`, `<head>` ni `<body>`, para un sitio
 que pone el esqueleto por su cuenta; así se publicó en claude.ai.
 
-## Usarlo en un producto
+## Versiones
+
+El número de versión está en `tokens/tokens.json` y cada una lleva su
+etiqueta en git (`v0.2.0`). Qué significa cada número y qué trajo cada
+versión: [`CHANGELOG.md`](CHANGELOG.md).
+
+Para sacar una versión:
+
+1. Cambiar `version` en `tokens/tokens.json` y anotarla en el `CHANGELOG.md`.
+2. `node herramientas/compilar.js` (se detiene si algún contraste no llega).
+3. Si cambiaron tokens o iconos, sincronizar Figma (ver más abajo).
+4. Commit y etiqueta: `git tag v0.2.0`. Al subir, que viajen también las
+   etiquetas: sin ellas ningún producto puede pedir esa versión.
+
+## Llevarlo a un producto
+
+**Cada producto usa una versión fija del sistema.** Una versión nueva no cambia
+ningún producto hasta que ese producto la pide. Hay dos caminos, según el
+producto.
+
+### Con npm: los productos en React (EPUB Reader, Guía SAT, Bloques)
+
+El repositorio es público y el paquete se instala desde GitHub, fijado a una
+etiqueta:
+
+```
+npm install github:luisgil06/sistema-diseno#v0.2.0
+```
+
+Queda en `package.json` como `"@codelibri/sistema": "github:luisgil06/sistema-diseno#v0.2.0"`
+y el `package-lock.json` anota el commit exacto. Hostinger lo descarga al
+compilar, sin credenciales. Para actualizar, se cambia la etiqueta, se vuelve a
+correr `npm install` y se hace commit en el producto.
+
+```js
+import '@codelibri/sistema/codelibri.css';        // tokens, componentes, Inter
+import { tema, paleta, variable } from '@codelibri/sistema';
+import { iconos } from '@codelibri/sistema/iconos'; // nombre y trazo de cada icono
+```
+
+La hoja referencia sus fuentes con rutas relativas, así que Vite las empaqueta
+solas y siguen saliendo del propio dominio del producto. `tokens` trae los
+mismos valores que la hoja, ya resueltos, para los productos que pintan con
+estilos en línea.
+
+### Con una copia: lo que no usa npm (el Aula, el tema de WordPress)
+
+```
+node herramientas/llevar.js "<carpeta del producto>" --carpeta sistema
+```
+
+Compila, vacía la carpeta de destino (por omisión `src/sistema`, y solo si es
+del sistema) y copia `dist/` con un `SISTEMA.json` al lado: versión, etiqueta,
+commit y la huella de cada archivo. Después, en el producto, se hace commit como
+cualquier otro cambio.
+
+Se niega si el sistema tiene cambios sin commit o si el commit actual no lleva
+la etiqueta de la versión. Para probar antes de etiquetar, `--borrador`, y
+`SISTEMA.json` lo deja escrito.
+
+**No se carga desde un CDN** aunque el repositorio sea público: sería una
+petición a un tercero en cada visita, justo lo que se evita sirviendo Inter
+desde el propio sitio.
+
+## Usarlo en una página sin compilador
 
 1. Copiar `dist/` al servidor del producto (por ejemplo, a `/sistema/`).
 2. En el `<head>`, el contenido de `codelibri-cabeza.js` **en línea** y
@@ -149,4 +216,10 @@ instancia, Figma conserva el color que le pone el componente que lo lleva.
   - el fondo de la etiqueta vacía en oscuro;
   - el separador de las migas en oscuro.
 
-Inter se distribuye con la SIL Open Font License 1.1.
+## Licencia
+
+El código, las hojas, los tokens, los iconos y la documentación se publican con
+la **licencia MIT**. **La marca queda fuera**: el nombre CodeLibri, su logotipo
+y las imágenes de muestra de `docs/img` no se pueden usar sin permiso. Inter se
+distribuye con la SIL Open Font License 1.1 (`fuentes/OFL.txt`). Detalle en
+[`LICENSE`](LICENSE).

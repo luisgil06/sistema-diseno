@@ -1,0 +1,52 @@
+{
+  "name": "@codelibri/sistema",
+  "version": "0.2.0",
+  "description": "Sistema de diseño CodeLibri: tokens, componentes, armazón, iconos e Inter, en una hoja CSS y módulos de JavaScript.",
+  "license": "MIT",
+  "author": "CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil",
+  "homepage": "https://github.com/luisgil06/sistema-diseno#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisgil06/sistema-diseno.git"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": [
+    "*.css",
+    "./dist/codelibri.js",
+    "./dist/codelibri-cabeza.js"
+  ],
+  "main": "./dist/tokens.js",
+  "types": "./dist/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./iconos": {
+      "types": "./dist/iconos.d.ts",
+      "default": "./dist/iconos.js"
+    },
+    "./codelibri.css": "./dist/codelibri.css",
+    "./codelibri.js": "./dist/codelibri.js",
+    "./codelibri-cabeza.js": "./dist/codelibri-cabeza.js",
+    "./tokens.json": "./dist/tokens.json",
+    "./iconos.json": "./dist/iconos.json",
+    "./iconos.svg": "./dist/iconos.svg",
+    "./logo-codelibri.svg": "./dist/logo-codelibri.svg",
+    "./fuentes/*": "./dist/fuentes/*",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "compilar": "node herramientas/compilar.js",
+    "contraste": "node herramientas/contraste.js"
+  }
+}

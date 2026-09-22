@@ -5,8 +5,10 @@
  * Lee tokens/tokens.json y las hojas de src/, y deja en dist/ lo que usa un
  * producto: codelibri.css (tokens, base, componentes y armazón en un solo
  * archivo), codelibri.js, el sprite de iconos, las fuentes y los tokens
- * resueltos en JSON para montar la biblioteca de Figma. También escribe
- * docs/tokens.js, que la documentación usa para pintar la paleta.
+ * resueltos en JSON para montar la biblioteca de Figma; y los mismos tokens
+ * y los iconos como módulos de JavaScript con sus tipos, para los productos
+ * en React. También escribe docs/tokens.js, que la documentación usa para
+ * pintar la paleta.
  *
  * Sin dependencias: node herramientas/compilar.js
  */
@@ -179,6 +181,49 @@ function tokensResueltos() {
   };
 }
 
+/* ── tokens para JavaScript ────────────────────────────────────────── */
+
+/* Los productos en React no siempre pueden leer la hoja: Bloques pinta con
+   objetos de estilo en línea. Para ellos van los mismos tokens resueltos
+   como módulo, con sus tipos, y los iconos con su trazo. Los valores son
+   los de tokens.json: un producto que los use no puede separarse de la hoja. */
+
+function tipoTs(v, sangria) {
+  if (Array.isArray(v)) return 'readonly string[]';
+  if (typeof v === 'number') return 'number';
+  if (v === null || typeof v !== 'object') return 'string';
+  const dentro = sangria + '  ';
+  const campos = Object.entries(v).map(([k, x]) =>
+    dentro + 'readonly ' + (/^[a-z_$][\w$]*$/i.test(k) ? k : JSON.stringify(k)) + ': ' + tipoTs(x, dentro) + ';');
+  return '{\n' + campos.join('\n') + '\n' + sangria + '}';
+}
+
+function moduloTokens(resueltos) {
+  const aviso = '/* Sistema de diseño CodeLibri ' + VERSION + ' · generado por herramientas/compilar.js; no se edita. */\n';
+  const claves = Object.keys(resueltos);
+  const js = aviso + claves.map((k) => 'export const ' + k + ' = ' + JSON.stringify(resueltos[k], null, 2) + ';').join('\n')
+    + '\n/** La variable CSS de un token de uso: variable("acento") → "var(--cl-acento)". */\n'
+    + 'export const variable = (nombre) => "var(--cl-" + nombre + ")";\n'
+    + 'export default { ' + claves.join(', ') + ', variable };\n';
+  const dts = aviso + claves.map((k) => 'export declare const ' + k + ': ' + tipoTs(resueltos[k], '') + ';').join('\n')
+    + '\nexport declare const variable: (nombre: string) => string;\n'
+    + 'declare const tokens: { ' + claves.map((k) => k + ': typeof ' + k).join('; ') + '; variable: typeof variable };\n'
+    + 'export default tokens;\n';
+  return { js, dts };
+}
+
+function moduloIconos() {
+  const aviso = '/* Sistema de diseño CodeLibri ' + VERSION + ' · generado por herramientas/compilar.js; no se edita.\n'
+    + '   Cada icono: su nombre y el trazo que va dentro de <svg viewBox="0 0 24 24">,\n'
+    + '   con fill="none", stroke="currentColor", stroke-width 1.8 y extremos redondos. */\n';
+  return {
+    js: aviso + 'export const iconos = ' + JSON.stringify(ICONOS, null, 2) + ';\nexport default iconos;\n',
+    dts: aviso + 'export type NombreIcono = ' + Object.keys(ICONOS).map((k) => JSON.stringify(k)).join(' | ') + ';\n'
+      + 'export declare const iconos: Readonly<Record<NombreIcono, { readonly nombre: string; readonly trazo: string }>>;\n'
+      + 'export default iconos;\n',
+  };
+}
+
 /* ── ensamblado ────────────────────────────────────────────────────── */
 
 const ORDEN = [
@@ -209,11 +254,26 @@ escribir('dist/iconos.svg', sprite());
 escribir('dist/iconos.json', JSON.stringify(ICONOS, null, 2) + '\n');
 const resueltos = tokensResueltos();
 escribir('dist/tokens.json', JSON.stringify(resueltos, null, 2) + '\n');
+const modTokens = moduloTokens(resueltos), modIconos = moduloIconos();
+escribir('dist/tokens.js', modTokens.js);
+escribir('dist/tokens.d.ts', modTokens.dts);
+escribir('dist/iconos.js', modIconos.js);
+escribir('dist/iconos.d.ts', modIconos.dts);
 escribir('docs/tokens.js', '/* Generado por herramientas/compilar.js */\nwindow.CL_TOKENS = ' + JSON.stringify(resueltos) + ';\n');
 /* El sprite, metido en la propia página: así <use href="#cl-…"> funciona
    también abriendo la documentación con doble clic, sin servidor. */
 escribir('docs/iconos.js', '/* Generado por herramientas/compilar.js */\ndocument.body.insertAdjacentHTML("afterbegin", '
   + JSON.stringify(sprite().replace('<svg ', '<svg aria-hidden="true" style="display:none" ')) + ');\n');
+/* package.json lleva la misma versión que tokens.json: los productos en
+   React instalan el sistema como dependencia y npm lee la de ahí. */
+{
+  const pkg = JSON.parse(leer('package.json'));
+  if (pkg.version !== VERSION) {
+    pkg.version = VERSION;
+    escribir('package.json', JSON.stringify(pkg, null, 2) + '\n');
+    console.log('  package.json pasa a ' + VERSION);
+  }
+}
 for (const f of fs.readdirSync(path.join(RAIZ, 'fuentes'))) {
   fs.mkdirSync(path.join(RAIZ, 'dist/fuentes'), { recursive: true });
   fs.copyFileSync(path.join(RAIZ, 'fuentes', f), path.join(RAIZ, 'dist/fuentes', f));
@@ -221,7 +281,7 @@ for (const f of fs.readdirSync(path.join(RAIZ, 'fuentes'))) {
 
 const kb = (r) => (fs.statSync(path.join(RAIZ, r)).size / 1024).toFixed(1) + ' KB';
 console.log('Sistema de diseño CodeLibri ' + VERSION);
-for (const r of ['dist/codelibri.css', 'dist/codelibri.js', 'dist/iconos.svg', 'dist/tokens.json']) console.log('  ' + r.padEnd(22) + kb(r));
+for (const r of ['dist/codelibri.css', 'dist/codelibri.js', 'dist/iconos.svg', 'dist/tokens.json', 'dist/tokens.js', 'dist/iconos.js']) console.log('  ' + r.padEnd(22) + kb(r));
 console.log('  ' + Object.keys(ICONOS).length + ' iconos, ' + FAMILIAS.length + ' familias de acento, 2 temas');
 
 /* Y el contraste, siempre: si algo baja de 4.5:1 la compilación falla. */

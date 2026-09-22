@@ -1,0 +1,4 @@
+{
+  "description": "Los guiones de esta carpeta son CommonJS (require). El package.json de la raíz declara type: module para los módulos de dist/, y sin este archivo Node los leería como módulos ES y fallarían.",
+  "type": "commonjs"
+}

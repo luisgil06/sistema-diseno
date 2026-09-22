@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.1.0 · guion
+ * Sistema de diseño CodeLibri 0.2.0 · guion
  * (c) CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  *
  * Se engancha solo por atributos data-cl-*; no hace falta escribir código
@@ -277,6 +277,6 @@
     });
   }
 
-  w.CodeLibri = { version: '0.1.0', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
+  w.CodeLibri = { version: '0.2.0', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }(window, document));

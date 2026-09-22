@@ -20,6 +20,12 @@ body.cl{margin:0;min-height:100vh}
 .cl :where(input,select,textarea){font:inherit;color:inherit}
 .cl :where(img,video){max-width:100%;height:auto}
 .cl :where(code,kbd,samp,pre){font-family:var(--cl-fuente-mono)}
+/* Un iframe hereda el color-scheme:dark del tema oscuro, y si el documento
+   que lleva dentro no lo declara —casi ninguno lo hace: un video, un libro,
+   una presentación—, Chrome le pinta un fondo blanco opaco. Se quedan en
+   «normal», como su contenido. Pasó en el EPUB Reader: la página del libro
+   salía blanca en modo oscuro. */
+.cl :where(iframe){color-scheme:normal}
 /* El atributo hidden manda siempre: varios componentes llevan display
    propio y, sin esto, esconderlos desde un guion no hacía nada. */
 .cl [hidden]{display:none!important}
