@@ -186,7 +186,7 @@ se arma desde el código:
 - **Variables:** cinco colecciones.
   - Paleta: 91 pasos.
   - Acento: primary, secondary y secondary2.
-  - Tema: Claro y Oscuro, con los 52 tokens de uso y las partes de sombra que cambian con el tema.
+  - Tema: Claro y Oscuro, con los tokens de uso, la rampa categórica y las partes de sombra que cambian con el tema.
   - Tipo.
   - Forma.
 - **Nombres CSS:** cada variable lleva el suyo (`var(--cl-…)`) para el modo desarrollador.

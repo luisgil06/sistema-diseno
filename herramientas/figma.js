@@ -107,12 +107,16 @@ const GRUPOS = [
   ['texto', ['texto', 'texto-2', 'texto-3', 'separador']],
   ['acento', ['acento', 'acento-solido', 'acento-suave', 'acento-linea', 'acento-sobre', 'foco']],
   ['control', ['riel', 'perilla', 'barra', 'barra-viva', 'raya']],
+  ['categoria', Array.from({ length: 10 }, (_, i) => `cat-${i + 1}`)],
 ];
 const RELLENO = ['FRAME_FILL', 'SHAPE_FILL'];
 const FILETE = ['STROKE_COLOR'];
 const LETRA = ['TEXT_FILL', 'STROKE_COLOR'];
 function ambito(token) {
   if (token === 'acento-solido') return [...RELLENO, 'STROKE_COLOR'];
+  /* La rampa categórica vale para las tres cosas: el texto de una ficha, su
+     filete y el relleno de una serie en una gráfica. */
+  if (/^cat-\d+$/.test(token)) return [...RELLENO, 'STROKE_COLOR', 'TEXT_FILL'];
   if (token === 'foco') return ['STROKE_COLOR', 'EFFECT_COLOR'];
   if (/^(texto|acento|acento-sobre|separador)$|-texto(-\d)?$|^texto-\d$/.test(token)) return LETRA;
   if (/linea(-2)?$/.test(token)) return FILETE;

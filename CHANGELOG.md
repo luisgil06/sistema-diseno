@@ -13,6 +13,22 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.4.0 · 22 de septiembre de 2026
+
+Crecimiento: color para lo que no tiene jerarquía.
+
+- **Rampa categórica**, `--cl-cat-1` a `--cl-cat-10`: diez colores en orden de
+  tono para categorías, series de una gráfica o etiquetas de un filtro. Siete
+  son los de la casa, en el mismo paso que ya usan los avisos y las familias;
+  tres —naranja, cian y púrpura— rellenan los huecos del círculo. Cambian con
+  el tema.
+- `contraste.js` mide los veinte valores sobre la superficie, sobre el lienzo y
+  **sobre su propio color al 10%**, que es como se pinta una ficha de filtro.
+  Ese tercer fondo es el exigente: obligó a bajar el ámbar al paso 900.
+- Salió de la Guía SAT, que tiene nueve categorías y las pintaba con nueve
+  colores sueltos, fuera de la paleta. La presentación de las heurísticas de
+  Nielsen tiene la misma necesidad.
+
 ## 0.3.0 · 22 de septiembre de 2026
 
 Crecimiento: lo que pedían los productos, y el código y Figma a la par.

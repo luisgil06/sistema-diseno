@@ -86,3 +86,12 @@
 .cl .doc-acentos > div{display:grid;gap:12px;padding:18px;border-radius:var(--cl-r-grande);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-1)}
 .cl .doc-acentos h4{font-size:var(--cl-t-ui)}
 .cl .doc-acentos .cl-grupo{margin:0 -6px}
+
+/* ── rampa categórica ── */
+.cl .doc-rampa{display:flex;flex-wrap:wrap;gap:10px}
+.cl .doc-rampa span{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--cl-r-pildora);
+  font-size:var(--cl-t-nota);font-weight:var(--cl-peso-semi);white-space:nowrap
+}
+.cl .doc-rampa span::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.cl .doc-rampa code{font-size:11.5px;font-weight:var(--cl-peso-normal);opacity:.75}

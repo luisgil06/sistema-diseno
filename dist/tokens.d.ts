@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.3.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.4.0 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -202,6 +202,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
     readonly secondary: {
       readonly fondo: string;
@@ -259,6 +269,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
     readonly secondary2: {
       readonly fondo: string;
@@ -316,6 +336,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
   };
   readonly oscuro: {
@@ -375,6 +405,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
     readonly secondary: {
       readonly fondo: string;
@@ -432,6 +472,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
     readonly secondary2: {
       readonly fondo: string;
@@ -489,6 +539,16 @@ export declare const tema: {
       readonly "info-fondo": string;
       readonly "info-linea": string;
       readonly "info-texto": string;
+      readonly "cat-1": string;
+      readonly "cat-2": string;
+      readonly "cat-3": string;
+      readonly "cat-4": string;
+      readonly "cat-5": string;
+      readonly "cat-6": string;
+      readonly "cat-7": string;
+      readonly "cat-8": string;
+      readonly "cat-9": string;
+      readonly "cat-10": string;
     };
   };
 };
@@ -510,6 +570,10 @@ export declare const notas: {
   readonly "etiqueta-fondo": string;
   readonly separador: string;
   readonly raya: string;
+  readonly "cat-1": string;
+  readonly "cat-2": string;
+  readonly "cat-6": string;
+  readonly "cat-9": string;
 };
 export declare const tipo: {
   readonly fuente: string;

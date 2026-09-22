@@ -1,6 +1,6 @@
 {
   "archivo": "VJnzekSGdZmIlyN2482cN8",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "fase": "terminada",
   "hecho": [
     "fase0",
@@ -18,7 +18,8 @@
     "0.3.0-variables",
     "0.3.0-iconos",
     "0.3.0-pestanas",
-    "0.3.0-desvios"
+    "0.3.0-desvios",
+    "0.4.0-rampa-categorica"
   ],
   "colecciones": {
     "Paleta": {
@@ -43,7 +44,7 @@
         "Claro": "46:0",
         "Oscuro": "46:1"
       },
-      "variables": 53
+      "variables": 66
     },
     "Tipo": {
       "id": "VariableCollectionId:46:56",
@@ -91,7 +92,8 @@
       "marco": "51:2",
       "paleta": "51:7",
       "acento": "51:424",
-      "tema": "52:2"
+      "tema": "52:2",
+      "rampa": "111:2"
     },
     "Tipografía": {
       "id": "48:6",
@@ -377,6 +379,7 @@
   "variablesNuevas": {
     "Tema:superficie/etiqueta-fondo": "VariableID:104:2",
     "Tema:texto/separador": "VariableID:104:3",
-    "Tema:control/raya": "VariableID:104:4"
+    "Tema:control/raya": "VariableID:104:4",
+    "Tema:categoria/cat-1 … cat-10": "VariableID:110:2 y siguientes · la rampa categórica, creada el 22 de septiembre de 2026"
   }
 }

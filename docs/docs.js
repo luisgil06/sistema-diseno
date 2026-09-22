@@ -60,6 +60,18 @@
     return '<div class="doc-degradado"><i style="background:var(--cl-grad-' + k + ')"></i><div><b>--cl-grad-' + k + '</b><span>' + esc(T.degradado[k].nota) + '</span></div></div>';
   }).join('');
 
+  /* 4b. La rampa categórica, pintada como se usa: el color en el texto y en
+     el punto, sobre su propio color al 10%. */
+  var rampa = $('#doc-rampa');
+  if (rampa) {
+    var TONOS = ['coral', 'naranja', 'ámbar', 'verde', 'menta', 'cian', 'azul', 'violeta', 'púrpura', 'rosa'];
+    rampa.innerHTML = TONOS.map(function (nombre, i) {
+      var v = 'var(--cl-cat-' + (i + 1) + ')';
+      return '<span style="color:' + v + ';background:color-mix(in srgb,' + v + ' 10%,transparent)">'
+        + nombre + ' <code>cat-' + (i + 1) + '</code></span>';
+    }).join('');
+  }
+
   /* 5. Los tokens de uso, con el acento que esté puesto. */
   function esColor(v) { return /^(#|rgba?\()/.test(v) || v === 'transparent'; }
   function celda(v) { return '<span class="doc-token">' + (esColor(v) ? '<i style="background:' + v + '"></i>' : '') + '<code>' + esc(v) + '</code></span>'; }

@@ -55,6 +55,18 @@ for (const modo of ['claro', 'oscuro']) {
       parejas.push([e + '-texto', e + '-fondo', color(t[e + '-texto']), capa(e + '-fondo')]);
       parejas.push([e + '-texto', 'superficie', color(t[e + '-texto']), sup]);
     }
+    /* La rampa categórica va como texto y como filete sobre la superficie, el
+       lienzo y su propio color al 10%, que es como se pintan las fichas de un
+       filtro. Los tres fondos, medidos; solo con el acento primary, porque la
+       rampa no depende del acento y si no se contaría tres veces. */
+    if (acento === 'primary') {
+      for (let i = 1; i <= 10; i++) {
+        const c = color(t['cat-' + i]);
+        parejas.push(['cat-' + i, 'superficie', c, sup]);
+        parejas.push(['cat-' + i, 'fondo', c, fondo]);
+        parejas.push(['cat-' + i, 'su propio 10%', c, sobre([c[0], c[1], c[2], 0.1], sup)]);
+      }
+    }
     for (const [txt, bg, a, b] of parejas) {
       const r = ratio(a, b);
       medidas++;

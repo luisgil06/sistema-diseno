@@ -1,5 +1,5 @@
-/* Sistema de diseño CodeLibri 0.3.0 · generado por herramientas/compilar.js; no se edita. */
-export const version = "0.3.0";
+/* Sistema de diseño CodeLibri 0.4.0 · generado por herramientas/compilar.js; no se edita. */
+export const version = "0.4.0";
 export const paleta = {
   "primary": {
     "50": "#f0eefe",
@@ -211,7 +211,17 @@ export const tema = {
       "error-texto": "#ae4b3d",
       "info-fondo": "#f0f4ff",
       "info-linea": "rgba(71,102,180,0.28)",
-      "info-texto": "#4766b4"
+      "info-texto": "#4766b4",
+      "cat-1": "#ae4b3d",
+      "cat-2": "#a35714",
+      "cat-3": "#6b5000",
+      "cat-4": "#157a4a",
+      "cat-5": "#096455",
+      "cat-6": "#097295",
+      "cat-7": "#4766b4",
+      "cat-8": "#624de0",
+      "cat-9": "#9f2fb0",
+      "cat-10": "#b53063"
     },
     "secondary": {
       "fondo": "#fafbfc",
@@ -268,7 +278,17 @@ export const tema = {
       "error-texto": "#ae4b3d",
       "info-fondo": "#f0f4ff",
       "info-linea": "rgba(71,102,180,0.28)",
-      "info-texto": "#4766b4"
+      "info-texto": "#4766b4",
+      "cat-1": "#ae4b3d",
+      "cat-2": "#a35714",
+      "cat-3": "#6b5000",
+      "cat-4": "#157a4a",
+      "cat-5": "#096455",
+      "cat-6": "#097295",
+      "cat-7": "#4766b4",
+      "cat-8": "#624de0",
+      "cat-9": "#9f2fb0",
+      "cat-10": "#b53063"
     },
     "secondary2": {
       "fondo": "#fafbfc",
@@ -325,7 +345,17 @@ export const tema = {
       "error-texto": "#ae4b3d",
       "info-fondo": "#f0f4ff",
       "info-linea": "rgba(71,102,180,0.28)",
-      "info-texto": "#4766b4"
+      "info-texto": "#4766b4",
+      "cat-1": "#ae4b3d",
+      "cat-2": "#a35714",
+      "cat-3": "#6b5000",
+      "cat-4": "#157a4a",
+      "cat-5": "#096455",
+      "cat-6": "#097295",
+      "cat-7": "#4766b4",
+      "cat-8": "#624de0",
+      "cat-9": "#9f2fb0",
+      "cat-10": "#b53063"
     }
   },
   "oscuro": {
@@ -384,7 +414,17 @@ export const tema = {
       "error-texto": "#f89b8e",
       "info-fondo": "rgba(100,144,253,.12)",
       "info-linea": "rgba(100,144,253,.3)",
-      "info-texto": "#97b5fe"
+      "info-texto": "#97b5fe",
+      "cat-1": "#f89b8e",
+      "cat-2": "#f3a968",
+      "cat-3": "#ffd454",
+      "cat-4": "#6ee8af",
+      "cat-5": "#44f1d5",
+      "cat-6": "#66d1f5",
+      "cat-7": "#97b5fe",
+      "cat-8": "#9d8df9",
+      "cat-9": "#db7bea",
+      "cat-10": "#ff82b2"
     },
     "secondary": {
       "fondo": "#141416",
@@ -441,7 +481,17 @@ export const tema = {
       "error-texto": "#f89b8e",
       "info-fondo": "rgba(100,144,253,.12)",
       "info-linea": "rgba(100,144,253,.3)",
-      "info-texto": "#97b5fe"
+      "info-texto": "#97b5fe",
+      "cat-1": "#f89b8e",
+      "cat-2": "#f3a968",
+      "cat-3": "#ffd454",
+      "cat-4": "#6ee8af",
+      "cat-5": "#44f1d5",
+      "cat-6": "#66d1f5",
+      "cat-7": "#97b5fe",
+      "cat-8": "#9d8df9",
+      "cat-9": "#db7bea",
+      "cat-10": "#ff82b2"
     },
     "secondary2": {
       "fondo": "#141416",
@@ -498,7 +548,17 @@ export const tema = {
       "error-texto": "#f89b8e",
       "info-fondo": "rgba(100,144,253,.12)",
       "info-linea": "rgba(100,144,253,.3)",
-      "info-texto": "#97b5fe"
+      "info-texto": "#97b5fe",
+      "cat-1": "#f89b8e",
+      "cat-2": "#f3a968",
+      "cat-3": "#ffd454",
+      "cat-4": "#6ee8af",
+      "cat-5": "#44f1d5",
+      "cat-6": "#66d1f5",
+      "cat-7": "#97b5fe",
+      "cat-8": "#9d8df9",
+      "cat-9": "#db7bea",
+      "cat-10": "#ff82b2"
     }
   }
 };
@@ -519,7 +579,11 @@ export const notas = {
   "barra": "Barras de desplazamiento.",
   "etiqueta-fondo": "El fondo de una etiqueta sin familia.",
   "separador": "Los separadores que no se leen: la barra de las migas.",
-  "raya": "El riel de una raya de avance sobre una imagen."
+  "raya": "El riel de una raya de avance sobre una imagen.",
+  "cat-1": "Coral. La rampa categórica: diez colores para separar categorías, series de una gráfica o etiquetas de un filtro. Van en orden de tono, para que dos vecinas nunca se confundan. Siete son los de la casa, en el mismo paso que usan los avisos y las familias; tres rellenan los huecos del círculo.",
+  "cat-2": "Naranja, entre el coral y el ámbar.",
+  "cat-6": "Cian, entre la menta y el azul.",
+  "cat-9": "Púrpura, entre el violeta y el rosa."
 };
 export const tipo = {
   "fuente": "\"Inter\", \"Segoe UI\", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif",

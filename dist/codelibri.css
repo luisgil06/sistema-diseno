@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.3.0
+ * Sistema de diseño CodeLibri 0.4.0
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -140,6 +140,16 @@
   --cl-info-fondo:var(--cl-info-50);
   --cl-info-linea:color-mix(in srgb, var(--cl-info-700) 28%, transparent);
   --cl-info-texto:var(--cl-info-700);
+  --cl-cat-1:var(--cl-danger-700);
+  --cl-cat-2:#a35714;
+  --cl-cat-3:var(--cl-warning-900);
+  --cl-cat-4:var(--cl-success-800);
+  --cl-cat-5:var(--cl-secondary-900);
+  --cl-cat-6:#097295;
+  --cl-cat-7:var(--cl-info-700);
+  --cl-cat-8:var(--cl-primary-600);
+  --cl-cat-9:#9f2fb0;
+  --cl-cat-10:var(--cl-secondary2-700);
 }
 [data-theme="dark"] .cl,.cl[data-theme="dark"],.cl [data-theme="dark"]{
   color-scheme:dark;
@@ -198,6 +208,16 @@
   --cl-info-fondo:rgba(100,144,253,.12);
   --cl-info-linea:rgba(100,144,253,.3);
   --cl-info-texto:var(--cl-info-300);
+  --cl-cat-1:var(--cl-danger-300);
+  --cl-cat-2:#f3a968;
+  --cl-cat-3:var(--cl-warning-300);
+  --cl-cat-4:var(--cl-success-300);
+  --cl-cat-5:var(--cl-secondary-400);
+  --cl-cat-6:#66d1f5;
+  --cl-cat-7:var(--cl-info-300);
+  --cl-cat-8:var(--cl-primary-300);
+  --cl-cat-9:#db7bea;
+  --cl-cat-10:var(--cl-secondary2-300);
 }
 .cl [data-acento]{--cl-acento:var(--cl-a-texto-claro);--cl-acento-solido:var(--cl-a-500);--cl-acento-suave:color-mix(in srgb, var(--cl-a-500) 10%, transparent);--cl-acento-linea:color-mix(in srgb, var(--cl-a-500) 22%, transparent);--cl-acento-sobre:var(--cl-a-sobre);--cl-foco:color-mix(in srgb, var(--cl-a-500) 30%, transparent);}
 [data-theme="dark"] .cl [data-acento],.cl [data-theme="dark"] [data-acento],.cl [data-theme="dark"][data-acento]{--cl-acento:var(--cl-a-texto-oscuro);--cl-acento-solido:var(--cl-a-500);--cl-acento-suave:color-mix(in srgb, var(--cl-a-500) 16%, transparent);--cl-acento-linea:color-mix(in srgb, var(--cl-a-500) 32%, transparent);--cl-acento-sobre:var(--cl-a-sobre);--cl-foco:color-mix(in srgb, var(--cl-a-400) 45%, transparent);}

@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.3.0 · componentes para React.
+/* Sistema de diseño CodeLibri 0.4.0 · componentes para React.
    Se importa como '@codelibri/sistema/react'. React no viene con el sistema:
    lo pone el producto (es una dependencia «peer»). */
 import { createElement } from 'react';
