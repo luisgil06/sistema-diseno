@@ -13,6 +13,23 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.5.0 · 22 de septiembre de 2026
+
+Crecimiento: lo que hacía falta para que un producto entero sea del sistema.
+
+- **Filtros** (`.cl-filtros`, `.cl-filtro`, `.cl-filtro-cuenta`): una fila de
+  categorías que encienden y apagan lo que se ve. No son pestañas —se pueden
+  apagar todas y ninguna manda sobre un panel—, así que van con
+  `aria-pressed`. Con `cl-filtros-tira` la fila se desliza en vez de bajar de
+  renglón.
+- **Las diez clases de la rampa**, `cl-cat-1` a `cl-cat-10`, con la misma
+  forma que `cl-f-primary`: rellenan `--cl-f-solido`, `-texto`, `-fondo` y
+  `-linea`. Así una etiqueta, un recuadro de icono o un filtro toman el color
+  de su categoría sin que el componente sepa que existe la rampa.
+- **Tres iconos** (68 en total): chat, calculadora y balanza. Salieron de la
+  cabecera de la Guía SAT.
+- Figma al día: los tres iconos y el conjunto Filtro, con sus dos variantes.
+
 ## 0.4.0 · 22 de septiembre de 2026
 
 Crecimiento: color para lo que no tiene jerarquía.

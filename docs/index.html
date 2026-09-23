@@ -488,6 +488,18 @@ import { Icono } from '@codelibri/sistema/react';
         <div role="tabpanel" id="doc-pp-3" aria-labelledby="doc-p-3" class="cl-nota" style="padding:16px 4px" hidden>Marcadores y subrayados.</div>
       </div>
     </div>
+    <div class="doc-sub"><h3>Filtros</h3>
+      <p>Categorías que encienden y apagan lo que se ve. No son pestañas: se pueden apagar todas y ninguna manda sobre un panel, así que son botones con <code class="cl-mono">aria-pressed</code>. El encendido toma el color que le dé el producto por los ganchos de familia —una clase <code class="cl-mono">cl-f-*</code> o una de la rampa categórica, <code class="cl-mono">cl-cat-1</code> a <code class="cl-mono">cl-cat-10</code>—; sin ninguna, el acento. Si la fila no cabe, <code class="cl-mono">cl-filtros-tira</code> la desliza en vez de bajarla de renglón.</p>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <div class="cl-filtros" role="group" aria-label="Filtrar por categoría">
+          <button class="cl-filtro" type="button" aria-pressed="true"><i data-ico="cuadricula" data-t="15"></i>Todas<span class="cl-filtro-cuenta">24</span></button>
+          <button class="cl-filtro cl-cat-1" type="button" aria-pressed="true"><i data-ico="codigo" data-t="15"></i>Código y web<span class="cl-filtro-cuenta">8</span></button>
+          <button class="cl-filtro cl-cat-4" type="button" aria-pressed="false"><i data-ico="video" data-t="15"></i>Animación<span class="cl-filtro-cuenta">6</span></button>
+          <button class="cl-filtro cl-cat-7" type="button" aria-pressed="false"><i data-ico="paleta" data-t="15"></i>Identidad<span class="cl-filtro-cuenta">5</span></button>
+          <button class="cl-filtro cl-cat-10" type="button" aria-pressed="true"><i data-ico="libro" data-t="15"></i>Editorial<span class="cl-filtro-cuenta">5</span></button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ═══ DATOS ═══ -->

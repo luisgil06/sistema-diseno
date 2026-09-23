@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.4.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.5.0 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -704,13 +704,16 @@ export declare const iconos: {
   readonly alerta: string;
   readonly anadir: string;
   readonly arriba: string;
+  readonly balanza: string;
   readonly birrete: string;
   readonly bloques: string;
   readonly borrar: string;
   readonly buscar: string;
   readonly cafe: string;
+  readonly calculadora: string;
   readonly catalogo: string;
   readonly cerrar: string;
+  readonly chat: string;
   readonly check: string;
   readonly codigo: string;
   readonly columnas: string;

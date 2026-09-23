@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.4.0
+ * Sistema de diseño CodeLibri 0.5.0
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -224,6 +224,16 @@
 .cl .cl-f-primary{--cl-f-fondo:var(--cl-f-primary-fondo);--cl-f-linea:var(--cl-f-primary-linea);--cl-f-texto:var(--cl-f-primary-texto);--cl-f-solido:var(--cl-primary-500)}
 .cl .cl-f-secondary{--cl-f-fondo:var(--cl-f-secondary-fondo);--cl-f-linea:var(--cl-f-secondary-linea);--cl-f-texto:var(--cl-f-secondary-texto);--cl-f-solido:var(--cl-secondary-500)}
 .cl .cl-f-secondary2{--cl-f-fondo:var(--cl-f-secondary2-fondo);--cl-f-linea:var(--cl-f-secondary2-linea);--cl-f-texto:var(--cl-f-secondary2-texto);--cl-f-solido:var(--cl-secondary2-500)}
+.cl .cl-cat-1{--cl-f-solido:var(--cl-cat-1);--cl-f-texto:var(--cl-cat-1);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-1) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-1) 30%,transparent)}
+.cl .cl-cat-2{--cl-f-solido:var(--cl-cat-2);--cl-f-texto:var(--cl-cat-2);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-2) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-2) 30%,transparent)}
+.cl .cl-cat-3{--cl-f-solido:var(--cl-cat-3);--cl-f-texto:var(--cl-cat-3);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-3) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-3) 30%,transparent)}
+.cl .cl-cat-4{--cl-f-solido:var(--cl-cat-4);--cl-f-texto:var(--cl-cat-4);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-4) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-4) 30%,transparent)}
+.cl .cl-cat-5{--cl-f-solido:var(--cl-cat-5);--cl-f-texto:var(--cl-cat-5);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-5) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-5) 30%,transparent)}
+.cl .cl-cat-6{--cl-f-solido:var(--cl-cat-6);--cl-f-texto:var(--cl-cat-6);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-6) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-6) 30%,transparent)}
+.cl .cl-cat-7{--cl-f-solido:var(--cl-cat-7);--cl-f-texto:var(--cl-cat-7);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-7) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-7) 30%,transparent)}
+.cl .cl-cat-8{--cl-f-solido:var(--cl-cat-8);--cl-f-texto:var(--cl-cat-8);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-8) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-8) 30%,transparent)}
+.cl .cl-cat-9{--cl-f-solido:var(--cl-cat-9);--cl-f-texto:var(--cl-cat-9);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-9) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-9) 30%,transparent)}
+.cl .cl-cat-10{--cl-f-solido:var(--cl-cat-10);--cl-f-texto:var(--cl-cat-10);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-10) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-10) 30%,transparent)}
 
 /* ═══ FUENTES ═══
    Inter servida desde el propio dominio (Google Fonts v20, SIL OFL 1.1).
@@ -894,6 +904,41 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 .cl .cl-pestana[aria-selected="true"] .cl-ico{color:currentColor}
 .cl .cl-pestana:focus-visible{outline-offset:-2px;border-radius:var(--cl-r-chico) var(--cl-r-chico) 0 0}
 .cl .cl-pestanas-llenas .cl-pestana{flex:1 1 0;padding:0 8px}
+
+/* ── filtros ──
+   Una fila de categorías que encienden y apagan lo que se ve: el catálogo
+   de un sitio, los trámites de una guía. A diferencia de las pestañas, se
+   pueden apagar todas y ninguna manda sobre un panel; por eso son botones
+   con aria-pressed y no un tablist.
+
+   Apagado, un filtro es gris con filete. Encendido toma el color que le dé
+   el producto por los ganchos de familia —una clase cl-f-* o una de la
+   rampa categórica, cl-cat-1 a cl-cat-10—; sin ninguna, el acento. */
+.cl .cl-filtros{display:flex;flex-wrap:wrap;gap:8px}
+.cl .cl-filtro{
+  display:inline-flex;align-items:center;gap:7px;flex:none;
+  height:32px;padding:0 13px;border-radius:var(--cl-r-pildora);
+  font-size:var(--cl-t-nota);font-weight:var(--cl-peso-medio);white-space:nowrap;
+  color:var(--cl-texto-2);background:transparent;border:1px solid var(--cl-linea);
+  transition:color var(--cl-mov-rapido) ease,border-color var(--cl-mov-medio) ease,background-color var(--cl-mov-medio) ease
+}
+.cl .cl-filtro .cl-ico{color:var(--cl-texto-3)}
+.cl .cl-filtro:hover{color:var(--cl-texto);border-color:var(--cl-linea-2)}
+.cl .cl-filtro[aria-pressed="true"]{
+  color:var(--cl-f-texto,var(--cl-acento));font-weight:var(--cl-peso-semi);
+  background:var(--cl-f-fondo,var(--cl-acento-suave));border-color:var(--cl-f-linea,var(--cl-acento-linea))
+}
+.cl .cl-filtro[aria-pressed="true"] .cl-ico{color:currentColor}
+/* Cuántas cosas hay detrás del filtro. Se apaga con el filtro. */
+.cl .cl-filtro-cuenta{
+  min-width:19px;padding:0 5px;border-radius:var(--cl-r-pildora);text-align:center;
+  font-size:11px;font-weight:var(--cl-peso-negrita);line-height:18px;font-variant-numeric:tabular-nums;
+  color:var(--cl-texto-3);background:var(--cl-flotar)
+}
+.cl .cl-filtro[aria-pressed="true"] .cl-filtro-cuenta{color:var(--cl-superficie);background:var(--cl-f-solido,var(--cl-acento-solido))}
+/* Una fila que no cabe se desliza, sin barra a la vista. */
+.cl .cl-filtros-tira{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.cl .cl-filtros-tira::-webkit-scrollbar{display:none}
 
 /* ═══ DATOS ═══ */
 

@@ -1,6 +1,6 @@
 {
   "archivo": "VJnzekSGdZmIlyN2482cN8",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "fase": "terminada",
   "hecho": [
     "fase0",
@@ -19,7 +19,9 @@
     "0.3.0-iconos",
     "0.3.0-pestanas",
     "0.3.0-desvios",
-    "0.4.0-rampa-categorica"
+    "0.4.0-rampa-categorica",
+    "0.5.0-filtros",
+    "0.5.0-iconos"
   ],
   "colecciones": {
     "Paleta": {
@@ -359,7 +361,8 @@
     "Pestañas": {
       "comp": "107:868",
       "pagina": "Navegación"
-    }
+    },
+    "Filtro": "118:114"
   },
   "pendiente": [
     "Code Connect no se hizo: el sistema es HTML y CSS sin framework; las descripciones de cada componente llevan su marcado."

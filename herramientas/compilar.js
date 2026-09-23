@@ -143,6 +143,16 @@ function hojaTokens() {
     L.push('.cl .cl-f-' + fam + '{--cl-f-fondo:var(--cl-f-' + fam + '-fondo);--cl-f-linea:var(--cl-f-' + fam
       + '-linea);--cl-f-texto:var(--cl-f-' + fam + '-texto);--cl-f-solido:var(--cl-' + fam + '-500)}');
   }
+
+  /* Las diez de la rampa categórica rellenan los mismos ganchos que una
+     familia. Así una etiqueta, un recuadro de icono o un filtro toman el
+     color de su categoría sin que el componente sepa que existe la rampa. */
+  for (let i = 1; i <= 10; i++) {
+    const c = 'var(--cl-cat-' + i + ')';
+    L.push('.cl .cl-cat-' + i + '{--cl-f-solido:' + c + ';--cl-f-texto:' + c
+      + ';--cl-f-fondo:color-mix(in srgb,' + c + ' 10%,transparent)'
+      + ';--cl-f-linea:color-mix(in srgb,' + c + ' 30%,transparent)}');
+  }
   return L.join('\n') + '\n';
 }
 
