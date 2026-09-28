@@ -13,6 +13,24 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.6.0 · 27 de septiembre de 2026
+
+Corrección de fondo en la rampa categórica: el color apagado se estaba usando
+para todo.
+
+- **Paso vivo**, `--cl-cat-N-vivo`, y **`--cl-cat-N-sobre`** para lo que se
+  escribe encima. No cambian con el tema. El paso de arriba es el que exige el
+  texto: para llegar a 4.5:1 en el tema claro tiene que ser oscuro, y oscuro es
+  apagado. Un punto, una raya de avance, una ficha rellena o una cifra grande
+  no son texto corrido y piden el color de verdad.
+- Las clases `cl-cat-N` separan las dos cosas: `--cl-f-texto` sigue siendo el
+  paso legible y `--cl-f-solido` pasa a ser el vivo. Los filetes suben del 30
+  al 35% del vivo.
+- **Corrección:** la cuenta de un filtro encendido pintaba su texto con
+  `--cl-superficie`, blanco en el tema claro, sobre un sólido que podía ser
+  ámbar o menta. Ahora usa `--cl-f-sobre`, y las familias también lo declaran.
+- `contraste.js` mide las diez parejas nuevas: 224 en total.
+
 ## 0.5.0 · 22 de septiembre de 2026
 
 Crecimiento: lo que hacía falta para que un producto entero sea del sistema.

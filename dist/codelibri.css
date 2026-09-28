@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.5.0
+ * Sistema de diseño CodeLibri 0.6.0
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -79,6 +79,26 @@
   --cl-lateral-plegada:76px;
   --cl-alto-superior:72px;
   --cl-alto-superior-estrecho:60px;
+  --cl-cat-1-vivo:var(--cl-danger-500);
+  --cl-cat-1-sobre:var(--cl-text-900);
+  --cl-cat-2-vivo:#f5780a;
+  --cl-cat-2-sobre:var(--cl-text-900);
+  --cl-cat-3-vivo:var(--cl-warning-500);
+  --cl-cat-3-sobre:var(--cl-text-900);
+  --cl-cat-4-vivo:var(--cl-success-500);
+  --cl-cat-4-sobre:var(--cl-text-900);
+  --cl-cat-5-vivo:var(--cl-secondary-500);
+  --cl-cat-5-sobre:var(--cl-text-900);
+  --cl-cat-6-vivo:#09a8dc;
+  --cl-cat-6-sobre:var(--cl-text-900);
+  --cl-cat-7-vivo:var(--cl-info-500);
+  --cl-cat-7-sobre:var(--cl-text-900);
+  --cl-cat-8-vivo:var(--cl-primary-500);
+  --cl-cat-8-sobre:#ffffff;
+  --cl-cat-9-vivo:#ba17d3;
+  --cl-cat-9-sobre:#ffffff;
+  --cl-cat-10-vivo:var(--cl-secondary2-500);
+  --cl-cat-10-sobre:var(--cl-text-900);
 }
 :root,[data-acento="primary"]{--cl-a-50:var(--cl-primary-50);--cl-a-100:var(--cl-primary-100);--cl-a-200:var(--cl-primary-200);--cl-a-300:var(--cl-primary-300);--cl-a-400:var(--cl-primary-400);--cl-a-500:var(--cl-primary-500);--cl-a-600:var(--cl-primary-600);--cl-a-700:var(--cl-primary-700);--cl-a-800:var(--cl-primary-800);--cl-a-900:var(--cl-primary-900);--cl-a-texto-claro:var(--cl-primary-600);--cl-a-texto-oscuro:var(--cl-primary-300);--cl-a-sobre:#ffffff;}
 [data-acento="secondary"]{--cl-a-50:var(--cl-secondary-50);--cl-a-100:var(--cl-secondary-100);--cl-a-200:var(--cl-secondary-200);--cl-a-300:var(--cl-secondary-300);--cl-a-400:var(--cl-secondary-400);--cl-a-500:var(--cl-secondary-500);--cl-a-600:var(--cl-secondary-600);--cl-a-700:var(--cl-secondary-700);--cl-a-800:var(--cl-secondary-800);--cl-a-900:var(--cl-secondary-900);--cl-a-texto-claro:var(--cl-secondary-900);--cl-a-texto-oscuro:var(--cl-secondary-400);--cl-a-sobre:var(--cl-text-900);}
@@ -221,19 +241,19 @@
 }
 .cl [data-acento]{--cl-acento:var(--cl-a-texto-claro);--cl-acento-solido:var(--cl-a-500);--cl-acento-suave:color-mix(in srgb, var(--cl-a-500) 10%, transparent);--cl-acento-linea:color-mix(in srgb, var(--cl-a-500) 22%, transparent);--cl-acento-sobre:var(--cl-a-sobre);--cl-foco:color-mix(in srgb, var(--cl-a-500) 30%, transparent);}
 [data-theme="dark"] .cl [data-acento],.cl [data-theme="dark"] [data-acento],.cl [data-theme="dark"][data-acento]{--cl-acento:var(--cl-a-texto-oscuro);--cl-acento-solido:var(--cl-a-500);--cl-acento-suave:color-mix(in srgb, var(--cl-a-500) 16%, transparent);--cl-acento-linea:color-mix(in srgb, var(--cl-a-500) 32%, transparent);--cl-acento-sobre:var(--cl-a-sobre);--cl-foco:color-mix(in srgb, var(--cl-a-400) 45%, transparent);}
-.cl .cl-f-primary{--cl-f-fondo:var(--cl-f-primary-fondo);--cl-f-linea:var(--cl-f-primary-linea);--cl-f-texto:var(--cl-f-primary-texto);--cl-f-solido:var(--cl-primary-500)}
-.cl .cl-f-secondary{--cl-f-fondo:var(--cl-f-secondary-fondo);--cl-f-linea:var(--cl-f-secondary-linea);--cl-f-texto:var(--cl-f-secondary-texto);--cl-f-solido:var(--cl-secondary-500)}
-.cl .cl-f-secondary2{--cl-f-fondo:var(--cl-f-secondary2-fondo);--cl-f-linea:var(--cl-f-secondary2-linea);--cl-f-texto:var(--cl-f-secondary2-texto);--cl-f-solido:var(--cl-secondary2-500)}
-.cl .cl-cat-1{--cl-f-solido:var(--cl-cat-1);--cl-f-texto:var(--cl-cat-1);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-1) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-1) 30%,transparent)}
-.cl .cl-cat-2{--cl-f-solido:var(--cl-cat-2);--cl-f-texto:var(--cl-cat-2);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-2) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-2) 30%,transparent)}
-.cl .cl-cat-3{--cl-f-solido:var(--cl-cat-3);--cl-f-texto:var(--cl-cat-3);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-3) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-3) 30%,transparent)}
-.cl .cl-cat-4{--cl-f-solido:var(--cl-cat-4);--cl-f-texto:var(--cl-cat-4);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-4) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-4) 30%,transparent)}
-.cl .cl-cat-5{--cl-f-solido:var(--cl-cat-5);--cl-f-texto:var(--cl-cat-5);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-5) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-5) 30%,transparent)}
-.cl .cl-cat-6{--cl-f-solido:var(--cl-cat-6);--cl-f-texto:var(--cl-cat-6);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-6) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-6) 30%,transparent)}
-.cl .cl-cat-7{--cl-f-solido:var(--cl-cat-7);--cl-f-texto:var(--cl-cat-7);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-7) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-7) 30%,transparent)}
-.cl .cl-cat-8{--cl-f-solido:var(--cl-cat-8);--cl-f-texto:var(--cl-cat-8);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-8) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-8) 30%,transparent)}
-.cl .cl-cat-9{--cl-f-solido:var(--cl-cat-9);--cl-f-texto:var(--cl-cat-9);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-9) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-9) 30%,transparent)}
-.cl .cl-cat-10{--cl-f-solido:var(--cl-cat-10);--cl-f-texto:var(--cl-cat-10);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-10) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-10) 30%,transparent)}
+.cl .cl-f-primary{--cl-f-fondo:var(--cl-f-primary-fondo);--cl-f-linea:var(--cl-f-primary-linea);--cl-f-texto:var(--cl-f-primary-texto);--cl-f-solido:var(--cl-primary-500);--cl-f-sobre:#ffffff}
+.cl .cl-f-secondary{--cl-f-fondo:var(--cl-f-secondary-fondo);--cl-f-linea:var(--cl-f-secondary-linea);--cl-f-texto:var(--cl-f-secondary-texto);--cl-f-solido:var(--cl-secondary-500);--cl-f-sobre:var(--cl-text-900)}
+.cl .cl-f-secondary2{--cl-f-fondo:var(--cl-f-secondary2-fondo);--cl-f-linea:var(--cl-f-secondary2-linea);--cl-f-texto:var(--cl-f-secondary2-texto);--cl-f-solido:var(--cl-secondary2-500);--cl-f-sobre:var(--cl-text-900)}
+.cl .cl-cat-1{--cl-f-solido:var(--cl-cat-1-vivo);--cl-f-sobre:var(--cl-cat-1-sobre);--cl-f-texto:var(--cl-cat-1);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-1) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-1-vivo) 35%,transparent)}
+.cl .cl-cat-2{--cl-f-solido:var(--cl-cat-2-vivo);--cl-f-sobre:var(--cl-cat-2-sobre);--cl-f-texto:var(--cl-cat-2);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-2) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-2-vivo) 35%,transparent)}
+.cl .cl-cat-3{--cl-f-solido:var(--cl-cat-3-vivo);--cl-f-sobre:var(--cl-cat-3-sobre);--cl-f-texto:var(--cl-cat-3);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-3) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-3-vivo) 35%,transparent)}
+.cl .cl-cat-4{--cl-f-solido:var(--cl-cat-4-vivo);--cl-f-sobre:var(--cl-cat-4-sobre);--cl-f-texto:var(--cl-cat-4);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-4) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-4-vivo) 35%,transparent)}
+.cl .cl-cat-5{--cl-f-solido:var(--cl-cat-5-vivo);--cl-f-sobre:var(--cl-cat-5-sobre);--cl-f-texto:var(--cl-cat-5);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-5) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-5-vivo) 35%,transparent)}
+.cl .cl-cat-6{--cl-f-solido:var(--cl-cat-6-vivo);--cl-f-sobre:var(--cl-cat-6-sobre);--cl-f-texto:var(--cl-cat-6);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-6) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-6-vivo) 35%,transparent)}
+.cl .cl-cat-7{--cl-f-solido:var(--cl-cat-7-vivo);--cl-f-sobre:var(--cl-cat-7-sobre);--cl-f-texto:var(--cl-cat-7);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-7) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-7-vivo) 35%,transparent)}
+.cl .cl-cat-8{--cl-f-solido:var(--cl-cat-8-vivo);--cl-f-sobre:var(--cl-cat-8-sobre);--cl-f-texto:var(--cl-cat-8);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-8) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-8-vivo) 35%,transparent)}
+.cl .cl-cat-9{--cl-f-solido:var(--cl-cat-9-vivo);--cl-f-sobre:var(--cl-cat-9-sobre);--cl-f-texto:var(--cl-cat-9);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-9) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-9-vivo) 35%,transparent)}
+.cl .cl-cat-10{--cl-f-solido:var(--cl-cat-10-vivo);--cl-f-sobre:var(--cl-cat-10-sobre);--cl-f-texto:var(--cl-cat-10);--cl-f-fondo:color-mix(in srgb,var(--cl-cat-10) 10%,transparent);--cl-f-linea:color-mix(in srgb,var(--cl-cat-10-vivo) 35%,transparent)}
 
 /* ═══ FUENTES ═══
    Inter servida desde el propio dominio (Google Fonts v20, SIL OFL 1.1).
@@ -935,7 +955,7 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
   font-size:11px;font-weight:var(--cl-peso-negrita);line-height:18px;font-variant-numeric:tabular-nums;
   color:var(--cl-texto-3);background:var(--cl-flotar)
 }
-.cl .cl-filtro[aria-pressed="true"] .cl-filtro-cuenta{color:var(--cl-superficie);background:var(--cl-f-solido,var(--cl-acento-solido))}
+.cl .cl-filtro[aria-pressed="true"] .cl-filtro-cuenta{color:var(--cl-f-sobre,var(--cl-acento-sobre));background:var(--cl-f-solido,var(--cl-acento-solido))}
 /* Una fila que no cabe se desliza, sin barra a la vista. */
 .cl .cl-filtros-tira{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .cl .cl-filtros-tira::-webkit-scrollbar{display:none}

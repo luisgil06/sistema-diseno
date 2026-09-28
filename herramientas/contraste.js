@@ -65,6 +65,10 @@ for (const modo of ['claro', 'oscuro']) {
         parejas.push(['cat-' + i, 'superficie', c, sup]);
         parejas.push(['cat-' + i, 'fondo', c, fondo]);
         parejas.push(['cat-' + i, 'su propio 10%', c, sobre([c[0], c[1], c[2], 0.1], sup)]);
+        /* El paso vivo no es para texto normal: va en puntos, rayas y fichas
+           rellenas. Lo que se mide es el texto que se pone encima. */
+        const cat = T.categoria[i];
+        parejas.push(['cat-' + i + '-sobre', 'cat-' + i + '-vivo', color(cat.sobre), color(cat.vivo)]);
       }
     }
     for (const [txt, bg, a, b] of parejas) {

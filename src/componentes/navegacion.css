@@ -102,7 +102,7 @@
   font-size:11px;font-weight:var(--cl-peso-negrita);line-height:18px;font-variant-numeric:tabular-nums;
   color:var(--cl-texto-3);background:var(--cl-flotar)
 }
-.cl .cl-filtro[aria-pressed="true"] .cl-filtro-cuenta{color:var(--cl-superficie);background:var(--cl-f-solido,var(--cl-acento-solido))}
+.cl .cl-filtro[aria-pressed="true"] .cl-filtro-cuenta{color:var(--cl-f-sobre,var(--cl-acento-sobre));background:var(--cl-f-solido,var(--cl-acento-solido))}
 /* Una fila que no cabe se desliza, sin barra a la vista. */
 .cl .cl-filtros-tira{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .cl .cl-filtros-tira::-webkit-scrollbar{display:none}

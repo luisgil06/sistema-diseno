@@ -110,6 +110,12 @@ function hojaTokens() {
   for (const [k, h] of entradas(T.movimiento)) L.push(decl('mov-' + k, valor(h)));
   for (const [k, h] of entradas(T.capa)) L.push(decl('z-' + k, valor(h)));
   for (const [k, h] of entradas(T.armazon)) L.push(decl(k, valor(h)));
+  /* El paso vivo de la rampa y el texto que se lee encima. Aquí y no en el
+     tema: no cambian de un tema a otro. */
+  for (const [n, c] of entradas(T.categoria)) {
+    L.push(decl('cat-' + n + '-vivo', aCss(valor(c.vivo))));
+    L.push(decl('cat-' + n + '-sobre', aCss(valor(c.sobre))));
+  }
   L.push('}');
 
   /* El acento del producto: alias de la familia elegida. Primary por
@@ -141,17 +147,24 @@ function hojaTokens() {
      componentes que admiten familia leen --cl-f-fondo, -linea y -texto. */
   for (const fam of FAMILIAS) {
     L.push('.cl .cl-f-' + fam + '{--cl-f-fondo:var(--cl-f-' + fam + '-fondo);--cl-f-linea:var(--cl-f-' + fam
-      + '-linea);--cl-f-texto:var(--cl-f-' + fam + '-texto);--cl-f-solido:var(--cl-' + fam + '-500)}');
+      + '-linea);--cl-f-texto:var(--cl-f-' + fam + '-texto);--cl-f-solido:var(--cl-' + fam + '-500)'
+      + ';--cl-f-sobre:' + aCss(valor(T.familia[fam].sobre)) + '}');
   }
 
   /* Las diez de la rampa categórica rellenan los mismos ganchos que una
      familia. Así una etiqueta, un recuadro de icono o un filtro toman el
-     color de su categoría sin que el componente sepa que existe la rampa. */
+     color de su categoría sin que el componente sepa que existe la rampa.
+
+     El texto sale del paso que cambia con el tema y llega a 4.5:1; el sólido,
+     del paso vivo, que es el que pide un punto o una raya. Son dos cosas
+     distintas y antes eran la misma: los puntos salían apagados. */
   for (let i = 1; i <= 10; i++) {
     const c = 'var(--cl-cat-' + i + ')';
-    L.push('.cl .cl-cat-' + i + '{--cl-f-solido:' + c + ';--cl-f-texto:' + c
+    L.push('.cl .cl-cat-' + i + '{--cl-f-solido:var(--cl-cat-' + i + '-vivo)'
+      + ';--cl-f-sobre:var(--cl-cat-' + i + '-sobre)'
+      + ';--cl-f-texto:' + c
       + ';--cl-f-fondo:color-mix(in srgb,' + c + ' 10%,transparent)'
-      + ';--cl-f-linea:color-mix(in srgb,' + c + ' 30%,transparent)}');
+      + ';--cl-f-linea:color-mix(in srgb,var(--cl-cat-' + i + '-vivo) 35%,transparent)}');
   }
   return L.join('\n') + '\n';
 }
@@ -176,6 +189,7 @@ function tokensResueltos() {
     paleta: Object.fromEntries(entradas(T.paleta).map(([f, p]) => [f, Object.fromEntries(entradas(p).map(([k, h]) => [k, valor(h)]))])),
     degradado: Object.fromEntries(entradas(T.degradado).map(([k, h]) => [k, { colores: resolver(valor(h)), nota: h.$description || '' }])),
     familia: Object.fromEntries(FAMILIAS.map((f) => [f, Object.fromEntries(entradas(T.familia[f]).map(([k, h]) => [k, resolver(valor(h))]))])),
+    categoria: Object.fromEntries(entradas(T.categoria).map(([n, c]) => [n, { vivo: resolver(valor(c.vivo)), sobre: resolver(valor(c.sobre)) }])),
     tema: Object.fromEntries(['claro', 'oscuro'].map((modo) => [modo, Object.fromEntries(FAMILIAS.map((f) => [f, tema(modo, f)]))])),
     notas: Object.fromEntries(['claro'].flatMap((modo) => entradas(T.tema[modo]).filter(([, h]) => h && h.$description).map(([k, h]) => [k, h.$description]))),
     tipo: {

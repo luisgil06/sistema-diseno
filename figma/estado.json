@@ -1,6 +1,6 @@
 {
   "archivo": "VJnzekSGdZmIlyN2482cN8",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "fase": "terminada",
   "hecho": [
     "fase0",
@@ -21,7 +21,8 @@
     "0.3.0-desvios",
     "0.4.0-rampa-categorica",
     "0.5.0-filtros",
-    "0.5.0-iconos"
+    "0.5.0-iconos",
+    "0.6.0-rampa-viva"
   ],
   "colecciones": {
     "Paleta": {
@@ -46,7 +47,7 @@
         "Claro": "46:0",
         "Oscuro": "46:1"
       },
-      "variables": 66
+      "variables": 86
     },
     "Tipo": {
       "id": "VariableCollectionId:46:56",

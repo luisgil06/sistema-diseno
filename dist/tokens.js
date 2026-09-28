@@ -1,5 +1,5 @@
-/* Sistema de diseño CodeLibri 0.5.0 · generado por herramientas/compilar.js; no se edita. */
-export const version = "0.5.0";
+/* Sistema de diseño CodeLibri 0.6.0 · generado por herramientas/compilar.js; no se edita. */
+export const version = "0.6.0";
 export const paleta = {
   "primary": {
     "50": "#f0eefe",
@@ -151,6 +151,48 @@ export const familia = {
   "secondary2": {
     "texto-claro": "#b53063",
     "texto-oscuro": "#ff82b2",
+    "sobre": "#141416"
+  }
+};
+export const categoria = {
+  "1": {
+    "vivo": "#f56a56",
+    "sobre": "#141416"
+  },
+  "2": {
+    "vivo": "#f5780a",
+    "sobre": "#141416"
+  },
+  "3": {
+    "vivo": "#ffbf00",
+    "sobre": "#141416"
+  },
+  "4": {
+    "vivo": "#27dd87",
+    "sobre": "#141416"
+  },
+  "5": {
+    "vivo": "#15eeca",
+    "sobre": "#141416"
+  },
+  "6": {
+    "vivo": "#09a8dc",
+    "sobre": "#141416"
+  },
+  "7": {
+    "vivo": "#6490fd",
+    "sobre": "#141416"
+  },
+  "8": {
+    "vivo": "#6c55f6",
+    "sobre": "#ffffff"
+  },
+  "9": {
+    "vivo": "#ba17d3",
+    "sobre": "#ffffff"
+  },
+  "10": {
+    "vivo": "#ff448c",
     "sobre": "#141416"
   }
 };
@@ -780,4 +822,4 @@ export const iconos = {
 };
 /** La variable CSS de un token de uso: variable("acento") → "var(--cl-acento)". */
 export const variable = (nombre) => "var(--cl-" + nombre + ")";
-export default { version, paleta, degradado, familia, tema, notas, tipo, espacio, radio, movimiento, capa, armazon, iconos, variable };
+export default { version, paleta, degradado, familia, categoria, tema, notas, tipo, espacio, radio, movimiento, capa, armazon, iconos, variable };

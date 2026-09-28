@@ -93,5 +93,5 @@
   display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--cl-r-pildora);
   font-size:var(--cl-t-nota);font-weight:var(--cl-peso-semi);white-space:nowrap
 }
-.cl .doc-rampa span::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.cl .doc-rampa span > i{width:10px;height:10px;border-radius:50%;flex:none}
 .cl .doc-rampa code{font-size:11.5px;font-weight:var(--cl-peso-normal);opacity:.75}

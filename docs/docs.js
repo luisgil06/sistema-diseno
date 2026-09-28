@@ -66,9 +66,10 @@
   if (rampa) {
     var TONOS = ['coral', 'naranja', 'ámbar', 'verde', 'menta', 'cian', 'azul', 'violeta', 'púrpura', 'rosa'];
     rampa.innerHTML = TONOS.map(function (nombre, i) {
-      var v = 'var(--cl-cat-' + (i + 1) + ')';
+      var n = i + 1, v = 'var(--cl-cat-' + n + ')', vivo = 'var(--cl-cat-' + n + '-vivo)';
+      /* El punto lleva el paso vivo; el texto, el que llega a 4.5:1. */
       return '<span style="color:' + v + ';background:color-mix(in srgb,' + v + ' 10%,transparent)">'
-        + nombre + ' <code>cat-' + (i + 1) + '</code></span>';
+        + '<i style="background:' + vivo + '"></i>' + nombre + ' <code>cat-' + n + '</code></span>';
     }).join('');
   }
 

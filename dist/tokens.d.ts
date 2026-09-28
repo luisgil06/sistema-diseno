@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.5.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.6.0 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -141,6 +141,48 @@ export declare const familia: {
   readonly secondary2: {
     readonly "texto-claro": string;
     readonly "texto-oscuro": string;
+    readonly sobre: string;
+  };
+};
+export declare const categoria: {
+  readonly "1": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "2": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "3": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "4": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "5": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "6": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "7": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "8": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "9": {
+    readonly vivo: string;
+    readonly sobre: string;
+  };
+  readonly "10": {
+    readonly vivo: string;
     readonly sobre: string;
   };
 };
@@ -769,5 +811,5 @@ export declare const iconos: {
   readonly video: string;
 };
 export declare const variable: (nombre: string) => string;
-declare const tokens: { version: typeof version; paleta: typeof paleta; degradado: typeof degradado; familia: typeof familia; tema: typeof tema; notas: typeof notas; tipo: typeof tipo; espacio: typeof espacio; radio: typeof radio; movimiento: typeof movimiento; capa: typeof capa; armazon: typeof armazon; iconos: typeof iconos; variable: typeof variable };
+declare const tokens: { version: typeof version; paleta: typeof paleta; degradado: typeof degradado; familia: typeof familia; categoria: typeof categoria; tema: typeof tema; notas: typeof notas; tipo: typeof tipo; espacio: typeof espacio; radio: typeof radio; movimiento: typeof movimiento; capa: typeof capa; armazon: typeof armazon; iconos: typeof iconos; variable: typeof variable };
 export default tokens;
