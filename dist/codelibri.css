@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.6.0
+ * Sistema de diseño CodeLibri 0.7.0
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -455,6 +455,12 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 
 /* Una fila de botones que baja de renglón si no cabe. */
 .cl .cl-botones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+
+/* La vista o la sección en la que se está, cuando la navegación son botones:
+   el acento suave, como un filtro encendido. Va con aria-current, que es lo
+   que anuncia el lector de pantalla; un fondo puesto a mano no lo anuncia. */
+.cl .cl-boton[aria-current]:not([aria-current="false"]){color:var(--cl-acento);background:var(--cl-acento-suave);border-color:var(--cl-acento-linea);box-shadow:none}
+.cl .cl-boton[aria-current]:not([aria-current="false"]) .cl-ico{color:currentColor}
 
 /* ═══ CAMPOS ═══
    El rótulo envuelve al campo: <label class="cl-campo">Nombre <input></label>.

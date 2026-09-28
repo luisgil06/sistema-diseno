@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.6.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.7.0 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -757,6 +757,7 @@ export declare const iconos: {
   readonly cerrar: string;
   readonly chat: string;
   readonly check: string;
+  readonly chispas: string;
   readonly codigo: string;
   readonly columnas: string;
   readonly compartir: string;
@@ -767,6 +768,7 @@ export declare const iconos: {
   readonly derecha: string;
   readonly descargar: string;
   readonly documento: string;
+  readonly editar: string;
   readonly enlace: string;
   readonly estrella: string;
   readonly etiqueta: string;

@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.6.0 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.7.0 · generado por herramientas/compilar.js; no se edita.
    Cada icono: su nombre y el trazo que va dentro de <svg viewBox="0 0 24 24">,
    con fill="none", stroke="currentColor", stroke-width 1.8 y extremos redondos. */
 export const iconos = {
@@ -66,6 +66,10 @@ export const iconos = {
     "nombre": "Confirmar",
     "trazo": "<path d=\"m5 12.5 4.5 4.5L19 7.5\"/>"
   },
+  "chispas": {
+    "nombre": "Chispas",
+    "trazo": "<path d=\"M11 3c.5 3.8 2.2 5.5 6 6-3.8.5-5.5 2.2-6 6-.5-3.8-2.2-5.5-6-6 3.8-.5 5.5-2.2 6-6z\"/><path d=\"M19 14.5v5M16.5 17h5\"/>"
+  },
   "codigo": {
     "nombre": "Código",
     "trazo": "<path d=\"m8 8-4 4 4 4\"/><path d=\"m16 8 4 4-4 4\"/><path d=\"m13.5 5-3 14\"/>"
@@ -105,6 +109,10 @@ export const iconos = {
   "documento": {
     "nombre": "Documento",
     "trazo": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4\"/><path d=\"M9 12h6M9 16h6\"/>"
+  },
+  "editar": {
+    "nombre": "Editar",
+    "trazo": "<path d=\"M15.5 4.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z\"/><path d=\"m13.5 6.5 3 3\"/>"
   },
   "enlace": {
     "nombre": "Enlace",

@@ -1,5 +1,5 @@
-/* Sistema de diseño CodeLibri 0.6.0 · generado por herramientas/compilar.js; no se edita. */
-export const version = "0.6.0";
+/* Sistema de diseño CodeLibri 0.7.0 · generado por herramientas/compilar.js; no se edita. */
+export const version = "0.7.0";
 export const paleta = {
   "primary": {
     "50": "#f0eefe",
@@ -767,6 +767,7 @@ export const iconos = {
   "cerrar": "Cerrar",
   "chat": "Chat",
   "check": "Confirmar",
+  "chispas": "Chispas",
   "codigo": "Código",
   "columnas": "Columnas",
   "compartir": "Compartir",
@@ -777,6 +778,7 @@ export const iconos = {
   "derecha": "Derecha",
   "descargar": "Descargar",
   "documento": "Documento",
+  "editar": "Editar",
   "enlace": "Enlace",
   "estrella": "Estrella",
   "etiqueta": "Etiqueta",

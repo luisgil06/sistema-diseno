@@ -13,6 +13,20 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.7.0 · 27 de septiembre de 2026
+
+Crecimiento: lo que pidió el panel de administración de la Guía SAT.
+
+- **Dos iconos** (70 en total): **editar**, el lápiz, y **chispas**, para
+  generar con IA. Cualquier panel los necesita y el sistema no los tenía: el de
+  la guía los resolvía con ✏️ y ⚡.
+- **La vista actual en una navegación de botones**: un `.cl-boton` con
+  `aria-current` toma el acento suave, como un filtro encendido. Es lo que hace
+  falta cuando el menú de una aplicación son botones y no pestañas; el lector
+  de pantalla anuncia cuál es la actual, cosa que un fondo puesto a mano no
+  hace.
+- Figma: los dos iconos, como componentes de una capa.
+
 ## 0.6.0 · 27 de septiembre de 2026
 
 Corrección de fondo en la rampa categórica: el color apagado se estaba usando

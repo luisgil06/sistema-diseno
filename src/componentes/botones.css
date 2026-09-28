@@ -57,3 +57,9 @@
 
 /* Una fila de botones que baja de renglón si no cabe. */
 .cl .cl-botones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+
+/* La vista o la sección en la que se está, cuando la navegación son botones:
+   el acento suave, como un filtro encendido. Va con aria-current, que es lo
+   que anuncia el lector de pantalla; un fondo puesto a mano no lo anuncia. */
+.cl .cl-boton[aria-current]:not([aria-current="false"]){color:var(--cl-acento);background:var(--cl-acento-suave);border-color:var(--cl-acento-linea);box-shadow:none}
+.cl .cl-boton[aria-current]:not([aria-current="false"]) .cl-ico{color:currentColor}
