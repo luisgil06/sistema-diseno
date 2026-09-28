@@ -21,8 +21,12 @@ para todo.
 - **Paso vivo**, `--cl-cat-N-vivo`, y **`--cl-cat-N-sobre`** para lo que se
   escribe encima. No cambian con el tema. El paso de arriba es el que exige el
   texto: para llegar a 4.5:1 en el tema claro tiene que ser oscuro, y oscuro es
-  apagado. Un punto, una raya de avance, una ficha rellena o una cifra grande
-  no son texto corrido y piden el color de verdad.
+  apagado. Un punto, una raya de avance o una ficha rellena no son texto y
+  piden el color de verdad.
+- **El vivo nunca va en texto, ni grande.** El menta da 1.5:1 sobre blanco y el
+  ámbar 1.65:1: ni con el 3:1 que admite el texto grande llegan. Para texto,
+  siempre `--cl-cat-N`; el vivo solo donde no hay que leer, o con
+  `--cl-cat-N-sobre` encima.
 - Las clases `cl-cat-N` separan las dos cosas: `--cl-f-texto` sigue siendo el
   paso legible y `--cl-f-solido` pasa a ser el vivo. Los filetes suben del 30
   al 35% del vivo.

@@ -166,7 +166,8 @@ import { Icono } from '@codelibri/sistema/react';
     <div class="doc-sub">
       <h3>Rampa categórica</h3>
       <p>Diez colores para lo que no tiene jerarquía ni significado de estado: las categorías de un filtro, las series de una gráfica, los tópicos de un catálogo. Van en orden de tono, de modo que dos vecinas nunca se confunden. Siete son los de la casa, en el mismo paso que ya usan los avisos y las familias; tres —naranja, cian y púrpura— rellenan los huecos del círculo. Cada uno cambia con el tema, y los veinte valores están medidos sobre la superficie, sobre el lienzo y sobre su propio color al 10%, que es como se pinta una ficha.</p>
-      <p>Cada categoría tiene además un <b>paso vivo</b>, <code class="cl-mono">--cl-cat-N-vivo</code>, que no cambia con el tema. El de arriba es el que exige el texto: para llegar a 4.5:1 en claro tiene que ser oscuro, y oscuro es apagado. Un punto, una raya de avance o una ficha rellena no son texto y piden el color de verdad; el vivo es ese, con <code class="cl-mono">--cl-cat-N-sobre</code> para lo que se escriba encima. Sirve también para una cifra grande, que con 3:1 basta.</p>
+      <p>Cada categoría tiene además un <b>paso vivo</b>, <code class="cl-mono">--cl-cat-N-vivo</code>, que no cambia con el tema. El de arriba es el que exige el texto: para llegar a 4.5:1 en claro tiene que ser oscuro, y oscuro es apagado. Un punto, una raya de avance o una ficha rellena no son texto y piden el color de verdad; el vivo es ese, con <code class="cl-mono">--cl-cat-N-sobre</code> para lo que se escriba encima.</p>
+      <p><b>El vivo no se usa nunca para texto, ni para una cifra grande.</b> El menta queda en 1.5:1 sobre blanco y el ámbar en 1.65:1: ni con el 3:1 que admite el texto grande llegan. El texto va siempre con <code class="cl-mono">--cl-cat-N</code>.</p>
       <div class="doc-rampa" id="doc-rampa"></div>
     </div>
     <div class="doc-sub">
