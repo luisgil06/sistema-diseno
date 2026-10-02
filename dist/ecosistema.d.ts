@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.11.0 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.12.0 · generado por herramientas/compilar.js; no se edita.
    La fuente es ecosistema/ecosistema.json. */
 import type { NombreIcono } from './iconos';
 export type IdProducto = "codelibri" | "aula" | "guia-sat" | "bloques-html" | "epub-reader";

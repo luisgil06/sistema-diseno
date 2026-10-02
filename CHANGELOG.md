@@ -13,6 +13,14 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.12.0 · 2 de octubre de 2026
+
+Crecimiento: **`@codelibri/sistema/fuentes.css`**, solo la letra (las dos
+caras de Inter, con las mismas rutas relativas a `fuentes/`). Es para el
+producto que no carga la hoja entera pero quiere Inter servida desde su propio
+dominio: Bloques HTML, que lleva sus estilos en JavaScript y no puede recibir
+las reglas globales de la hoja (sus barras de desplazamiento, por ejemplo).
+
 ## 0.11.0 · 2 de octubre de 2026
 
 Crecimiento: el menú del ecosistema y el pie de sitio, hechos para React, y

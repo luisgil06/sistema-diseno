@@ -97,6 +97,7 @@ correr `npm install` y se hace commit en el producto.
 
 ```js
 import '@codelibri/sistema/codelibri.css';        // tokens, componentes, Inter
+import '@codelibri/sistema/fuentes.css';          // o solo Inter, sin la hoja
 import { tema, paleta, variable } from '@codelibri/sistema';
 import { iconos } from '@codelibri/sistema/iconos'; // nombre y trazo de cada icono
 import { Icono, MenuEcosistema, PieSitio } from '@codelibri/sistema/react';

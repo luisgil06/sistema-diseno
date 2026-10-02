@@ -1,6 +1,6 @@
 {
   "name": "@codelibri/sistema",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Sistema de diseño CodeLibri: tokens, componentes, armazón, iconos e Inter, en una hoja CSS y módulos de JavaScript.",
   "license": "MIT",
   "author": "CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil",
@@ -44,6 +44,7 @@
       "default": "./dist/react.js"
     },
     "./codelibri.css": "./dist/codelibri.css",
+    "./fuentes.css": "./dist/fuentes.css",
     "./codelibri.js": "./dist/codelibri.js",
     "./codelibri-cabeza.js": "./dist/codelibri-cabeza.js",
     "./tokens.json": "./dist/tokens.json",

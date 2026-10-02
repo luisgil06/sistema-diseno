@@ -324,6 +324,10 @@ const cabecera = '/*!\n * Sistema de diseño CodeLibri ' + VERSION + '\n'
 
 const css = cabecera + hojaTokens() + ORDEN.map((r) => '\n' + leer(r)).join('');
 escribir('dist/codelibri.css', css);
+/* Solo la letra, para el producto que no carga la hoja pero quiere Inter del
+   propio dominio: Bloques HTML, con sus estilos en JavaScript. Las rutas son
+   las mismas, relativas a la carpeta fuentes/ de al lado. */
+escribir('dist/fuentes.css', cabecera + leer('src/fuentes.css'));
 escribir('dist/codelibri.js', leer('src/js/codelibri.js').replace(/__VERSION__/g, VERSION));
 escribir('dist/codelibri-cabeza.js', leer('src/js/cabeza.js'));
 escribir('dist/iconos.svg', sprite());

@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.11.0 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.12.0 · generado por herramientas/compilar.js; no se edita.
    La fuente es ecosistema/ecosistema.json. */
 export const ecosistema = [
   {
