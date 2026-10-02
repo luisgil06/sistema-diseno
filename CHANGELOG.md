@@ -13,6 +13,38 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.9.0 · 2 de octubre de 2026
+
+Crecimiento: lo que pidió la Guía SAT para tener el mismo pie, el mismo menú
+del ecosistema y el mismo cajón en todas sus páginas. Propuesto en la guía y
+aprobado por Luis.
+
+- **`@codelibri/sistema/ecosistema`**: la lista de los productos de CodeLibri
+  —nombre, nota, dirección, icono y su tono de la rampa—, una sola para todos.
+  `ecosistemaDesde('guia-sat')` devuelve los demás, y solo los que tienen
+  dirección. La fuente es `ecosistema/ecosistema.json`; la compilación se
+  niega si un icono no existe, si un tono no es de la rampa o si una
+  dirección no es https. También va como `ecosistema.json`.
+- **Pie de sitio** (`.cl-pie-sitio`): el pie de un sitio que se recorre, no de
+  una aplicación. La marca con su frase y su botón, columnas de enlaces con
+  rótulo y el ecosistema con el recuadro de la rampa de cada producto; debajo,
+  la franja `cl-pie`, que gana `.cl-pie-aparte` para llevar algo a la derecha.
+  El ancho, con `--cl-pie-ancho`.
+- **Cajón de sitio** (`.cl-lat-cajon`): la barra lateral como cajón a
+  cualquier ancho, para un sitio que navega con su barra superior y solo la
+  necesita cuando esa barra no cabe. El cierre va en la marca con
+  `.cl-lat-cerrar`.
+- **Un producto en la barra lateral**: un enlace de `cl-grupo` admite su
+  recuadro de color y una nota en `<small>`. Antes el recuadro se estiraba,
+  porque la regla de los rótulos alcanzaba a todo `span`.
+- **La flecha del botón de un menú gira** al abrirlo.
+- **Corrección en el guion:** el cajón se cerraba al pasar de 901 px, un ancho
+  fijo que solo vale para el armazón. Ahora se cierra cuando deja de verse el
+  botón que lo abre.
+- Documentación: el pie de sitio con su ejemplo, el cajón de sitio y el módulo
+  del ecosistema.
+- Figma: el componente «Pie de sitio» en la página Armazón.
+
 ## 0.8.1 · 2 de octubre de 2026
 
 Corrección: los botones de la casa cuando son de icono o están apagados.

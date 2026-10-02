@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.8.1 · guion
+ * Sistema de diseño CodeLibri 0.9.0 · guion
  * (c) CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  *
  * Se engancha solo por atributos data-cl-*; no hace falta escribir código
@@ -30,7 +30,6 @@
   var guardar = function (k, v) { try { localStorage.setItem(clave + '-' + k, v); } catch (e) {} };
   var leer = function (k) { try { return localStorage.getItem(clave + '-' + k); } catch (e) { return null; } };
   var todos = function (sel, dentro) { return [].slice.call((dentro || d).querySelectorAll(sel)); };
-  var ancho = w.matchMedia ? w.matchMedia('(min-width:901px)') : null;
 
   /* ── el foco dentro de un diálogo ──
      Un diálogo que se abre sin llevarse el foco deja a quien navega con
@@ -103,7 +102,7 @@
     });
     /* plegada, cada icono dice su nombre al pasar el puntero */
     if (lat) todos('.cl-grupo :is(a,button)', lat).forEach(function (a) {
-      var s = a.querySelector('span:not(.cl-avatar)');
+      var s = a.querySelector('span:not(.cl-avatar):not(.cl-cuadro)');
       if (!plegada || !s) a.removeAttribute('title'); else a.title = s.textContent;
     });
   }
@@ -252,10 +251,13 @@
     if (velo) velo.addEventListener('click', function () { latAbre(false); });
     /* un enlace a otra parte de la misma página no debe dejar el cajón encima */
     if (lat) lat.addEventListener('click', function (e) { if (e.target.closest('a') && latAbierta()) latAbre(false); });
-    if (ancho) {
-      var alCambiar = function (m) { if (m.matches) latAbre(false); };
-      if (ancho.addEventListener) ancho.addEventListener('change', alCambiar); else if (ancho.addListener) ancho.addListener(alCambiar);
-    }
+    /* Si el botón que abre el cajón deja de verse —la ventana se ensanchó—,
+       el cajón se cierra. Antes se miraba un ancho fijo de 901 px, que solo
+       vale para el armazón: un cajón de sitio (cl-lat-cajon) cambia donde lo
+       decida el producto. */
+    w.addEventListener('resize', function () {
+      if (latAbierta() && abrirLat && !abrirLat.getClientRects().length) latAbre(false);
+    });
     todos('[data-cl-plegar]').forEach(function (b) {
       b.addEventListener('click', function () {
         var plegada = !raiz.classList.contains('cl-lat-plegada');
@@ -310,6 +312,6 @@
     });
   }
 
-  w.CodeLibri = { version: '0.8.1', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
+  w.CodeLibri = { version: '0.9.0', aviso: aviso, abrir: abrir, cerrar: cerrar, tema: tema, foco: foco, iniciar: iniciar };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }(window, document));

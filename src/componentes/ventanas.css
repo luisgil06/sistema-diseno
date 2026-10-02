@@ -27,6 +27,9 @@
    Opaco a propósito: suele vivir dentro de la barra superior, que ya es de
    vidrio, y un backdrop-filter anidado solo ve a su padre, no la página. */
 .cl .cl-menu-ancla{position:relative}
+/* La flecha del botón de un menú gira al abrirlo; un botón de solo icono no. */
+.cl .cl-menu-ancla > .cl-boton > .cl-ico:last-child:not(:first-child){transition:transform var(--cl-mov-rapido) ease}
+.cl .cl-menu-ancla > .cl-boton[aria-expanded="true"] > .cl-ico:last-child:not(:first-child){transform:rotate(180deg)}
 .cl .cl-menu{
   position:absolute;right:0;top:calc(100% + 10px);z-index:60;width:340px;max-width:calc(100vw - 24px);padding:8px;
   border-radius:var(--cl-r-medio);background:var(--cl-superficie);border:1px solid var(--cl-superficie-linea);box-shadow:var(--cl-sombra-3)

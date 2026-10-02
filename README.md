@@ -100,7 +100,15 @@ import '@codelibri/sistema/codelibri.css';        // tokens, componentes, Inter
 import { tema, paleta, variable } from '@codelibri/sistema';
 import { iconos } from '@codelibri/sistema/iconos'; // nombre y trazo de cada icono
 import { Icono } from '@codelibri/sistema/react';    // <Icono nombre="buscar" />
+import { ecosistemaDesde } from '@codelibri/sistema/ecosistema'; // los demás productos
 ```
+
+`ecosistema` es la lista de los productos de CodeLibri —nombre, nota,
+dirección, icono y su tono de la rampa—, una sola para todos: el menú
+«Ecosistema», el cajón y el pie de sitio la leen de aquí.
+`ecosistemaDesde('guia-sat')` devuelve los demás, y solo los que tienen
+dirección. La fuente es `ecosistema/ecosistema.json`; un producto nuevo se
+añade ahí y llega a todos con la siguiente versión.
 
 La hoja referencia sus fuentes con rutas relativas, así que Vite las empaqueta
 solas y siguen saliendo del propio dominio del producto. `tokens` trae los

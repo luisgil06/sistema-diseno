@@ -180,6 +180,42 @@ function sprite() {
     + ' stroke-linecap="round" stroke-linejoin="round">\n' + simbolos.join('\n') + '\n</svg>\n';
 }
 
+/* ── ecosistema ────────────────────────────────────────────────────── */
+
+/* Los productos de CodeLibri, para el menú «Ecosistema» de una barra
+   superior, el grupo del cajón y la columna del pie de sitio: una sola
+   lista para todos los productos. Cada producto se quita a sí mismo con su
+   id, y lo que no tiene dirección no se enseña. Se comprueba al compilar:
+   un icono que no existe o un tono fuera de la rampa paran la compilación. */
+const ECOSISTEMA = JSON.parse(leer('ecosistema/ecosistema.json'));
+for (const p of ECOSISTEMA) {
+  const falta = ['id', 'nombre', 'nota', 'url', 'icono', 'tono'].filter((k) => typeof p[k] !== 'string');
+  if (falta.length) throw new Error('ecosistema: a «' + (p.id || '?') + '» le falta ' + falta.join(', '));
+  if (!ICONOS[p.icono]) throw new Error('ecosistema: «' + p.id + '» usa el icono «' + p.icono + '», que no existe');
+  if (!/^cl-cat-(10|[1-9])$/.test(p.tono)) throw new Error('ecosistema: el tono de «' + p.id + '» no es de la rampa: ' + p.tono);
+  if (p.url && !/^https:\/\/[^\s"<>]+$/.test(p.url)) throw new Error('ecosistema: la dirección de «' + p.id + '» no es https: ' + p.url);
+}
+
+function moduloEcosistema() {
+  const aviso = '/* Sistema de diseño CodeLibri ' + VERSION + ' · generado por herramientas/compilar.js; no se edita.\n'
+    + '   La fuente es ecosistema/ecosistema.json. */\n';
+  const ids = ECOSISTEMA.map((p) => JSON.stringify(p.id)).join(' | ');
+  return {
+    js: aviso + 'export const ecosistema = ' + JSON.stringify(ECOSISTEMA, null, 2) + ';\n'
+      + '/** Los productos que enseña «actual»: los demás, y solo los que tienen dirección. */\n'
+      + 'export function ecosistemaDesde(actual) { return ecosistema.filter((p) => p.id !== actual && p.url); }\n'
+      + 'export default ecosistema;\n',
+    dts: aviso + "import type { NombreIcono } from './iconos';\n"
+      + 'export type IdProducto = ' + ids + ';\n'
+      + 'export interface Producto {\n  readonly id: IdProducto;\n  readonly nombre: string;\n  readonly nota: string;\n'
+      + '  /** Vacía mientras el producto no está publicado: entonces no se enseña. */\n  readonly url: string;\n'
+      + '  readonly icono: NombreIcono;\n  /** La clase de la rampa categórica que le da su color: cl-cat-1 a cl-cat-10. */\n  readonly tono: string;\n}\n'
+      + 'export declare const ecosistema: readonly Producto[];\n'
+      + 'export declare function ecosistemaDesde(actual?: IdProducto | string): Producto[];\n'
+      + 'export default ecosistema;\n',
+  };
+}
+
 /* ── tokens resueltos, para Figma y la documentación ───────────────── */
 
 function tokensResueltos() {
@@ -283,6 +319,10 @@ escribir('dist/tokens.js', modTokens.js);
 escribir('dist/tokens.d.ts', modTokens.dts);
 escribir('dist/iconos.js', modIconos.js);
 escribir('dist/iconos.d.ts', modIconos.dts);
+const modEco = moduloEcosistema();
+escribir('dist/ecosistema.json', JSON.stringify(ECOSISTEMA, null, 2) + '\n');
+escribir('dist/ecosistema.js', modEco.js);
+escribir('dist/ecosistema.d.ts', modEco.dts);
 /* El componente de icono para React: se escribe a mano en src/react/ y
    aquí solo se le pone la versión. */
 escribir('dist/react.js', leer('src/react/react.js').replace(/__VERSION__/g, VERSION));
@@ -310,7 +350,8 @@ for (const f of fs.readdirSync(path.join(RAIZ, 'fuentes'))) {
 const kb = (r) => (fs.statSync(path.join(RAIZ, r)).size / 1024).toFixed(1) + ' KB';
 console.log('Sistema de diseño CodeLibri ' + VERSION);
 for (const r of ['dist/codelibri.css', 'dist/codelibri.js', 'dist/iconos.svg', 'dist/tokens.json', 'dist/tokens.js', 'dist/iconos.js']) console.log('  ' + r.padEnd(22) + kb(r));
-console.log('  ' + Object.keys(ICONOS).length + ' iconos, ' + FAMILIAS.length + ' familias de acento, 2 temas');
+console.log('  ' + Object.keys(ICONOS).length + ' iconos, ' + FAMILIAS.length + ' familias de acento, 2 temas, '
+  + ECOSISTEMA.length + ' productos en el ecosistema');
 
 /* Y el contraste, siempre: si algo baja de 4.5:1 la compilación falla. */
 require('./contraste.js');

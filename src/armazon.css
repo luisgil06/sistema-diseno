@@ -35,9 +35,14 @@
   font-size:var(--cl-t-ui);font-weight:var(--cl-peso-medio);color:var(--cl-texto-2);
   transition:background var(--cl-mov-rapido) ease,color var(--cl-mov-rapido) ease
 }
-.cl .cl-grupo :is(a,button) > span:not(.cl-avatar){flex:1;min-width:0;line-height:1.3}
+.cl .cl-grupo :is(a,button) > span:not(.cl-avatar,.cl-cuadro){flex:1;min-width:0;line-height:1.3}
 .cl .cl-grupo :is(a,button) .cl-ico{color:var(--cl-texto-3)}
 .cl .cl-grupo :is(a,button) .cl-contador{margin-left:4px}
+/* Un enlace con su recuadro de color y una nota debajo: el de un producto del
+   ecosistema. El recuadro no se estira y su dibujo lleva el color del tono. */
+.cl .cl-grupo :is(a,button) > .cl-cuadro{width:30px;height:30px}
+.cl .cl-grupo .cl-cuadro .cl-ico{color:inherit}
+.cl .cl-grupo small{display:block;font-size:12px;font-weight:var(--cl-peso-normal);color:var(--cl-texto-3)}
 .cl .cl-grupo :is(a,button):hover{background:var(--cl-flotar);color:var(--cl-texto)}
 /* La opción marcada: la página en la que se está (aria-current="page") o
    la sección a la que pertenece (aria-current="true"). */
@@ -69,7 +74,7 @@
   html.cl-lat-plegada .cl .cl-lat{padding:0 10px 14px}
   html.cl-lat-plegada .cl .cl-marca{justify-content:center;padding:0;margin:0 -10px 16px}
   html.cl-lat-plegada .cl .cl-marca > span,
-  html.cl-lat-plegada .cl .cl-grupo :is(a,button) > span:not(.cl-avatar),
+  html.cl-lat-plegada .cl .cl-grupo :is(a,button) > span:not(.cl-avatar,.cl-cuadro),
   html.cl-lat-plegada .cl .cl-plegar > span{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   html.cl-lat-plegada .cl .cl-grupo :is(a,button){justify-content:center;padding:10px 0;gap:0}
   html.cl-lat-plegada .cl .cl-grupo .cl-contador{display:none}
@@ -121,6 +126,46 @@
 }
 .cl .cl-pie :is(a,button){font-size:var(--cl-t-nota);color:var(--cl-texto-2);text-decoration:underline;text-decoration-color:var(--cl-linea-2);text-underline-offset:3px}
 .cl .cl-pie :is(a,button):hover{color:var(--cl-acento);text-decoration-color:currentColor}
+.cl .cl-pie .cl-pie-aparte{margin-left:auto}
+
+/* ── pie de sitio ──
+   El pie de un sitio que se recorre —la Guía SAT, el sitio principal—, no
+   el de una aplicación: columnas sobre la superficie y, debajo, la franja
+   cl-pie. La primera columna es la marca, con su frase y su botón; las
+   demás, listas de enlaces con rótulo. Un producto del ecosistema lleva su
+   recuadro de la rampa y su nota. El ancho sale de --cl-pie-ancho. */
+.cl .cl-pie-sitio{margin-top:56px;border-top:1px solid var(--cl-linea);background:var(--cl-superficie)}
+.cl .cl-pie-sitio-cuerpo{
+  max-width:var(--cl-pie-ancho,1240px);margin:0 auto;padding:40px 22px 32px;
+  display:grid;grid-template-columns:minmax(0,1.3fr);grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;gap:32px 40px
+}
+.cl .cl-pie-sitio-marca{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.cl .cl-pie-sitio-logo{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:var(--cl-peso-extra);color:var(--cl-texto);text-decoration:none}
+.cl .cl-pie-sitio-logo img{width:36px;height:36px;border-radius:var(--cl-r-control)}
+.cl .cl-pie-sitio-marca p{max-width:38ch;font-size:var(--cl-t-chico);line-height:1.55;color:var(--cl-texto-2)}
+.cl .cl-pie-sitio-columna .cl-rotulo{margin-bottom:10px}
+.cl .cl-pie-sitio-columna ul{display:grid;gap:2px;margin:0;padding:0;list-style:none}
+.cl .cl-pie-sitio-columna a{
+  display:flex;align-items:center;gap:10px;padding:6px 0;font-size:var(--cl-t-chico);color:var(--cl-texto-2);text-decoration:none;
+  transition:color var(--cl-mov-rapido) ease
+}
+.cl .cl-pie-sitio-columna a:hover{color:var(--cl-acento)}
+.cl .cl-pie-sitio-columna a > .cl-ico{flex:none;color:var(--cl-texto-3)}
+.cl .cl-pie-sitio-columna a:hover > .cl-ico{color:currentColor}
+.cl .cl-pie-sitio-columna a > .cl-cuadro{width:32px;height:32px}
+.cl .cl-pie-sitio-columna a > span:not(.cl-cuadro){min-width:0;font-weight:var(--cl-peso-semi);color:var(--cl-texto)}
+.cl .cl-pie-sitio-columna a:hover > span:not(.cl-cuadro){color:var(--cl-acento)}
+.cl .cl-pie-sitio-columna small{display:block;font-size:12px;font-weight:var(--cl-peso-normal);line-height:1.35;color:var(--cl-texto-3)}
+/* la franja, con su contenido al ancho de las columnas */
+.cl .cl-pie-sitio > .cl-pie{padding-inline:max(22px,calc((100% - var(--cl-pie-ancho,1240px)) / 2 + 22px))}
+@media (max-width:900px){
+  .cl .cl-pie-sitio-cuerpo{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row}
+  .cl .cl-pie-sitio-marca{grid-column:1 / -1}
+}
+@media (max-width:560px){
+  .cl .cl-pie-sitio-cuerpo{grid-template-columns:minmax(0,1fr);padding:32px 16px 24px;gap:28px}
+  .cl .cl-pie .cl-pie-aparte{margin-left:0}
+}
 
 .cl .cl-velo{position:fixed;inset:0;z-index:var(--cl-z-velo);background:var(--cl-velo)}
 .cl .cl-solo-estrecho{display:none}
@@ -156,3 +201,19 @@
   .cl .cl-superior .cl-buscador{height:38px;padding:0 10px}
   .cl .cl-display{font-size:34px}
 }
+
+/* ── barra lateral que solo es cajón ──
+   Para los sitios que navegan con la barra superior —la Guía SAT— y solo
+   necesitan la lateral cuando esa barra deja de caber: con cl-lat-cajon es
+   cajón a cualquier ancho, y el producto enseña el botón que la abre donde
+   le haga falta. El guion la cierra si ese botón deja de verse. Va al final
+   de la hoja para pesar más que la barra lateral en pantallas estrechas. */
+.cl .cl-lat-cajon{
+  position:fixed;left:0;top:0;bottom:0;width:min(86vw,320px);height:auto;
+  transform:translateX(-102%);visibility:hidden;background:var(--cl-superficie);box-shadow:var(--cl-sombra-3);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  transition:transform .25s ease,visibility 0s linear .25s
+}
+.cl .cl-lat-cajon.cl-abierta{transform:none;visibility:visible;transition:transform .25s ease}
+/* el botón de cerrar, al final de la franja de la marca */
+.cl .cl-marca .cl-lat-cerrar{margin-left:auto}

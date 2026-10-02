@@ -136,6 +136,7 @@
 import '@codelibri/sistema/codelibri.css';
 import { tema, paleta } from '@codelibri/sistema';
 import { Icono } from '@codelibri/sistema/react';
+import { ecosistemaDesde } from '@codelibri/sistema/ecosistema';
 
 &lt;button className="cl-boton cl-boton-icono" aria-label="Buscar"&gt;
   &lt;Icono nombre="buscar" /&gt;
@@ -545,6 +546,8 @@ import { Icono } from '@codelibri/sistema/react';
       <li><b>Cajón.</b> A 900 px o menos la barra sale de lado con el botón de menú, deja un velo detrás, atrapa el foco y se cierra con Escape.</li>
       <li><b>Barra superior.</b> En pantallas estrechas los botones con rótulo (<code class="cl-mono">cl-txt</code>) se quedan en su icono; el rótulo sigue para el lector.</li>
       <li><b>Contenido.</b> Secciones sin caja, separadas por 52 px de aire; las anclas quedan por debajo de la barra superior.</li>
+      <li><b>Cajón de sitio.</b> Un sitio que navega con su barra superior —la Guía SAT— solo necesita la lateral cuando esa barra no cabe: con <code class="cl-mono">cl-lat-cajon</code> es cajón a cualquier ancho y el producto enseña el botón que la abre donde le haga falta. El guion la cierra si ese botón deja de verse. El cierre va en la marca, con <code class="cl-mono">cl-lat-cerrar</code>.</li>
+      <li><b>Pie de sitio.</b> El pie de un sitio que se recorre, no de una aplicación: columnas sobre la superficie y, debajo, la franja <code class="cl-mono">cl-pie</code>. El ancho, con <code class="cl-mono">--cl-pie-ancho</code>.</li>
     </ul>
     <div class="doc-sub"><h3>El esqueleto</h3>
 <pre class="cl-codigo">&lt;body class="cl"&gt;
@@ -576,6 +579,31 @@ import { Icono } from '@codelibri/sistema/react';
 &lt;script src="/sistema/codelibri.js"&gt;&lt;/script&gt;
 &lt;/body&gt;</pre>
       <div class="cl-botones"><a class="cl-boton cl-boton-primario" href="ejemplo.html">Ver la página de ejemplo <i data-ico="flecha" data-t="18"></i></a></div>
+    </div>
+    <div class="doc-sub"><h3>Pie de sitio</h3>
+      <p>La primera columna es la marca, con una frase y su botón; las demás, listas con rótulo. Los productos del ecosistema llevan su recuadro de la rampa y su nota, y salen de <code class="cl-mono">@codelibri/sistema/ecosistema</code>, la misma lista del menú «Ecosistema» y del cajón. A 900 px la marca pasa arriba y las listas quedan en dos columnas; en el teléfono, en una.</p>
+      <div class="doc-ejemplo doc-bloque" data-doc-codigo>
+        <footer class="cl-pie-sitio" style="margin-top:0">
+          <div class="cl-pie-sitio-cuerpo">
+            <div class="cl-pie-sitio-marca">
+              <a class="cl-pie-sitio-logo" href="#armazon"><img src="img/logo-codelibri.svg" alt=""><span>Guía SAT MX</span></a>
+              <p>Soluciones paso a paso para los trámites del SAT, con asistencia de inteligencia artificial.</p>
+              <a class="cl-boton cl-boton-apoyo cl-boton-chico" href="#armazon"><i data-ico="corazon" data-t="15"></i>Dona y apoya este proyecto</a>
+            </div>
+            <nav class="cl-pie-sitio-columna" aria-labelledby="doc-pie-a"><p class="cl-rotulo" id="doc-pie-a">La guía</p><ul>
+              <li><a href="#armazon"><i data-ico="inicio" data-t="16"></i>Problemas y soluciones</a></li>
+              <li><a href="#armazon"><i data-ico="calculadora" data-t="16"></i>Calculadora de IVA y retenciones</a></li>
+              <li><a href="#armazon"><i data-ico="documento" data-t="16"></i>Blog fiscal</a></li>
+            </ul></nav>
+            <nav class="cl-pie-sitio-columna" aria-labelledby="doc-pie-b"><p class="cl-rotulo" id="doc-pie-b">Ecosistema CodeLibri</p><ul>
+              <li><a href="#armazon"><span class="cl-cuadro cl-cat-8"><i data-ico="birrete" data-t="15"></i></span><span>Aula<small>Presentaciones y material de clase de diseño</small></span></a></li>
+              <li><a href="#armazon"><span class="cl-cuadro cl-cat-6"><i data-ico="libro" data-t="15"></i></span><span>EPUB Reader<small>El lector de libros digitales</small></span></a></li>
+              <li><a href="#armazon"><span class="cl-cuadro cl-cat-4"><i data-ico="bloques" data-t="15"></i></span><span>Bloques HTML<small>Componentes listos para copiar y adaptar</small></span></a></li>
+            </ul></nav>
+          </div>
+          <div class="cl-pie"><span>© 2026 CodeLibri</span><a href="#armazon">Aviso legal</a><span class="cl-pie-aparte">Información general: para casos específicos, consulte a un contador.</span></div>
+        </footer>
+      </div>
     </div>
   </section>
 

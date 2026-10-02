@@ -372,7 +372,12 @@
       "comp": "107:868",
       "pagina": "Navegación"
     },
-    "Filtro": "118:114"
+    "Filtro": "118:114",
+    "Pie de sitio": {
+      "comp": "151:575",
+      "rotulo": "151:660",
+      "nota": "0.9.0: marca con su botón, columnas con rótulo y el ecosistema con el recuadro de la rampa (fondo al 10% de cat-N, dibujo en cat-N). La franja es un marco propio, no una instancia de Pie: lleva el aviso a la derecha."
+    }
   },
   "pendiente": [
     "Code Connect no se hizo: el sistema es HTML y CSS sin framework; las descripciones de cada componente llevan su marcado."
