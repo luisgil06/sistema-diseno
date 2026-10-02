@@ -13,6 +13,21 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.8.1 · 2 de octubre de 2026
+
+Corrección: los botones de la casa cuando son de icono o están apagados.
+
+- **El principal y el de apoyo de icono llevaban el dibujo gris.**
+  `.cl-boton-icono`, con la misma especificidad y más abajo en la hoja, les
+  ponía `--cl-texto-2` encima del degradado. Ahora el dibujo va en blanco,
+  como su texto. Lo vio Luis en el botón flotante del chat de la Guía SAT.
+- **Los degradados apagados se quedaban en pastel.** Al 40% el violeta y la
+  menta casi desaparecían y el blanco encima no se distinguía. El principal y
+  el de apoyo se apagan ahora al 75%, sin sombra; el resto sigue al 40%.
+- Documentación: el principal de icono, reposando y apagado.
+- Figma: el apagado del principal y del de apoyo al 75%, y el principal y el
+  de apoyo en el conjunto «Botón icono».
+
 ## 0.8.0 · 1 de octubre de 2026
 
 Crecimiento: un icono.

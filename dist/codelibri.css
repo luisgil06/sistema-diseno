@@ -1,5 +1,5 @@
 /*!
- * Sistema de diseño CodeLibri 0.8.0
+ * Sistema de diseño CodeLibri 0.8.1
  * (c) 2026 CodeLibri — Elisa Espinoza Castillo y Luis E. Maldonado Gil
  * Inter: SIL Open Font License 1.1.
  */
@@ -436,6 +436,10 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 /* Solo icono: cuadrado. Necesita aria-label, que el dibujo no se lee. */
 .cl .cl-boton-icono{width:var(--cl-boton-alto);padding:0;color:var(--cl-texto-2)}
 .cl .cl-boton-icono .cl-ico{color:currentColor}
+/* El principal y el de apoyo de icono siguen con el dibujo en blanco. Sin
+   esto, la regla de arriba —misma especificidad, más abajo en la hoja— les
+   ponía el gris del texto secundario sobre el degradado. */
+.cl :is(.cl-boton-primario,.cl-boton-apoyo).cl-boton-icono{color:#fff}
 
 .cl .cl-boton-chico{--cl-boton-alto:34px;padding:0 14px;font-size:var(--cl-t-nota)}
 .cl .cl-boton-chico.cl-boton-icono{padding:0}
@@ -446,6 +450,10 @@ html[data-theme="dark"]:has(> body.cl){--cl-barra-pagina:rgba(255,255,255,.12);-
 /* Apagado: con disabled en un <button>, con aria-disabled en un enlace o
    en un botón que tiene que seguir alcanzándose con el tabulador. */
 .cl .cl-boton:is([disabled],[aria-disabled="true"]){opacity:.4;cursor:default;transform:none;box-shadow:none;pointer-events:none}
+/* Los degradados de la casa se apagan menos: al 40% el violeta y la menta
+   quedaban en pastel y el blanco encima no se distinguía. Al 75% y sin
+   sombra se leen apagados y siguen siendo de la marca. */
+.cl :is(.cl-boton-primario,.cl-boton-apoyo):is([disabled],[aria-disabled="true"]){opacity:.75}
 .cl .cl-boton[aria-disabled="true"]{pointer-events:auto}
 .cl .cl-boton[aria-disabled="true"]:hover{transform:none;border-color:var(--cl-linea)}
 

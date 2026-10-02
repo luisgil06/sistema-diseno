@@ -281,6 +281,7 @@ import { Icono } from '@codelibri/sistema/react';
         <button class="cl-boton cl-boton-fantasma" type="button">Cancelar</button>
         <button class="cl-boton cl-boton-peligro" type="button">Retirar</button>
         <button class="cl-boton cl-boton-icono" type="button" aria-label="Compartir"><i data-ico="compartir"></i></button>
+        <button class="cl-boton cl-boton-primario cl-boton-icono" type="button" aria-label="Abrir el asistente"><i data-ico="chat"></i></button>
       </div></div>
     <div class="doc-sub"><h3>Tamaños y estados</h3>
       <div class="doc-ejemplo" data-doc-codigo>
@@ -288,11 +289,13 @@ import { Icono } from '@codelibri/sistema/react';
         <button class="cl-boton" type="button">Normal</button>
         <button class="cl-boton cl-boton-grande" type="button">Grande</button>
         <button class="cl-boton" type="button" disabled>Apagado</button>
+        <button class="cl-boton cl-boton-primario" type="button" disabled>Principal apagado</button>
+        <button class="cl-boton cl-boton-primario cl-boton-icono" type="button" disabled aria-label="Enviar"><i data-ico="arriba"></i></button>
         <button class="cl-boton" type="button" aria-pressed="true"><i data-ico="corazon" data-t="18"></i>Te gusta</button>
       </div>
       <ul class="doc-notas">
-        <li><b>Solo icono:</b> <code class="cl-mono">aria-label</code> siempre. El dibujo no se lee.</li>
-        <li><b>Apagado:</b> <code class="cl-mono">disabled</code> en un botón; <code class="cl-mono">aria-disabled="true"</code> si tiene que seguir alcanzándose con el tabulador, como las flechas de un carrusel en su extremo.</li>
+        <li><b>Solo icono:</b> <code class="cl-mono">aria-label</code> siempre. El dibujo no se lee. El principal y el de apoyo de icono llevan el dibujo en blanco, como su texto.</li>
+        <li><b>Apagado:</b> <code class="cl-mono">disabled</code> en un botón; <code class="cl-mono">aria-disabled="true"</code> si tiene que seguir alcanzándose con el tabulador, como las flechas de un carrusel en su extremo. El principal y el de apoyo se apagan al 75% y no al 40%: con menos, el degradado se queda en pastel.</li>
         <li><b>Pulsado que se queda pulsado</b> —me gusta, favorito—: <code class="cl-mono">aria-pressed</code>.</li>
       </ul></div>
   </section>

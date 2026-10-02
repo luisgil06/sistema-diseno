@@ -146,7 +146,14 @@
       "set": "61:89",
       "props": {
         "Icono": "Icono#61:0"
-      }
+      },
+      "estilos": [
+        "Secundario",
+        "Fantasma",
+        "Primario",
+        "Apoyo"
+      ],
+      "nota": "0.8.1: Primario y Apoyo con el dibujo en blanco (variable 45:83) y su apagado al 75%, como en el código. El principal normal mide 42."
     },
     "Botón conmutable": {
       "set": "61:114",

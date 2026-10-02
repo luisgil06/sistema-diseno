@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.8.0 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.8.1 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
