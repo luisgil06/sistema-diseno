@@ -2,7 +2,7 @@
 /*
  * Sistema de diseño CodeLibri · llevar una versión a un producto
  *
- *   node herramientas/llevar.js "<carpeta del producto>" [--carpeta src/sistema] [--borrador]
+ *   node herramientas/llevar.js "<carpeta del producto>" [--carpeta src/sistema] [--solo a,b] [--borrador]
  *
  * Compila y copia dist/ entero dentro del producto, en una carpeta que es
  * solo del sistema, y deja al lado SISTEMA.json con la versión, el commit y
@@ -13,6 +13,9 @@
  * Una versión que se lleva tiene que existir en git: el sistema sin cambios
  * pendientes y con la etiqueta v<versión> en el commit actual. Para probar
  * antes de etiquetar está --borrador, y SISTEMA.json lo dice.
+ *
+ * Con --solo se llevan únicamente esos archivos de dist/, separados por
+ * comas: el Aula, que no usa la hoja, solo necesita ecosistema.json.
  *
  * La carpeta de destino se vacía y se vuelve a llenar, pero solo si es del
  * sistema (tiene SISTEMA.json) o no existe: nunca pisa una carpeta ajena.
@@ -30,9 +33,10 @@ const opcion = (nombre, porOmision) => {
   const i = args.indexOf('--' + nombre);
   return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : porOmision;
 };
-const producto = args.find((a, i) => !a.startsWith('--') && !(i > 0 && args[i - 1] === '--carpeta'));
+const producto = args.find((a, i) => !a.startsWith('--') && !(i > 0 && ['--carpeta', '--solo'].includes(args[i - 1])));
 const carpeta = opcion('carpeta', 'src/sistema');
 const borrador = args.includes('--borrador');
+const solo = opcion('solo', '').split(',').map((x) => x.trim()).filter(Boolean);
 
 function falla(msg) { console.error('\n  ✕ ' + msg + '\n'); process.exit(1); }
 const git = (...a) => execFileSync('git', a, { cwd: RAIZ, encoding: 'utf8' }).trim();
@@ -57,6 +61,11 @@ if (!borrador) {
 /* ── compilar: si el contraste falla, no se lleva nada ── */
 execFileSync(process.execPath, [path.join(__dirname, 'compilar.js')], { cwd: RAIZ, stdio: 'inherit' });
 
+/* ── con --solo, cada archivo tiene que existir en dist/ ── */
+for (const f of solo) {
+  if (!fs.existsSync(path.join(RAIZ, 'dist', f))) falla('No hay ' + f + ' en dist/. Los que hay: ' + fs.readdirSync(path.join(RAIZ, 'dist')).join(', '));
+}
+
 /* ── vaciar el destino, solo si es del sistema ── */
 if (fs.existsSync(destino)) {
   const marca = path.join(destino, 'SISTEMA.json');
@@ -72,6 +81,7 @@ const huellas = {};
     const origen = path.join(dir, f);
     const rel = path.relative(DIST, origen).split(path.sep).join('/');
     if (fs.statSync(origen).isDirectory()) { copiar(origen); continue; }
+    if (solo.length && !solo.includes(rel)) continue;
     const dest = path.join(destino, rel);
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(origen, dest);
@@ -85,6 +95,7 @@ const ficha = {
   etiqueta: etiqueta || null,
   commit,
   borrador,
+  solo: solo.length ? solo : undefined,
   fecha: new Date().toISOString().slice(0, 10),
   aviso: 'Copia generada con herramientas/llevar.js del repositorio sistema-diseno. No se edita: se cambia allí y se vuelve a llevar.',
   archivos: huellas,

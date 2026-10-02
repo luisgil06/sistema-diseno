@@ -13,6 +13,15 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.9.1 · 2 de octubre de 2026
+
+Corrección en las herramientas; lo que usa un producto no cambia.
+
+- **`llevar.js --solo`**: lleva únicamente los archivos de `dist/` que se le
+  pidan, separados por comas, y `SISTEMA.json` lo anota. Lo pidió el Aula, que
+  tiene su propia hoja y solo necesita `ecosistema.json`. Un archivo que no
+  existe en `dist/` detiene la copia y dice cuáles hay.
+
 ## 0.9.0 · 2 de octubre de 2026
 
 Crecimiento: lo que pidió la Guía SAT para tener el mismo pie, el mismo menú

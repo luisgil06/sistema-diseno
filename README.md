@@ -130,6 +130,14 @@ Se niega si el sistema tiene cambios sin commit o si el commit actual no lleva
 la etiqueta de la versión. Para probar antes de etiquetar, `--borrador`, y
 `SISTEMA.json` lo deja escrito.
 
+Un producto que solo necesita una parte la pide con `--solo`, separando los
+archivos con comas. El Aula, que tiene su propia hoja, se lleva únicamente la
+lista del ecosistema:
+
+```
+node herramientas/llevar.js "D:\CodeLibri\learn\plataforma" --carpeta inc/sistema --solo ecosistema.json
+```
+
 **No se carga desde un CDN** aunque el repositorio sea público: sería una
 petición a un tercero en cada visita, justo lo que se evita sirviendo Inter
 desde el propio sitio.
