@@ -6,6 +6,11 @@
     "url": "https://codelibri.com.mx",
     "icono": "tienda",
     "tono": "cl-cat-8",
+    "idiomas": {
+      "en": {
+        "nota": "The studio: services, shop and contact"
+      }
+    },
     "colores": {
       "claro": "#624de0",
       "oscuro": "#9d8df9"
@@ -18,6 +23,11 @@
     "url": "https://aula.codelibri.com.mx",
     "icono": "birrete",
     "tono": "cl-cat-9",
+    "idiomas": {
+      "en": {
+        "nota": "Design presentations and course materials"
+      }
+    },
     "colores": {
       "claro": "#9f2fb0",
       "oscuro": "#db7bea"
@@ -30,6 +40,11 @@
     "url": "https://guia-sat.codelibri.com.mx",
     "icono": "recibo",
     "tono": "cl-cat-2",
+    "idiomas": {
+      "en": {
+        "nota": "Mexican tax (SAT) procedures step by step, with AI"
+      }
+    },
     "colores": {
       "claro": "#a35714",
       "oscuro": "#f3a968"
@@ -42,6 +57,11 @@
     "url": "https://bloques-html.codelibri.com.mx",
     "icono": "bloques",
     "tono": "cl-cat-4",
+    "idiomas": {
+      "en": {
+        "nota": "Ready-made components to copy and adapt"
+      }
+    },
     "colores": {
       "claro": "#157a4a",
       "oscuro": "#6ee8af"
@@ -54,6 +74,11 @@
     "url": "https://epub-reader.codelibri.com.mx",
     "icono": "libro",
     "tono": "cl-cat-6",
+    "idiomas": {
+      "en": {
+        "nota": "The digital book reader"
+      }
+    },
     "colores": {
       "claro": "#097295",
       "oscuro": "#66d1f5"

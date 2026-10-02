@@ -145,16 +145,19 @@
 .cl .cl-pie-sitio-marca p{max-width:38ch;font-size:var(--cl-t-chico);line-height:1.55;color:var(--cl-texto-2)}
 .cl .cl-pie-sitio-columna .cl-rotulo{margin-bottom:10px}
 .cl .cl-pie-sitio-columna ul{display:grid;gap:2px;margin:0;padding:0;list-style:none}
-.cl .cl-pie-sitio-columna a{
+/* Un botón de la columna (lo que abre una ventana del propio producto) se ve
+   igual que un enlace: sin caja, a todo el ancho y alineado a la izquierda. */
+.cl .cl-pie-sitio-columna button{width:100%;border:0;background:none;font:inherit;text-align:left;cursor:pointer}
+.cl .cl-pie-sitio-columna :is(a,button){
   display:flex;align-items:center;gap:10px;padding:6px 0;font-size:var(--cl-t-chico);color:var(--cl-texto-2);text-decoration:none;
   transition:color var(--cl-mov-rapido) ease
 }
-.cl .cl-pie-sitio-columna a:hover{color:var(--cl-acento)}
-.cl .cl-pie-sitio-columna a > .cl-ico{flex:none;color:var(--cl-texto-3)}
-.cl .cl-pie-sitio-columna a:hover > .cl-ico{color:currentColor}
-.cl .cl-pie-sitio-columna a > .cl-cuadro{width:32px;height:32px}
-.cl .cl-pie-sitio-columna a > span:not(.cl-cuadro){min-width:0;font-weight:var(--cl-peso-semi);color:var(--cl-texto)}
-.cl .cl-pie-sitio-columna a:hover > span:not(.cl-cuadro){color:var(--cl-acento)}
+.cl .cl-pie-sitio-columna :is(a,button):hover{color:var(--cl-acento)}
+.cl .cl-pie-sitio-columna :is(a,button) > .cl-ico{flex:none;color:var(--cl-texto-3)}
+.cl .cl-pie-sitio-columna :is(a,button):hover > .cl-ico{color:currentColor}
+.cl .cl-pie-sitio-columna :is(a,button) > .cl-cuadro{width:32px;height:32px}
+.cl .cl-pie-sitio-columna :is(a,button) > span:not(.cl-cuadro){min-width:0;font-weight:var(--cl-peso-semi);color:var(--cl-texto)}
+.cl .cl-pie-sitio-columna :is(a,button):hover > span:not(.cl-cuadro){color:var(--cl-acento)}
 .cl .cl-pie-sitio-columna small{display:block;font-size:12px;font-weight:var(--cl-peso-normal);line-height:1.35;color:var(--cl-texto-3)}
 /* la franja, con su contenido al ancho de las columnas */
 .cl .cl-pie-sitio > .cl-pie{padding-inline:max(22px,calc((100% - var(--cl-pie-ancho,1240px)) / 2 + 22px))}

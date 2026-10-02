@@ -194,6 +194,9 @@ for (const p of ECOSISTEMA) {
   if (!ICONOS[p.icono]) throw new Error('ecosistema: «' + p.id + '» usa el icono «' + p.icono + '», que no existe');
   if (!/^cl-cat-(10|[1-9])$/.test(p.tono)) throw new Error('ecosistema: el tono de «' + p.id + '» no es de la rampa: ' + p.tono);
   if (p.url && !/^https:\/\/[^\s"<>]+$/.test(p.url)) throw new Error('ecosistema: la dirección de «' + p.id + '» no es https: ' + p.url);
+  /* Los productos bilingües (el EPUB Reader) piden la nota en inglés: sin
+     ella, en inglés saldría en español. Se exige para todos. */
+  if (typeof p.idiomas?.en?.nota !== 'string') throw new Error('ecosistema: a «' + p.id + '» le falta idiomas.en.nota');
 }
 
 function moduloEcosistema(lista) {
@@ -202,19 +205,29 @@ function moduloEcosistema(lista) {
   const ids = ECOSISTEMA.map((p) => JSON.stringify(p.id)).join(' | ');
   return {
     js: aviso + 'export const ecosistema = ' + JSON.stringify(lista, null, 2) + ';\n'
-      + '/** Los productos que enseña «actual»: los demás, y solo los que tienen dirección. */\n'
-      + 'export function ecosistemaDesde(actual) { return ecosistema.filter((p) => p.id !== actual && p.url); }\n'
+      + '/** Los productos que enseña «actual»: los demás, y solo los que tienen dirección.\n'
+      + '    Con «idioma» ("en"), el nombre y la nota salen en ese idioma si los tiene. */\n'
+      + 'export function ecosistemaDesde(actual, idioma) {\n'
+      + '  return ecosistema.filter((p) => p.id !== actual && p.url).map((p) => {\n'
+      + '    const t = idioma && p.idiomas && p.idiomas[idioma];\n'
+      + '    return t ? { ...p, nombre: t.nombre || p.nombre, nota: t.nota || p.nota } : p;\n'
+      + '  });\n'
+      + '}\n'
       + 'export default ecosistema;\n',
     dts: aviso + "import type { NombreIcono } from './iconos';\n"
       + 'export type IdProducto = ' + ids + ';\n'
+      + '/** Los idiomas de la interfaz que tienen texto propio; el español es el de base. */\n'
+      + "export type Idioma = 'es' | 'en';\n"
       + 'export interface Producto {\n  readonly id: IdProducto;\n  readonly nombre: string;\n  readonly nota: string;\n'
       + '  /** Vacía mientras el producto no está publicado: entonces no se enseña. */\n  readonly url: string;\n'
       + '  readonly icono: NombreIcono;\n  /** La clase de la rampa categórica que le da su color: cl-cat-1 a cl-cat-10. */\n  readonly tono: string;\n'
       + '  /** Ese color ya resuelto, para quien no carga la hoja (el Aula, WordPress): el\n'
       + '      dibujo va en este color y el fondo del recuadro en él mismo al 10%. */\n'
-      + '  readonly colores: { readonly claro: string; readonly oscuro: string };\n}\n'
+      + '  readonly colores: { readonly claro: string; readonly oscuro: string };\n'
+      + '  /** El nombre y la nota en otros idiomas; ecosistemaDesde() los aplica. */\n'
+      + '  readonly idiomas: { readonly [idioma: string]: { readonly nombre?: string; readonly nota?: string } };\n}\n'
       + 'export declare const ecosistema: readonly Producto[];\n'
-      + 'export declare function ecosistemaDesde(actual?: IdProducto | string): Producto[];\n'
+      + 'export declare function ecosistemaDesde(actual?: IdProducto | string, idioma?: Idioma | string): Producto[];\n'
       + 'export default ecosistema;\n',
   };
 }

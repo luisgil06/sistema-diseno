@@ -99,7 +99,7 @@ correr `npm install` y se hace commit en el producto.
 import '@codelibri/sistema/codelibri.css';        // tokens, componentes, Inter
 import { tema, paleta, variable } from '@codelibri/sistema';
 import { iconos } from '@codelibri/sistema/iconos'; // nombre y trazo de cada icono
-import { Icono } from '@codelibri/sistema/react';    // <Icono nombre="buscar" />
+import { Icono, MenuEcosistema, PieSitio } from '@codelibri/sistema/react';
 import { ecosistemaDesde } from '@codelibri/sistema/ecosistema'; // los demás productos
 ```
 
@@ -112,6 +112,16 @@ añade ahí y llega a todos con la siguiente versión. El orden de la lista es
 el orden en que se enseña, y CodeLibri va primero. Cada producto trae además
 `colores` (claro y oscuro), su tono ya resuelto, para quien no carga la hoja:
 el dibujo en ese color y el fondo del recuadro en él mismo al 10%.
+
+Cada producto lleva también su nota en inglés (`idiomas.en.nota`), y
+`ecosistemaDesde('epub-reader', 'en')` la devuelve ya puesta: así un producto
+bilingüe enseña la lista en su idioma. Compilar exige esa nota en todos.
+
+En React, el menú y el pie ya vienen hechos: `<MenuEcosistema actual="…" idioma="…" />`
+es el botón «Ecosistema» con su menú (se cierra con Escape, al pulsar fuera o al
+elegir), y `<PieSitio actual="…" marca={…} columnas={[…]} franja={…} />` arma el
+pie de sitio con la columna del ecosistema al final. Un enlace de columna sin
+`href` es un botón con su `onClick`, para abrir una ventana del propio producto.
 
 La hoja referencia sus fuentes con rutas relativas, así que Vite las empaqueta
 solas y siguen saliendo del propio dominio del producto. `tokens` trae los

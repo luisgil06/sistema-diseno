@@ -131,16 +131,27 @@
     <div class="doc-sub">
       <h3>En un producto con React</h3>
       <p>Se instala con npm desde el repositorio, fijado a una versión. La hoja trae sus fuentes y Vite las empaqueta; los tokens y los iconos llegan también como módulos, y <code class="cl-mono">&lt;Icono&gt;</code> dibuja cualquiera de los del sistema sin sprite.</p>
-<pre class="cl-codigo">npm install github:luisgil06/sistema-diseno#v0.3.0
+<pre class="cl-codigo">npm install github:luisgil06/sistema-diseno#v0.11.0
 
 import '@codelibri/sistema/codelibri.css';
 import { tema, paleta } from '@codelibri/sistema';
-import { Icono } from '@codelibri/sistema/react';
+import { Icono, MenuEcosistema, PieSitio } from '@codelibri/sistema/react';
 import { ecosistemaDesde } from '@codelibri/sistema/ecosistema';
 
 &lt;button className="cl-boton cl-boton-icono" aria-label="Buscar"&gt;
   &lt;Icono nombre="buscar" /&gt;
-&lt;/button&gt;</pre>
+&lt;/button&gt;
+
+// El botón «Ecosistema» y el pie de sitio, con la lista del sistema
+&lt;MenuEcosistema actual="epub-reader" idioma="en" /&gt;
+&lt;PieSitio
+  actual="epub-reader"
+  marca={&lt;&gt;…logo y frase…&lt;/&gt;}
+  columnas={[{ titulo: 'El lector', enlaces: [
+    { texto: 'Privacidad', icono: 'info', onClick: abrirAviso },
+  ] }]}
+/&gt;</pre>
+      <p><code class="cl-mono">MenuEcosistema</code> se cierra con Escape, al pulsar fuera o al elegir, y devuelve el foco al botón. En <code class="cl-mono">PieSitio</code>, un enlace sin <code class="cl-mono">href</code> es un botón con su <code class="cl-mono">onClick</code>. Los dos aceptan <code class="cl-mono">idioma="en"</code>: sus textos y las notas de los productos salen en inglés.</p>
     </div>
     <div class="doc-sub">
       <h3>4. Cambiar algo</h3>

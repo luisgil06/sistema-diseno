@@ -13,6 +13,27 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.11.0 · 2 de octubre de 2026
+
+Crecimiento: el menú del ecosistema y el pie de sitio, hechos para React, y
+la lista del ecosistema en inglés. Lo pide el EPUB Reader, que es bilingüe.
+
+- **`MenuEcosistema`** en `@codelibri/sistema/react`: el botón «Ecosistema»
+  con su menú (`cl-menu-ancla` + `cl-menu`). Se cierra con Escape (el foco
+  vuelve al botón), al pulsar fuera o al elegir. `rotuloClassName` deja
+  esconder el texto en el teléfono sin que el botón pierda su nombre.
+- **`PieSitio`**: el pie de sitio (`cl-pie-sitio`) con la marca, las columnas
+  del producto, la del ecosistema al final y la franja. Un enlace sin `href`
+  es un botón con su `onClick`, para abrir una ventana del propio producto.
+- Los enlaces que abren otra pestaña lo avisan al lector de pantalla.
+- **La lista del ecosistema trae la nota en inglés** (`idiomas.en.nota`), y
+  `ecosistemaDesde(actual, idioma)` la devuelve ya puesta. Compilar la exige en
+  todos los productos. Los dos componentes aceptan `idioma="en"`.
+- **En el pie de sitio, un `<button>` de columna se ve igual que un enlace.**
+
+La Guía SAT sigue con su propio pie y su propio menú, que hacen lo mismo:
+puede pasarse a estos cuando convenga.
+
 ## 0.10.2 · 2 de octubre de 2026
 
 Corrección de contraste: el sistema ya se mide también sobre el lienzo, no
