@@ -35,24 +35,38 @@ for (const modo of ['claro', 'oscuro']) {
     const t = T.tema[modo][acento];
     const sup = color(t.superficie), fondo = color(t.fondo);
     const capa = (k, base = sup) => sobre(color(t[k]), base);
+    /* Un tinte translúcido (campo, acento-suave, el fondo de un estado o de
+       una familia) cambia según lo que tenga debajo, así que se mide encima
+       de la superficie y encima del lienzo. Hasta la 0.10.1 solo se medía
+       sobre la superficie, y sobre el lienzo texto-3 daba 4.49:1. */
+    const BASES = [['superficie', sup], ['fondo', fondo]];
     const parejas = [
       ['texto', 'superficie', color(t.texto), sup],
       ['texto', 'fondo', color(t.texto), fondo],
       ['texto-2', 'superficie', color(t['texto-2']), sup],
       ['texto-2', 'fondo', color(t['texto-2']), fondo],
-      ['texto-2', 'campo', color(t['texto-2']), capa('campo')],
       ['texto-3', 'superficie', color(t['texto-3']), sup],
+      ['texto-3', 'fondo', color(t['texto-3']), fondo],
       ['acento', 'superficie', color(t.acento), sup],
       ['acento', 'fondo', color(t.acento), fondo],
-      ['acento', 'acento-suave', color(t.acento), capa('acento-suave')],
       ['acento-sobre', 'acento-solido', color(t['acento-sobre']), color(t['acento-solido'])],
     ];
+    for (const [nb, b] of BASES) {
+      parejas.push(['texto-2', 'campo sobre ' + nb, color(t['texto-2']), capa('campo', b)]);
+      parejas.push(['texto-3', 'campo sobre ' + nb, color(t['texto-3']), capa('campo', b)]);
+      parejas.push(['texto-3', 'flotar sobre ' + nb, color(t['texto-3']), capa('flotar', b)]);
+      parejas.push(['acento', 'acento-suave sobre ' + nb, color(t.acento), capa('acento-suave', b)]);
+      /* La pastilla activa o la ficha de acento cuando además se pasa por
+         encima, y sobre las manchas de color que decoran el lienzo. */
+      parejas.push(['acento', 'acento-suave y flotar sobre ' + nb, color(t.acento), capa('acento-suave', capa('flotar', b))]);
+    }
+    parejas.push(['acento', 'acento-suave sobre la mancha del lienzo', color(t.acento), capa('acento-suave', capa('mancha-1', fondo))]);
     for (const f of ['primary', 'secondary', 'secondary2']) {
       parejas.push(['f-' + f + '-texto', 'superficie', color(t['f-' + f + '-texto']), sup]);
-      parejas.push(['f-' + f + '-texto', 'f-' + f + '-fondo', color(t['f-' + f + '-texto']), capa('f-' + f + '-fondo')]);
+      for (const [nb, b] of BASES) parejas.push(['f-' + f + '-texto', 'f-' + f + '-fondo sobre ' + nb, color(t['f-' + f + '-texto']), capa('f-' + f + '-fondo', b)]);
     }
     for (const e of ['exito', 'advertencia', 'error', 'info']) {
-      parejas.push([e + '-texto', e + '-fondo', color(t[e + '-texto']), capa(e + '-fondo')]);
+      for (const [nb, b] of BASES) parejas.push([e + '-texto', e + '-fondo sobre ' + nb, color(t[e + '-texto']), capa(e + '-fondo', b)]);
       parejas.push([e + '-texto', 'superficie', color(t[e + '-texto']), sup]);
     }
     /* La rampa categórica va como texto y como filete sobre la superficie, el
@@ -64,7 +78,7 @@ for (const modo of ['claro', 'oscuro']) {
         const c = color(t['cat-' + i]);
         parejas.push(['cat-' + i, 'superficie', c, sup]);
         parejas.push(['cat-' + i, 'fondo', c, fondo]);
-        parejas.push(['cat-' + i, 'su propio 10%', c, sobre([c[0], c[1], c[2], 0.1], sup)]);
+        for (const [nb, b] of BASES) parejas.push(['cat-' + i, 'su propio 10% sobre ' + nb, c, sobre([c[0], c[1], c[2], 0.1], b)]);
         /* El paso vivo no es para texto normal: va en puntos, rayas y fichas
            rellenas. Lo que se mide es el texto que se pone encima. */
         const cat = T.categoria[i];

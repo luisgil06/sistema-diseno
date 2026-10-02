@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.10.1 · generado por herramientas/compilar.js; no se edita. */
+/* Sistema de diseño CodeLibri 0.10.2 · generado por herramientas/compilar.js; no se edita. */
 export declare const version: string;
 export declare const paleta: {
   readonly primary: {
@@ -603,6 +603,7 @@ export declare const notas: {
   readonly campo: string;
   readonly flotar: string;
   readonly "texto-3": string;
+  readonly "acento-suave": string;
   readonly "sombra-1": string;
   readonly "sombra-2": string;
   readonly "sombra-3": string;

@@ -23,7 +23,7 @@ src/                      las hojas y el guion, por partes
 iconos/iconos.json        los iconos: nombre y trazo
 herramientas/
   compilar.js             genera dist/ y mide el contraste
-  contraste.js            144 parejas de texto y fondo; falla si alguna baja de 4.5:1
+  contraste.js            346 parejas de texto y fondo, también sobre el lienzo; falla si alguna baja de 4.5:1
   documento-unico.js      la documentación empaquetada en un solo HTML
   llevar.js               copia una versión dentro de un producto
   figma.js                los guiones que sincronizan la biblioteca de Figma

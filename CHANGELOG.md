@@ -13,6 +13,27 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.10.2 · 2 de octubre de 2026
+
+Corrección de contraste: el sistema ya se mide también sobre el lienzo, no
+solo sobre la superficie blanca, y lo que fallaba ahí se corrige sin cambiar
+nombres.
+
+- **`contraste.js` mide cada tinte translúcido encima de la superficie y
+  encima del lienzo**: campo, fila al pasar por encima, `acento-suave`, el fondo
+  de cada estado y de cada familia, y el acento sobre las manchas que decoran el
+  lienzo. Pasa de 224 a 346 parejas.
+- **`texto-3` en claro es `#6e6e72`**, un punto más oscuro que `text.300`
+  (`#747478`), que sobre el lienzo daba 4.49:1 y dentro de un campo 4.38:1. Ahora
+  se puede usar sobre el lienzo; ya no hace falta cambiarlo por `texto-2`.
+- **`acento-suave` baja al 9% en claro y al 12% en oscuro** (era 10% y 16%). Con
+  el acento encima daba 4.43:1 sobre las manchas del lienzo y 4.36:1 en oscuro
+  dentro de una fila al pasar por encima. La diferencia apenas se ve.
+- En Figma, las mismas tres variables: `texto/texto-3` (Claro) y
+  `a/suave-claro` y `a/suave-oscuro` de la colección Acento.
+
+La pareja más justa queda en 4.51:1 (`cat-2` sobre su propio 10% sobre el lienzo).
+
 ## 0.10.1 · 2 de octubre de 2026
 
 Corrección: el enlace del Aula en la lista del ecosistema apuntaba a

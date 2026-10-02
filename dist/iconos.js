@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.10.1 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.10.2 · generado por herramientas/compilar.js; no se edita.
    Cada icono: su nombre y el trazo que va dentro de <svg viewBox="0 0 24 24">,
    con fill="none", stroke="currentColor", stroke-width 1.8 y extremos redondos. */
 export const iconos = {
