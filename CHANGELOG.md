@@ -13,6 +13,21 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.10.0 · 2 de octubre de 2026
+
+Crecimiento: el ecosistema se ve igual en todos los productos.
+
+- **CodeLibri va primero** y con el violeta de la rampa (`cl-cat-8`), como
+  pidió Luis. El Aula pasa al púrpura (`cl-cat-9`): de la misma familia,
+  pero distinto, para no repetir color en la lista. El orden de la lista es
+  el de la barra del Aula: CodeLibri, Aula, Guía SAT, Bloques HTML y EPUB
+  Reader.
+- **Cada producto trae sus `colores`** —claro y oscuro, ya resueltos de su
+  tono—, para que un producto que no carga la hoja (el Aula, WordPress) lo
+  pinte igual: el dibujo en ese color y el fondo del recuadro en él mismo al
+  10%. Antes el Aula pintaba todos en violeta.
+- Documentación y Figma: el pie de sitio con el orden y los tonos nuevos.
+
 ## 0.9.1 · 2 de octubre de 2026
 
 Corrección en las herramientas; lo que usa un producto no cambia.

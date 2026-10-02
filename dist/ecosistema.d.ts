@@ -1,7 +1,7 @@
-/* Sistema de diseño CodeLibri 0.9.1 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.10.0 · generado por herramientas/compilar.js; no se edita.
    La fuente es ecosistema/ecosistema.json. */
 import type { NombreIcono } from './iconos';
-export type IdProducto = "aula" | "epub-reader" | "bloques-html" | "guia-sat" | "codelibri";
+export type IdProducto = "codelibri" | "aula" | "guia-sat" | "bloques-html" | "epub-reader";
 export interface Producto {
   readonly id: IdProducto;
   readonly nombre: string;
@@ -11,6 +11,9 @@ export interface Producto {
   readonly icono: NombreIcono;
   /** La clase de la rampa categórica que le da su color: cl-cat-1 a cl-cat-10. */
   readonly tono: string;
+  /** Ese color ya resuelto, para quien no carga la hoja (el Aula, WordPress): el
+      dibujo va en este color y el fondo del recuadro en él mismo al 10%. */
+  readonly colores: { readonly claro: string; readonly oscuro: string };
 }
 export declare const ecosistema: readonly Producto[];
 export declare function ecosistemaDesde(actual?: IdProducto | string): Producto[];

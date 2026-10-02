@@ -108,7 +108,10 @@ dirección, icono y su tono de la rampa—, una sola para todos: el menú
 «Ecosistema», el cajón y el pie de sitio la leen de aquí.
 `ecosistemaDesde('guia-sat')` devuelve los demás, y solo los que tienen
 dirección. La fuente es `ecosistema/ecosistema.json`; un producto nuevo se
-añade ahí y llega a todos con la siguiente versión.
+añade ahí y llega a todos con la siguiente versión. El orden de la lista es
+el orden en que se enseña, y CodeLibri va primero. Cada producto trae además
+`colores` (claro y oscuro), su tono ya resuelto, para quien no carga la hoja:
+el dibujo en ese color y el fondo del recuadro en él mismo al 10%.
 
 La hoja referencia sus fuentes con rutas relativas, así que Vite las empaqueta
 solas y siguen saliendo del propio dominio del producto. `tokens` trae los

@@ -196,12 +196,12 @@ for (const p of ECOSISTEMA) {
   if (p.url && !/^https:\/\/[^\s"<>]+$/.test(p.url)) throw new Error('ecosistema: la dirección de «' + p.id + '» no es https: ' + p.url);
 }
 
-function moduloEcosistema() {
+function moduloEcosistema(lista) {
   const aviso = '/* Sistema de diseño CodeLibri ' + VERSION + ' · generado por herramientas/compilar.js; no se edita.\n'
     + '   La fuente es ecosistema/ecosistema.json. */\n';
   const ids = ECOSISTEMA.map((p) => JSON.stringify(p.id)).join(' | ');
   return {
-    js: aviso + 'export const ecosistema = ' + JSON.stringify(ECOSISTEMA, null, 2) + ';\n'
+    js: aviso + 'export const ecosistema = ' + JSON.stringify(lista, null, 2) + ';\n'
       + '/** Los productos que enseña «actual»: los demás, y solo los que tienen dirección. */\n'
       + 'export function ecosistemaDesde(actual) { return ecosistema.filter((p) => p.id !== actual && p.url); }\n'
       + 'export default ecosistema;\n',
@@ -209,7 +209,10 @@ function moduloEcosistema() {
       + 'export type IdProducto = ' + ids + ';\n'
       + 'export interface Producto {\n  readonly id: IdProducto;\n  readonly nombre: string;\n  readonly nota: string;\n'
       + '  /** Vacía mientras el producto no está publicado: entonces no se enseña. */\n  readonly url: string;\n'
-      + '  readonly icono: NombreIcono;\n  /** La clase de la rampa categórica que le da su color: cl-cat-1 a cl-cat-10. */\n  readonly tono: string;\n}\n'
+      + '  readonly icono: NombreIcono;\n  /** La clase de la rampa categórica que le da su color: cl-cat-1 a cl-cat-10. */\n  readonly tono: string;\n'
+      + '  /** Ese color ya resuelto, para quien no carga la hoja (el Aula, WordPress): el\n'
+      + '      dibujo va en este color y el fondo del recuadro en él mismo al 10%. */\n'
+      + '  readonly colores: { readonly claro: string; readonly oscuro: string };\n}\n'
       + 'export declare const ecosistema: readonly Producto[];\n'
       + 'export declare function ecosistemaDesde(actual?: IdProducto | string): Producto[];\n'
       + 'export default ecosistema;\n',
@@ -319,8 +322,14 @@ escribir('dist/tokens.js', modTokens.js);
 escribir('dist/tokens.d.ts', modTokens.dts);
 escribir('dist/iconos.js', modIconos.js);
 escribir('dist/iconos.d.ts', modIconos.dts);
-const modEco = moduloEcosistema();
-escribir('dist/ecosistema.json', JSON.stringify(ECOSISTEMA, null, 2) + '\n');
+/* La lista sale con el color de cada producto ya resuelto, del tema claro y
+   del oscuro: así la pinta igual un producto que no carga la hoja. */
+const ecoConColores = ECOSISTEMA.map((p) => {
+  const n = p.tono.replace('cl-', '');
+  return { ...p, colores: { claro: resueltos.tema.claro.primary[n], oscuro: resueltos.tema.oscuro.primary[n] } };
+});
+const modEco = moduloEcosistema(ecoConColores);
+escribir('dist/ecosistema.json', JSON.stringify(ecoConColores, null, 2) + '\n');
 escribir('dist/ecosistema.js', modEco.js);
 escribir('dist/ecosistema.d.ts', modEco.dts);
 /* El componente de icono para React: se escribe a mano en src/react/ y
