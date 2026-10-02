@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.10.0 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.10.1 · generado por herramientas/compilar.js; no se edita.
    La fuente es ecosistema/ecosistema.json. */
 export const ecosistema = [
   {
@@ -17,7 +17,7 @@ export const ecosistema = [
     "id": "aula",
     "nombre": "Aula",
     "nota": "Presentaciones y material de clase de diseño",
-    "url": "https://learn.codelibri.com.mx",
+    "url": "https://aula.codelibri.com.mx",
     "icono": "birrete",
     "tono": "cl-cat-9",
     "colores": {

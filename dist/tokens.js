@@ -1,5 +1,5 @@
-/* Sistema de diseño CodeLibri 0.10.0 · generado por herramientas/compilar.js; no se edita. */
-export const version = "0.10.0";
+/* Sistema de diseño CodeLibri 0.10.1 · generado por herramientas/compilar.js; no se edita. */
+export const version = "0.10.1";
 export const paleta = {
   "primary": {
     "50": "#f0eefe",

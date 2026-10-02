@@ -13,6 +13,12 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.10.1 · 2 de octubre de 2026
+
+Corrección: el enlace del Aula en la lista del ecosistema apuntaba a
+`https://learn.codelibri.com.mx`, que no existe, desde la 0.9.0. Ahora va a
+`https://aula.codelibri.com.mx`. Ningún otro cambio.
+
 ## 0.10.0 · 2 de octubre de 2026
 
 Crecimiento: el ecosistema se ve igual en todos los productos.
