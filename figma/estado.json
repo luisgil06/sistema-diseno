@@ -1,6 +1,6 @@
 {
   "archivo": "VJnzekSGdZmIlyN2482cN8",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "fase": "terminada",
   "hecho": [
     "fase0",
@@ -23,7 +23,8 @@
     "0.5.0-filtros",
     "0.5.0-iconos",
     "0.6.0-rampa-viva",
-    "0.7.0-iconos-editar-chispas"
+    "0.7.0-iconos-editar-chispas",
+    "0.8.0-icono-accesibilidad"
   ],
   "colecciones": {
     "Paleta": {

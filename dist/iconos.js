@@ -1,10 +1,14 @@
-/* Sistema de diseño CodeLibri 0.7.0 · generado por herramientas/compilar.js; no se edita.
+/* Sistema de diseño CodeLibri 0.8.0 · generado por herramientas/compilar.js; no se edita.
    Cada icono: su nombre y el trazo que va dentro de <svg viewBox="0 0 24 24">,
    con fill="none", stroke="currentColor", stroke-width 1.8 y extremos redondos. */
 export const iconos = {
   "abajo": {
     "nombre": "Abajo",
     "trazo": "<path d=\"m6 9 6 6 6-6\"/>"
+  },
+  "accesibilidad": {
+    "nombre": "Accesibilidad",
+    "trazo": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"7.4\" r=\"1.3\"/><path d=\"M7.4 10.2 12 11.2l4.6-1\"/><path d=\"M12 11.2v3.4\"/><path d=\"m9.7 18.2 2.3-3.6 2.3 3.6\"/>"
   },
   "ajustes": {
     "nombre": "Ajustes",

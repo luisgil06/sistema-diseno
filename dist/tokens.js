@@ -1,5 +1,5 @@
-/* Sistema de diseño CodeLibri 0.7.0 · generado por herramientas/compilar.js; no se edita. */
-export const version = "0.7.0";
+/* Sistema de diseño CodeLibri 0.8.0 · generado por herramientas/compilar.js; no se edita. */
+export const version = "0.8.0";
 export const paleta = {
   "primary": {
     "50": "#f0eefe",
@@ -752,6 +752,7 @@ export const armazon = {
 };
 export const iconos = {
   "abajo": "Abajo",
+  "accesibilidad": "Accesibilidad",
   "ajustes": "Ajustes",
   "alerta": "Alerta",
   "anadir": "Añadir",

@@ -13,6 +13,16 @@ romper:
 Un producto no cambia al publicarse una versión: cambia cuando pide la nueva,
 con `npm install` o con `herramientas/llevar.js`.
 
+## 0.8.0 · 1 de octubre de 2026
+
+Crecimiento: un icono.
+
+- **Accesibilidad** (71 iconos): la figura con los brazos abiertos dentro de un
+  círculo, que es el símbolo de las opciones de accesibilidad. No es la silla de
+  ruedas, que habla solo de movilidad. Lo pidió el panel de accesibilidad de la
+  Guía SAT, que usaba ♿.
+- Figma: el icono, como componente de una capa.
+
 ## 0.7.0 · 27 de septiembre de 2026
 
 Crecimiento: lo que pidió el panel de administración de la Guía SAT.

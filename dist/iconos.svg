@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
 <symbol id="cl-abajo" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="cl-accesibilidad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.4" r="1.3"/><path d="M7.4 10.2 12 11.2l4.6-1"/><path d="M12 11.2v3.4"/><path d="m9.7 18.2 2.3-3.6 2.3 3.6"/></symbol>
 <symbol id="cl-ajustes" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
 <symbol id="cl-alerta" viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.5v.01"/></symbol>
 <symbol id="cl-anadir" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>

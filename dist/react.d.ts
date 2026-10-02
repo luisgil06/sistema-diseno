@@ -1,4 +1,4 @@
-/* Sistema de diseño CodeLibri 0.7.0 · componentes para React. */
+/* Sistema de diseño CodeLibri 0.8.0 · componentes para React. */
 import type { ReactElement, SVGProps } from 'react';
 import type { NombreIcono } from './iconos.js';
 
